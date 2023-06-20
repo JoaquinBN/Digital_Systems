@@ -1,0 +1,2457 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"15 ./SystemTimer.h
+[; ;./SystemTimer.h: 15: typedef struct{
+[s S280 `uc 1 `uc 1 ]
+[n S280 . minutes seconds ]
+"25 ./Timer.h
+[; ;./Timer.h: 25: unsigned char TI_NewTimer(unsigned char *TimerHandle) ;
+[v _TI_NewTimer `(uc ~T0 @X0 0 ef1`*uc ]
+"16 ./Menu.h
+[; ;./Menu.h: 16: void resetDisplay(void);
+[v _resetDisplay `(v ~T0 @X0 0 ef ]
+"79 ./LcTLCD.h
+[; ;./LcTLCD.h: 79: void LcCursorOn(void);
+[v _LcCursorOn `(v ~T0 @X0 0 ef ]
+"20 ./Menu.h
+[; ;./Menu.h: 20: void lcdAddString(char* string);
+[v _lcdAddString `(v ~T0 @X0 0 ef1`*uc ]
+"19 ./Keypad.h
+[; ;./Keypad.h: 19: char isPressed(void);
+[v _isPressed `(uc ~T0 @X0 0 ef ]
+"31
+[; ;./Keypad.h: 31: char KeGetGenericValue(void);
+[v _KeGetGenericValue `(uc ~T0 @X0 0 ef ]
+"27
+[; ;./Keypad.h: 27: char getAvailable(void);
+[v _getAvailable `(uc ~T0 @X0 0 ef ]
+"87 ./LcTLCD.h
+[; ;./LcTLCD.h: 87: void LcGotoXY(char Column, char Row);
+[v _LcGotoXY `(v ~T0 @X0 0 ef2`uc`uc ]
+"23 ./Keypad.h
+[; ;./Keypad.h: 23: char KeGetCharValue(void);
+[v _KeGetCharValue `(uc ~T0 @X0 0 ef ]
+"109 ./LcTLCD.h
+[; ;./LcTLCD.h: 109: char getColumnAct(void);
+[v _getColumnAct `(uc ~T0 @X0 0 ef ]
+"92
+[; ;./LcTLCD.h: 92: void LcPutChar(char c);
+[v _LcPutChar `(v ~T0 @X0 0 ef1`uc ]
+"21 ./Menu.h
+[; ;./Menu.h: 21: void displayMenu(char* string);
+[v _displayMenu `(v ~T0 @X0 0 ef1`*uc ]
+"83 ./LcTLCD.h
+[; ;./LcTLCD.h: 83: void LcCursorOff(void);
+[v _LcCursorOff `(v ~T0 @X0 0 ef ]
+"22 ./SystemTimer.h
+[; ;./SystemTimer.h: 22: void updateSysTimestamp(Timestamp time, char i);
+[v _updateSysTimestamp `(v ~T0 @X0 0 ef2`S280`uc ]
+"13 ./SIO.h
+[; ;./SIO.h: 13: unsigned char checkTX(void);
+[v _checkTX `(uc ~T0 @X0 0 ef ]
+"11
+[; ;./SIO.h: 11: void setTX(unsigned char letter);
+[v _setTX `(v ~T0 @X0 0 ef1`uc ]
+"15
+[; ;./SIO.h: 15: unsigned char checkRX(void);
+[v _checkRX `(uc ~T0 @X0 0 ef ]
+"17
+[; ;./SIO.h: 17: unsigned char getRX(void);
+[v _getRX `(uc ~T0 @X0 0 ef ]
+"29 ./Timer.h
+[; ;./Timer.h: 29: void TI_ResetTics (unsigned char TimerHandle);
+[v _TI_ResetTics `(v ~T0 @X0 0 ef1`uc ]
+"22 ./Menu.h
+[; ;./Menu.h: 22: void refreshDisplay(void);
+[v _refreshDisplay `(v ~T0 @X0 0 ef ]
+"33 ./Timer.h
+[; ;./Timer.h: 33: unsigned long TI_GetTics (unsigned char TimerHandle);
+[v _TI_GetTics `(ul ~T0 @X0 0 ef1`uc ]
+"24 ./SystemTimer.h
+[; ;./SystemTimer.h: 24: void displayTimestamp(void);
+[v _displayTimestamp `(v ~T0 @X0 0 ef ]
+"23 ./EEPROM.h
+[; ;./EEPROM.h: 23: void sendTimestamp(void);
+[v _sendTimestamp `(v ~T0 @X0 0 ef ]
+"22
+[; ;./EEPROM.h: 22: char isIdle(void);
+[v _isIdle `(uc ~T0 @X0 0 ef ]
+"24
+[; ;./EEPROM.h: 24: void saveIndex(void);
+[v _saveIndex `(v ~T0 @X0 0 ef ]
+"11 ./Audio.h
+[; ;./Audio.h: 11: void playMusic(char aux);
+[v _playMusic `(v ~T0 @X0 0 ef1`uc ]
+"13
+[; ;./Audio.h: 13: void stopMusic(void);
+[v _stopMusic `(v ~T0 @X0 0 ef ]
+"26 ./EEPROM.h
+[; ;./EEPROM.h: 26: char getNumRecordings(void);
+[v _getNumRecordings `(uc ~T0 @X0 0 ef ]
+"21
+[; ;./EEPROM.h: 21: void displayRecordings(char indexPosition);
+[v _displayRecordings `(v ~T0 @X0 0 ef1`uc ]
+"25
+[; ;./EEPROM.h: 25: void sendIndex(char indexPosition);
+[v _sendIndex `(v ~T0 @X0 0 ef1`uc ]
+"9 ./Joystick.h
+[; ;./Joystick.h: 9: char getJoystickUp(void);
+[v _getJoystickUp `(uc ~T0 @X0 0 ef ]
+"10
+[; ;./Joystick.h: 10: char getJoystickDown(void);
+[v _getJoystickDown `(uc ~T0 @X0 0 ef ]
+"75 ./LcTLCD.h
+[; ;./LcTLCD.h: 75: void LcClear(void);
+[v _LcClear `(v ~T0 @X0 0 ef ]
+"17 ./Menu.h
+[; ;./Menu.h: 17: void moveOneRow(void);
+[v _moveOneRow `(v ~T0 @X0 0 ef ]
+"54 ../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 54: __asm("PORTA equ 0F80h");
+[; <" PORTA equ 0F80h ;# ">
+"286
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 286: __asm("PORTB equ 0F81h");
+[; <" PORTB equ 0F81h ;# ">
+"465
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 465: __asm("PORTC equ 0F82h");
+[; <" PORTC equ 0F82h ;# ">
+"645
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 645: __asm("PORTD equ 0F83h");
+[; <" PORTD equ 0F83h ;# ">
+"787
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 787: __asm("PORTE equ 0F84h");
+[; <" PORTE equ 0F84h ;# ">
+"990
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 990: __asm("LATA equ 0F89h");
+[; <" LATA equ 0F89h ;# ">
+"1102
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 1102: __asm("LATB equ 0F8Ah");
+[; <" LATB equ 0F8Ah ;# ">
+"1214
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 1214: __asm("LATC equ 0F8Bh");
+[; <" LATC equ 0F8Bh ;# ">
+"1326
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 1326: __asm("LATD equ 0F8Ch");
+[; <" LATD equ 0F8Ch ;# ">
+"1438
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 1438: __asm("LATE equ 0F8Dh");
+[; <" LATE equ 0F8Dh ;# ">
+"1490
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 1490: __asm("TRISA equ 0F92h");
+[; <" TRISA equ 0F92h ;# ">
+"1495
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 1495: __asm("DDRA equ 0F92h");
+[; <" DDRA equ 0F92h ;# ">
+"1712
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 1712: __asm("TRISB equ 0F93h");
+[; <" TRISB equ 0F93h ;# ">
+"1717
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 1717: __asm("DDRB equ 0F93h");
+[; <" DDRB equ 0F93h ;# ">
+"1934
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 1934: __asm("TRISC equ 0F94h");
+[; <" TRISC equ 0F94h ;# ">
+"1939
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 1939: __asm("DDRC equ 0F94h");
+[; <" DDRC equ 0F94h ;# ">
+"2156
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 2156: __asm("TRISD equ 0F95h");
+[; <" TRISD equ 0F95h ;# ">
+"2161
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 2161: __asm("DDRD equ 0F95h");
+[; <" DDRD equ 0F95h ;# ">
+"2378
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 2378: __asm("TRISE equ 0F96h");
+[; <" TRISE equ 0F96h ;# ">
+"2383
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 2383: __asm("DDRE equ 0F96h");
+[; <" DDRE equ 0F96h ;# ">
+"2542
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 2542: __asm("OSCTUNE equ 0F9Bh");
+[; <" OSCTUNE equ 0F9Bh ;# ">
+"2607
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 2607: __asm("PIE1 equ 0F9Dh");
+[; <" PIE1 equ 0F9Dh ;# ">
+"2684
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 2684: __asm("PIR1 equ 0F9Eh");
+[; <" PIR1 equ 0F9Eh ;# ">
+"2761
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 2761: __asm("IPR1 equ 0F9Fh");
+[; <" IPR1 equ 0F9Fh ;# ">
+"2838
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 2838: __asm("PIE2 equ 0FA0h");
+[; <" PIE2 equ 0FA0h ;# ">
+"2904
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 2904: __asm("PIR2 equ 0FA1h");
+[; <" PIR2 equ 0FA1h ;# ">
+"2970
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 2970: __asm("IPR2 equ 0FA2h");
+[; <" IPR2 equ 0FA2h ;# ">
+"3036
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3036: __asm("EECON1 equ 0FA6h");
+[; <" EECON1 equ 0FA6h ;# ">
+"3102
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3102: __asm("EECON2 equ 0FA7h");
+[; <" EECON2 equ 0FA7h ;# ">
+"3109
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3109: __asm("EEDATA equ 0FA8h");
+[; <" EEDATA equ 0FA8h ;# ">
+"3116
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3116: __asm("EEADR equ 0FA9h");
+[; <" EEADR equ 0FA9h ;# ">
+"3123
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3123: __asm("RCSTA equ 0FABh");
+[; <" RCSTA equ 0FABh ;# ">
+"3128
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3128: __asm("RCSTA1 equ 0FABh");
+[; <" RCSTA1 equ 0FABh ;# ">
+"3333
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3333: __asm("TXSTA equ 0FACh");
+[; <" TXSTA equ 0FACh ;# ">
+"3338
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3338: __asm("TXSTA1 equ 0FACh");
+[; <" TXSTA1 equ 0FACh ;# ">
+"3589
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3589: __asm("TXREG equ 0FADh");
+[; <" TXREG equ 0FADh ;# ">
+"3594
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3594: __asm("TXREG1 equ 0FADh");
+[; <" TXREG1 equ 0FADh ;# ">
+"3601
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3601: __asm("RCREG equ 0FAEh");
+[; <" RCREG equ 0FAEh ;# ">
+"3606
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3606: __asm("RCREG1 equ 0FAEh");
+[; <" RCREG1 equ 0FAEh ;# ">
+"3613
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3613: __asm("SPBRG equ 0FAFh");
+[; <" SPBRG equ 0FAFh ;# ">
+"3618
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3618: __asm("SPBRG1 equ 0FAFh");
+[; <" SPBRG1 equ 0FAFh ;# ">
+"3625
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3625: __asm("SPBRGH equ 0FB0h");
+[; <" SPBRGH equ 0FB0h ;# ">
+"3632
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3632: __asm("T3CON equ 0FB1h");
+[; <" T3CON equ 0FB1h ;# ">
+"3744
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3744: __asm("TMR3 equ 0FB2h");
+[; <" TMR3 equ 0FB2h ;# ">
+"3751
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3751: __asm("TMR3L equ 0FB2h");
+[; <" TMR3L equ 0FB2h ;# ">
+"3758
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3758: __asm("TMR3H equ 0FB3h");
+[; <" TMR3H equ 0FB3h ;# ">
+"3765
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3765: __asm("CMCON equ 0FB4h");
+[; <" CMCON equ 0FB4h ;# ">
+"3855
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3855: __asm("CVRCON equ 0FB5h");
+[; <" CVRCON equ 0FB5h ;# ">
+"3934
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 3934: __asm("ECCP1AS equ 0FB6h");
+[; <" ECCP1AS equ 0FB6h ;# ">
+"4016
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4016: __asm("ECCP1DEL equ 0FB7h");
+[; <" ECCP1DEL equ 0FB7h ;# ">
+"4021
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4021: __asm("PWM1CON equ 0FB7h");
+[; <" PWM1CON equ 0FB7h ;# ">
+"4154
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4154: __asm("BAUDCON equ 0FB8h");
+[; <" BAUDCON equ 0FB8h ;# ">
+"4159
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4159: __asm("BAUDCTL equ 0FB8h");
+[; <" BAUDCTL equ 0FB8h ;# ">
+"4334
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4334: __asm("CCP2CON equ 0FBAh");
+[; <" CCP2CON equ 0FBAh ;# ">
+"4413
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4413: __asm("CCPR2 equ 0FBBh");
+[; <" CCPR2 equ 0FBBh ;# ">
+"4420
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4420: __asm("CCPR2L equ 0FBBh");
+[; <" CCPR2L equ 0FBBh ;# ">
+"4427
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4427: __asm("CCPR2H equ 0FBCh");
+[; <" CCPR2H equ 0FBCh ;# ">
+"4434
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4434: __asm("CCP1CON equ 0FBDh");
+[; <" CCP1CON equ 0FBDh ;# ">
+"4439
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4439: __asm("ECCP1CON equ 0FBDh");
+[; <" ECCP1CON equ 0FBDh ;# ">
+"4626
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4626: __asm("CCPR1 equ 0FBEh");
+[; <" CCPR1 equ 0FBEh ;# ">
+"4633
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4633: __asm("CCPR1L equ 0FBEh");
+[; <" CCPR1L equ 0FBEh ;# ">
+"4640
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4640: __asm("CCPR1H equ 0FBFh");
+[; <" CCPR1H equ 0FBFh ;# ">
+"4647
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4647: __asm("ADCON2 equ 0FC0h");
+[; <" ADCON2 equ 0FC0h ;# ">
+"4718
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4718: __asm("ADCON1 equ 0FC1h");
+[; <" ADCON1 equ 0FC1h ;# ">
+"4803
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4803: __asm("ADCON0 equ 0FC2h");
+[; <" ADCON0 equ 0FC2h ;# ">
+"4922
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4922: __asm("ADRES equ 0FC3h");
+[; <" ADRES equ 0FC3h ;# ">
+"4929
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4929: __asm("ADRESL equ 0FC3h");
+[; <" ADRESL equ 0FC3h ;# ">
+"4936
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4936: __asm("ADRESH equ 0FC4h");
+[; <" ADRESH equ 0FC4h ;# ">
+"4943
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 4943: __asm("SSPCON2 equ 0FC5h");
+[; <" SSPCON2 equ 0FC5h ;# ">
+"5038
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 5038: __asm("SSPCON1 equ 0FC6h");
+[; <" SSPCON1 equ 0FC6h ;# ">
+"5108
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 5108: __asm("SSPSTAT equ 0FC7h");
+[; <" SSPSTAT equ 0FC7h ;# ">
+"5329
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 5329: __asm("SSPADD equ 0FC8h");
+[; <" SSPADD equ 0FC8h ;# ">
+"5336
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 5336: __asm("SSPBUF equ 0FC9h");
+[; <" SSPBUF equ 0FC9h ;# ">
+"5343
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 5343: __asm("T2CON equ 0FCAh");
+[; <" T2CON equ 0FCAh ;# ">
+"5441
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 5441: __asm("PR2 equ 0FCBh");
+[; <" PR2 equ 0FCBh ;# ">
+"5446
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 5446: __asm("MEMCON equ 0FCBh");
+[; <" MEMCON equ 0FCBh ;# ">
+"5551
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 5551: __asm("TMR2 equ 0FCCh");
+[; <" TMR2 equ 0FCCh ;# ">
+"5558
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 5558: __asm("T1CON equ 0FCDh");
+[; <" T1CON equ 0FCDh ;# ">
+"5661
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 5661: __asm("TMR1 equ 0FCEh");
+[; <" TMR1 equ 0FCEh ;# ">
+"5668
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 5668: __asm("TMR1L equ 0FCEh");
+[; <" TMR1L equ 0FCEh ;# ">
+"5675
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 5675: __asm("TMR1H equ 0FCFh");
+[; <" TMR1H equ 0FCFh ;# ">
+"5682
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 5682: __asm("RCON equ 0FD0h");
+[; <" RCON equ 0FD0h ;# ">
+"5816
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 5816: __asm("WDTCON equ 0FD1h");
+[; <" WDTCON equ 0FD1h ;# ">
+"5844
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 5844: __asm("HLVDCON equ 0FD2h");
+[; <" HLVDCON equ 0FD2h ;# ">
+"5849
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 5849: __asm("LVDCON equ 0FD2h");
+[; <" LVDCON equ 0FD2h ;# ">
+"6102
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6102: __asm("OSCCON equ 0FD3h");
+[; <" OSCCON equ 0FD3h ;# ">
+"6185
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6185: __asm("T0CON equ 0FD5h");
+[; <" T0CON equ 0FD5h ;# ">
+"6262
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6262: __asm("TMR0 equ 0FD6h");
+[; <" TMR0 equ 0FD6h ;# ">
+"6269
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6269: __asm("TMR0L equ 0FD6h");
+[; <" TMR0L equ 0FD6h ;# ">
+"6276
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6276: __asm("TMR0H equ 0FD7h");
+[; <" TMR0H equ 0FD7h ;# ">
+"6283
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6283: __asm("STATUS equ 0FD8h");
+[; <" STATUS equ 0FD8h ;# ">
+"6354
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6354: __asm("FSR2 equ 0FD9h");
+[; <" FSR2 equ 0FD9h ;# ">
+"6361
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6361: __asm("FSR2L equ 0FD9h");
+[; <" FSR2L equ 0FD9h ;# ">
+"6368
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6368: __asm("FSR2H equ 0FDAh");
+[; <" FSR2H equ 0FDAh ;# ">
+"6375
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6375: __asm("PLUSW2 equ 0FDBh");
+[; <" PLUSW2 equ 0FDBh ;# ">
+"6382
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6382: __asm("PREINC2 equ 0FDCh");
+[; <" PREINC2 equ 0FDCh ;# ">
+"6389
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6389: __asm("POSTDEC2 equ 0FDDh");
+[; <" POSTDEC2 equ 0FDDh ;# ">
+"6396
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6396: __asm("POSTINC2 equ 0FDEh");
+[; <" POSTINC2 equ 0FDEh ;# ">
+"6403
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6403: __asm("INDF2 equ 0FDFh");
+[; <" INDF2 equ 0FDFh ;# ">
+"6410
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6410: __asm("BSR equ 0FE0h");
+[; <" BSR equ 0FE0h ;# ">
+"6417
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6417: __asm("FSR1 equ 0FE1h");
+[; <" FSR1 equ 0FE1h ;# ">
+"6424
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6424: __asm("FSR1L equ 0FE1h");
+[; <" FSR1L equ 0FE1h ;# ">
+"6431
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6431: __asm("FSR1H equ 0FE2h");
+[; <" FSR1H equ 0FE2h ;# ">
+"6438
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6438: __asm("PLUSW1 equ 0FE3h");
+[; <" PLUSW1 equ 0FE3h ;# ">
+"6445
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6445: __asm("PREINC1 equ 0FE4h");
+[; <" PREINC1 equ 0FE4h ;# ">
+"6452
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6452: __asm("POSTDEC1 equ 0FE5h");
+[; <" POSTDEC1 equ 0FE5h ;# ">
+"6459
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6459: __asm("POSTINC1 equ 0FE6h");
+[; <" POSTINC1 equ 0FE6h ;# ">
+"6466
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6466: __asm("INDF1 equ 0FE7h");
+[; <" INDF1 equ 0FE7h ;# ">
+"6473
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6473: __asm("WREG equ 0FE8h");
+[; <" WREG equ 0FE8h ;# ">
+"6485
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6485: __asm("FSR0 equ 0FE9h");
+[; <" FSR0 equ 0FE9h ;# ">
+"6492
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6492: __asm("FSR0L equ 0FE9h");
+[; <" FSR0L equ 0FE9h ;# ">
+"6499
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6499: __asm("FSR0H equ 0FEAh");
+[; <" FSR0H equ 0FEAh ;# ">
+"6506
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6506: __asm("PLUSW0 equ 0FEBh");
+[; <" PLUSW0 equ 0FEBh ;# ">
+"6513
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6513: __asm("PREINC0 equ 0FECh");
+[; <" PREINC0 equ 0FECh ;# ">
+"6520
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6520: __asm("POSTDEC0 equ 0FEDh");
+[; <" POSTDEC0 equ 0FEDh ;# ">
+"6527
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6527: __asm("POSTINC0 equ 0FEEh");
+[; <" POSTINC0 equ 0FEEh ;# ">
+"6534
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6534: __asm("INDF0 equ 0FEFh");
+[; <" INDF0 equ 0FEFh ;# ">
+"6541
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6541: __asm("INTCON3 equ 0FF0h");
+[; <" INTCON3 equ 0FF0h ;# ">
+"6633
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6633: __asm("INTCON2 equ 0FF1h");
+[; <" INTCON2 equ 0FF1h ;# ">
+"6703
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6703: __asm("INTCON equ 0FF2h");
+[; <" INTCON equ 0FF2h ;# ">
+"6820
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6820: __asm("PROD equ 0FF3h");
+[; <" PROD equ 0FF3h ;# ">
+"6827
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6827: __asm("PRODL equ 0FF3h");
+[; <" PRODL equ 0FF3h ;# ">
+"6834
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6834: __asm("PRODH equ 0FF4h");
+[; <" PRODH equ 0FF4h ;# ">
+"6841
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6841: __asm("TABLAT equ 0FF5h");
+[; <" TABLAT equ 0FF5h ;# ">
+"6850
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6850: __asm("TBLPTR equ 0FF6h");
+[; <" TBLPTR equ 0FF6h ;# ">
+"6857
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6857: __asm("TBLPTRL equ 0FF6h");
+[; <" TBLPTRL equ 0FF6h ;# ">
+"6864
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6864: __asm("TBLPTRH equ 0FF7h");
+[; <" TBLPTRH equ 0FF7h ;# ">
+"6871
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6871: __asm("TBLPTRU equ 0FF8h");
+[; <" TBLPTRU equ 0FF8h ;# ">
+"6880
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6880: __asm("PCLAT equ 0FF9h");
+[; <" PCLAT equ 0FF9h ;# ">
+"6887
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6887: __asm("PC equ 0FF9h");
+[; <" PC equ 0FF9h ;# ">
+"6894
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6894: __asm("PCL equ 0FF9h");
+[; <" PCL equ 0FF9h ;# ">
+"6901
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6901: __asm("PCLATH equ 0FFAh");
+[; <" PCLATH equ 0FFAh ;# ">
+"6908
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6908: __asm("PCLATU equ 0FFBh");
+[; <" PCLATU equ 0FFBh ;# ">
+"6915
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6915: __asm("STKPTR equ 0FFCh");
+[; <" STKPTR equ 0FFCh ;# ">
+"6989
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6989: __asm("TOS equ 0FFDh");
+[; <" TOS equ 0FFDh ;# ">
+"6996
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 6996: __asm("TOSL equ 0FFDh");
+[; <" TOSL equ 0FFDh ;# ">
+"7003
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 7003: __asm("TOSH equ 0FFEh");
+[; <" TOSH equ 0FFEh ;# ">
+"7010
+[; ;../../../../Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h: 7010: __asm("TOSU equ 0FFFh");
+[; <" TOSU equ 0FFFh ;# ">
+"4 Menu.c
+[; ;Menu.c: 4: static char PORTNAMEMENU[12]= {"PORT NAME: \0"};
+[v _PORTNAMEMENU `uc ~T0 @X0 -> 12 `i s ]
+[i _PORTNAMEMENU
+:U ..
+-> 80 `c
+-> 79 `c
+-> 82 `c
+-> 84 `c
+-> 32 `c
+-> 78 `c
+-> 65 `c
+-> 77 `c
+-> 69 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+..
+]
+[v F2669 `Cuc ~T0 @X0 -> 23 `i t ]
+"5
+[; ;Menu.c: 5: static const char MAINMENU[6][23] = {"1.START RECORDING     \0"
+[v _MAINMENU `F2669 ~T0 @X0 -> 6 `i s ]
+[i _MAINMENU
+:U ..
+:U ..
+-> 49 `c
+-> 46 `c
+-> 83 `c
+-> 84 `c
+-> 65 `c
+-> 82 `c
+-> 84 `c
+-> 32 `c
+-> 82 `c
+-> 69 `c
+-> 67 `c
+-> 79 `c
+-> 82 `c
+-> 68 `c
+-> 73 `c
+-> 78 `c
+-> 71 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 0 `c
+..
+:U ..
+-> 50 `c
+-> 46 `c
+-> 80 `c
+-> 76 `c
+-> 65 `c
+-> 89 `c
+-> 32 `c
+-> 82 `c
+-> 69 `c
+-> 67 `c
+-> 79 `c
+-> 82 `c
+-> 68 `c
+-> 73 `c
+-> 78 `c
+-> 71 `c
+-> 83 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 0 `c
+..
+:U ..
+-> 51 `c
+-> 46 `c
+-> 77 `c
+-> 79 `c
+-> 68 `c
+-> 73 `c
+-> 70 `c
+-> 89 `c
+-> 32 `c
+-> 67 `c
+-> 85 `c
+-> 82 `c
+-> 82 `c
+-> 69 `c
+-> 78 `c
+-> 84 `c
+-> 32 `c
+-> 84 `c
+-> 73 `c
+-> 77 `c
+-> 69 `c
+-> 32 `c
+-> 0 `c
+..
+:U ..
+-> 52 `c
+-> 46 `c
+-> 83 `c
+-> 72 `c
+-> 79 `c
+-> 87 `c
+-> 32 `c
+-> 67 `c
+-> 85 `c
+-> 82 `c
+-> 82 `c
+-> 69 `c
+-> 78 `c
+-> 84 `c
+-> 32 `c
+-> 84 `c
+-> 73 `c
+-> 77 `c
+-> 69 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 0 `c
+..
+:U ..
+-> 53 `c
+-> 46 `c
+-> 69 `c
+-> 78 `c
+-> 68 `c
+-> 32 `c
+-> 67 `c
+-> 79 `c
+-> 77 `c
+-> 77 `c
+-> 85 `c
+-> 78 `c
+-> 73 `c
+-> 67 `c
+-> 65 `c
+-> 84 `c
+-> 73 `c
+-> 79 `c
+-> 78 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 0 `c
+..
+:U ..
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 32 `c
+-> 0 `c
+..
+..
+]
+"11
+[; ;Menu.c: 11: static char STARTRECORDING[14] = {"RECORDING...\0"};
+[v _STARTRECORDING `uc ~T0 @X0 -> 14 `i s ]
+[i _STARTRECORDING
+:U ..
+-> 82 `c
+-> 69 `c
+-> 67 `c
+-> 79 `c
+-> 82 `c
+-> 68 `c
+-> 73 `c
+-> 78 `c
+-> 71 `c
+-> 46 `c
+-> 46 `c
+-> 46 `c
+-> 0 `c
+-> 0 `c
+..
+]
+"12
+[; ;Menu.c: 12: static char PLAYRECORDINGS[12] = {"PLAYING...\0"};
+[v _PLAYRECORDINGS `uc ~T0 @X0 -> 12 `i s ]
+[i _PLAYRECORDINGS
+:U ..
+-> 80 `c
+-> 76 `c
+-> 65 `c
+-> 89 `c
+-> 73 `c
+-> 78 `c
+-> 71 `c
+-> 46 `c
+-> 46 `c
+-> 46 `c
+-> 0 `c
+-> 0 `c
+..
+]
+"14
+[; ;Menu.c: 14: static char MODIFYTIME[13] = {"MODIFY TIME:\0"};
+[v _MODIFYTIME `uc ~T0 @X0 -> 13 `i s ]
+[i _MODIFYTIME
+:U ..
+-> 77 `c
+-> 79 `c
+-> 68 `c
+-> 73 `c
+-> 70 `c
+-> 89 `c
+-> 32 `c
+-> 84 `c
+-> 73 `c
+-> 77 `c
+-> 69 `c
+-> 58 `c
+-> 0 `c
+..
+]
+"15
+[; ;Menu.c: 15: static char CURRENTTIME[14] = {"CURRENT TIME:\0"};
+[v _CURRENTTIME `uc ~T0 @X0 -> 14 `i s ]
+[i _CURRENTTIME
+:U ..
+-> 67 `c
+-> 85 `c
+-> 82 `c
+-> 82 `c
+-> 69 `c
+-> 78 `c
+-> 84 `c
+-> 32 `c
+-> 84 `c
+-> 73 `c
+-> 77 `c
+-> 69 `c
+-> 58 `c
+-> 0 `c
+..
+]
+"16
+[; ;Menu.c: 16: static char ENDCOMMUNICATION[11]= {"bye bye \0"};
+[v _ENDCOMMUNICATION `uc ~T0 @X0 -> 11 `i s ]
+[i _ENDCOMMUNICATION
+:U ..
+-> 98 `c
+-> 121 `c
+-> 101 `c
+-> 32 `c
+-> 98 `c
+-> 121 `c
+-> 101 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+"18
+[; ;Menu.c: 18: static char ERRORMESSAGES[20] = {"NO RECORDS FOUND\0"};
+[v _ERRORMESSAGES `uc ~T0 @X0 -> 20 `i s ]
+[i _ERRORMESSAGES
+:U ..
+-> 78 `c
+-> 79 `c
+-> 32 `c
+-> 82 `c
+-> 69 `c
+-> 67 `c
+-> 79 `c
+-> 82 `c
+-> 68 `c
+-> 83 `c
+-> 32 `c
+-> 70 `c
+-> 79 `c
+-> 85 `c
+-> 78 `c
+-> 68 `c
+-> 0 `c
+-> 0 `c
+..
+]
+"20
+[; ;Menu.c: 20: static char MUSICPERIODS[8] = {3,2,3,1,4,3,2,5};
+[v _MUSICPERIODS `uc ~T0 @X0 -> 8 `i s ]
+[i _MUSICPERIODS
+:U ..
+-> -> 3 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 1 `i `uc
+-> -> 4 `i `uc
+-> -> 3 `i `uc
+-> -> 2 `i `uc
+-> -> 5 `i `uc
+..
+]
+"21
+[; ;Menu.c: 21: static int MUSICDELAY[8] = {1000,1000,1000,2400,1000,1000,600,1200};
+[v _MUSICDELAY `i ~T0 @X0 -> 8 `i s ]
+[i _MUSICDELAY
+:U ..
+-> 1000 `i
+-> 1000 `i
+-> 1000 `i
+-> 2400 `i
+-> 1000 `i
+-> 1000 `i
+-> 600 `i
+-> 1200 `i
+..
+]
+"23
+[; ;Menu.c: 23: static char timer;
+[v _timer `uc ~T0 @X0 1 s ]
+"24
+[; ;Menu.c: 24: static char songTimer;
+[v _songTimer `uc ~T0 @X0 1 s ]
+"26
+[; ;Menu.c: 26: static char rowIndex = 0;
+[v _rowIndex `uc ~T0 @X0 1 s ]
+[i _rowIndex
+-> -> 0 `i `uc
+]
+"27
+[; ;Menu.c: 27: static char colIndex = 0;
+[v _colIndex `uc ~T0 @X0 1 s ]
+[i _colIndex
+-> -> 0 `i `uc
+]
+"28
+[; ;Menu.c: 28: static char displayPos;
+[v _displayPos `uc ~T0 @X0 1 s ]
+"29
+[; ;Menu.c: 29: static char index = 0;
+[v _index `uc ~T0 @X0 1 s ]
+[i _index
+-> -> 0 `i `uc
+]
+"30
+[; ;Menu.c: 30: static Timestamp timeValue;
+[v _timeValue `S280 ~T0 @X0 1 s ]
+"31
+[; ;Menu.c: 31: static char portName[4];
+[v _portName `uc ~T0 @X0 -> 4 `i s ]
+"32
+[; ;Menu.c: 32: static char skipState;
+[v _skipState `uc ~T0 @X0 1 s ]
+"33
+[; ;Menu.c: 33: static char state = 0;
+[v _state `uc ~T0 @X0 1 s ]
+[i _state
+-> -> 0 `i `uc
+]
+"34
+[; ;Menu.c: 34: static char tmpPortChar = 0;
+[v _tmpPortChar `uc ~T0 @X0 1 s ]
+[i _tmpPortChar
+-> -> 0 `i `uc
+]
+"35
+[; ;Menu.c: 35: static int scroll = 0;
+[v _scroll `i ~T0 @X0 1 s ]
+[i _scroll
+-> 0 `i
+]
+"36
+[; ;Menu.c: 36: static int scrollIndex = 0;
+[v _scrollIndex `i ~T0 @X0 1 s ]
+[i _scrollIndex
+-> 0 `i
+]
+"38
+[; ;Menu.c: 38: void initMenu(void){
+[v _initMenu `(v ~T0 @X0 1 ef ]
+{
+[e :U _initMenu ]
+[f ]
+"39
+[; ;Menu.c: 39:     TI_NewTimer(&timer);
+[e ( _TI_NewTimer (1 -> &U _timer `*uc ]
+"40
+[; ;Menu.c: 40:     TI_NewTimer(&songTimer);
+[e ( _TI_NewTimer (1 -> &U _songTimer `*uc ]
+"41
+[; ;Menu.c: 41: }
+[e :UE 282 ]
+}
+"43
+[; ;Menu.c: 43: void menuLoop(void){
+[v _menuLoop `(v ~T0 @X0 1 ef ]
+{
+[e :U _menuLoop ]
+[f ]
+"44
+[; ;Menu.c: 44:     switch (state){
+[e $U 285  ]
+{
+"45
+[; ;Menu.c: 45:         case 0:
+[e :U 286 ]
+"46
+[; ;Menu.c: 46:             resetDisplay();
+[e ( _resetDisplay ..  ]
+"47
+[; ;Menu.c: 47:             LcCursorOn();
+[e ( _LcCursorOn ..  ]
+"48
+[; ;Menu.c: 48:             skipState = 0;
+[e = _skipState -> -> 0 `i `uc ]
+"49
+[; ;Menu.c: 49:             index = 0;
+[e = _index -> -> 0 `i `uc ]
+"50
+[; ;Menu.c: 50:             timeValue.minutes = 0;
+[e = . _timeValue 0 -> -> 0 `i `uc ]
+"51
+[; ;Menu.c: 51:             timeValue.seconds = 0;
+[e = . _timeValue 1 -> -> 0 `i `uc ]
+"52
+[; ;Menu.c: 52:             state = 1;
+[e = _state -> -> 1 `i `uc ]
+"53
+[; ;Menu.c: 53:             displayPos = 0;
+[e = _displayPos -> -> 0 `i `uc ]
+"54
+[; ;Menu.c: 54:             tmpPortChar = 0;
+[e = _tmpPortChar -> -> 0 `i `uc ]
+"55
+[; ;Menu.c: 55:             break;
+[e $U 284  ]
+"56
+[; ;Menu.c: 56:         case 1:
+[e :U 287 ]
+"57
+[; ;Menu.c: 57:             lcdAddString(&PORTNAMEMENU);
+[e ( _lcdAddString (1 -> &U _PORTNAMEMENU `*uc ]
+"58
+[; ;Menu.c: 58:             if(rowIndex ==1 ){
+[e $ ! == -> _rowIndex `i -> 1 `i 288  ]
+{
+"59
+[; ;Menu.c: 59:                 state = 2;
+[e = _state -> -> 2 `i `uc ]
+"60
+[; ;Menu.c: 60:             }
+}
+[e :U 288 ]
+"61
+[; ;Menu.c: 61:             break;
+[e $U 284  ]
+"62
+[; ;Menu.c: 62:         case 2:
+[e :U 289 ]
+"63
+[; ;Menu.c: 63:             if (colIndex >= 3 ){
+[e $ ! >= -> _colIndex `i -> 3 `i 290  ]
+{
+"64
+[; ;Menu.c: 64:                 state = 0;
+[e = _state -> -> 0 `i `uc ]
+"65
+[; ;Menu.c: 65:             }else if (isPressed()){
+}
+[e $U 291  ]
+[e :U 290 ]
+[e $ ! != -> ( _isPressed ..  `i -> 0 `i 292  ]
+{
+"66
+[; ;Menu.c: 66:                 if(KeGetGenericValue() == '*'){
+[e $ ! == -> ( _KeGetGenericValue ..  `ui -> 42 `ui 293  ]
+{
+"67
+[; ;Menu.c: 67:                     state = 0;
+[e = _state -> -> 0 `i `uc ]
+"68
+[; ;Menu.c: 68:                 }else if (KeGetGenericValue() == '#' && colIndex == 2){
+}
+[e $U 294  ]
+[e :U 293 ]
+[e $ ! && == -> ( _KeGetGenericValue ..  `ui -> 35 `ui == -> _colIndex `i -> 2 `i 295  ]
+{
+"69
+[; ;Menu.c: 69:                     tmpPortChar = 1;
+[e = _tmpPortChar -> -> 1 `i `uc ]
+"70
+[; ;Menu.c: 70:                     state = 8;
+[e = _state -> -> 8 `i `uc ]
+"71
+[; ;Menu.c: 71:                 }else if (KeGetGenericValue() != '#'){
+}
+[e $U 296  ]
+[e :U 295 ]
+[e $ ! != -> ( _KeGetGenericValue ..  `ui -> 35 `ui 297  ]
+{
+"72
+[; ;Menu.c: 72:                     if (getAvailable() || skipState == 0){
+[e $ ! || != -> ( _getAvailable ..  `i -> 0 `i == -> _skipState `i -> 0 `i 298  ]
+{
+"73
+[; ;Menu.c: 73:                         LcGotoXY(colIndex,rowIndex);
+[e ( _LcGotoXY (2 , _colIndex _rowIndex ]
+"74
+[; ;Menu.c: 74:                         colIndex--;
+[e -- _colIndex -> -> 1 `i `uc ]
+"75
+[; ;Menu.c: 75:                     }
+}
+[e :U 298 ]
+"76
+[; ;Menu.c: 76:                     tmpPortChar = KeGetCharValue();
+[e = _tmpPortChar ( _KeGetCharValue ..  ]
+"77
+[; ;Menu.c: 77:                     state = 3;
+[e = _state -> -> 3 `i `uc ]
+"78
+[; ;Menu.c: 78:                 }
+}
+[e :U 297 ]
+[e :U 296 ]
+[e :U 294 ]
+"79
+[; ;Menu.c: 79:             }
+}
+[e :U 292 ]
+[e :U 291 ]
+"80
+[; ;Menu.c: 80:             break;
+[e $U 284  ]
+"82
+[; ;Menu.c: 82:         case 3:
+[e :U 299 ]
+"83
+[; ;Menu.c: 83:             portName[getColumnAct()] = tmpPortChar;
+[e = *U + &U _portName * -> ( _getColumnAct ..  `ux -> -> # *U &U _portName `ui `ux _tmpPortChar ]
+"84
+[; ;Menu.c: 84:             LcPutChar(tmpPortChar);
+[e ( _LcPutChar (1 _tmpPortChar ]
+"85
+[; ;Menu.c: 85:             colIndex++;
+[e ++ _colIndex -> -> 1 `i `uc ]
+"86
+[; ;Menu.c: 86:             skipState++;
+[e ++ _skipState -> -> 1 `i `uc ]
+"87
+[; ;Menu.c: 87:             state = 4;
+[e = _state -> -> 4 `i `uc ]
+"88
+[; ;Menu.c: 88:             break;
+[e $U 284  ]
+"90
+[; ;Menu.c: 90:         case 4:
+[e :U 300 ]
+"91
+[; ;Menu.c: 91:             if(!isPressed()){
+[e $ ! ! != -> ( _isPressed ..  `i -> 0 `i 301  ]
+{
+"92
+[; ;Menu.c: 92:                 state = 2;
+[e = _state -> -> 2 `i `uc ]
+"93
+[; ;Menu.c: 93:             }
+}
+[e :U 301 ]
+"94
+[; ;Menu.c: 94:             break;
+[e $U 284  ]
+"96
+[; ;Menu.c: 96:         case 5:
+[e :U 302 ]
+"97
+[; ;Menu.c: 97:             displayMenu(&MAINMENU[displayPos]);
+[e ( _displayMenu (1 -> &U *U + &U _MAINMENU * -> _displayPos `ux -> * -> # *U &U *U &U _MAINMENU `ui -> -> 23 `i `ui `ux `*uc ]
+"99
+[; ;Menu.c: 99:             if(rowIndex ==1 && !skipState){
+[e $ ! && == -> _rowIndex `i -> 1 `i ! != -> _skipState `i -> 0 `i 303  ]
+{
+"100
+[; ;Menu.c: 100:                 displayPos++;
+[e ++ _displayPos -> -> 1 `i `uc ]
+"101
+[; ;Menu.c: 101:                 skipState = 1;
+[e = _skipState -> -> 1 `i `uc ]
+"102
+[; ;Menu.c: 102:             }else if(rowIndex == 2){
+}
+[e $U 304  ]
+[e :U 303 ]
+[e $ ! == -> _rowIndex `i -> 2 `i 305  ]
+{
+"103
+[; ;Menu.c: 103:                 displayPos--;
+[e -- _displayPos -> -> 1 `i `uc ]
+"104
+[; ;Menu.c: 104:                 tmpPortChar = 1;
+[e = _tmpPortChar -> -> 1 `i `uc ]
+"105
+[; ;Menu.c: 105:                 skipState = 4;
+[e = _skipState -> -> 4 `i `uc ]
+"106
+[; ;Menu.c: 106:                 state = 90;
+[e = _state -> -> 90 `i `uc ]
+"107
+[; ;Menu.c: 107:             }
+}
+[e :U 305 ]
+[e :U 304 ]
+"108
+[; ;Menu.c: 108:             break;
+[e $U 284  ]
+"110
+[; ;Menu.c: 110:         case 7:
+[e :U 306 ]
+"111
+[; ;Menu.c: 111:             if(displayPos == 0){
+[e $ ! == -> _displayPos `i -> 0 `i 307  ]
+{
+"113
+[; ;Menu.c: 113:                 state = 40;
+[e = _state -> -> 40 `i `uc ]
+"114
+[; ;Menu.c: 114:             }else if(displayPos == 1){
+}
+[e $U 308  ]
+[e :U 307 ]
+[e $ ! == -> _displayPos `i -> 1 `i 309  ]
+{
+"116
+[; ;Menu.c: 116:                 state = 60;
+[e = _state -> -> 60 `i `uc ]
+"117
+[; ;Menu.c: 117:             }else if(displayPos == 2){
+}
+[e $U 310  ]
+[e :U 309 ]
+[e $ ! == -> _displayPos `i -> 2 `i 311  ]
+{
+"119
+[; ;Menu.c: 119:                 state = 20;
+[e = _state -> -> 20 `i `uc ]
+"120
+[; ;Menu.c: 120:             }else if(displayPos == 3){
+}
+[e $U 312  ]
+[e :U 311 ]
+[e $ ! == -> _displayPos `i -> 3 `i 313  ]
+{
+"122
+[; ;Menu.c: 122:                 state = 30;
+[e = _state -> -> 30 `i `uc ]
+"123
+[; ;Menu.c: 123:             }else if (displayPos == 4){
+}
+[e $U 314  ]
+[e :U 313 ]
+[e $ ! == -> _displayPos `i -> 4 `i 315  ]
+{
+"125
+[; ;Menu.c: 125:                 state = 100;
+[e = _state -> -> 100 `i `uc ]
+"127
+[; ;Menu.c: 127:             }
+}
+[e :U 315 ]
+[e :U 314 ]
+[e :U 312 ]
+[e :U 310 ]
+[e :U 308 ]
+"128
+[; ;Menu.c: 128:             break;
+[e $U 284  ]
+"130
+[; ;Menu.c: 130:         case 8:
+[e :U 316 ]
+"131
+[; ;Menu.c: 131:             LcCursorOff();
+[e ( _LcCursorOff ..  ]
+"132
+[; ;Menu.c: 132:             updateSysTimestamp(timeValue,0);
+[e ( _updateSysTimestamp (2 , _timeValue -> -> 0 `i `uc ]
+"133
+[; ;Menu.c: 133:             state = 9;
+[e = _state -> -> 9 `i `uc ]
+"134
+[; ;Menu.c: 134:             break;
+[e $U 284  ]
+"137
+[; ;Menu.c: 137:         case 9:
+[e :U 317 ]
+"138
+[; ;Menu.c: 138:             if(checkTX()){
+[e $ ! != -> ( _checkTX ..  `i -> 0 `i 318  ]
+{
+"139
+[; ;Menu.c: 139:                 setTX('T');
+[e ( _setTX (1 -> -> 84 `ui `uc ]
+"140
+[; ;Menu.c: 140:                 state = 10;
+[e = _state -> -> 10 `i `uc ]
+"141
+[; ;Menu.c: 141:             }
+}
+[e :U 318 ]
+"142
+[; ;Menu.c: 142:             break;
+[e $U 284  ]
+"143
+[; ;Menu.c: 143:         case 10:
+[e :U 319 ]
+"144
+[; ;Menu.c: 144:             if(checkRX() && getRX() == 'K'){
+[e $ ! && != -> ( _checkRX ..  `i -> 0 `i == -> ( _getRX ..  `ui -> 75 `ui 320  ]
+{
+"145
+[; ;Menu.c: 145:                 state = 11;
+[e = _state -> -> 11 `i `uc ]
+"146
+[; ;Menu.c: 146:                 index = 0;
+[e = _index -> -> 0 `i `uc ]
+"147
+[; ;Menu.c: 147:                 TI_ResetTics(timer);
+[e ( _TI_ResetTics (1 -> _timer `uc ]
+"148
+[; ;Menu.c: 148:             }
+}
+[e :U 320 ]
+"149
+[; ;Menu.c: 149:             break;
+[e $U 284  ]
+"150
+[; ;Menu.c: 150:         case 11:
+[e :U 321 ]
+"151
+[; ;Menu.c: 151:             if(index == 4){
+[e $ ! == -> _index `i -> 4 `i 322  ]
+{
+"152
+[; ;Menu.c: 152:                 refreshDisplay();
+[e ( _refreshDisplay ..  ]
+"153
+[; ;Menu.c: 153:             }else if(checkTX() && TI_GetTics(timer) >= 100){
+}
+[e $U 323  ]
+[e :U 322 ]
+[e $ ! && != -> ( _checkTX ..  `i -> 0 `i >= ( _TI_GetTics (1 -> _timer `uc -> -> -> 100 `i `l `ul 324  ]
+{
+"154
+[; ;Menu.c: 154:                 setTX(portName[index]);
+[e ( _setTX (1 -> *U + &U _portName * -> _index `ux -> -> # *U &U _portName `ui `ux `uc ]
+"155
+[; ;Menu.c: 155:                 TI_ResetTics(timer);
+[e ( _TI_ResetTics (1 -> _timer `uc ]
+"156
+[; ;Menu.c: 156:                 index++;
+[e ++ _index -> -> 1 `i `uc ]
+"157
+[; ;Menu.c: 157:             }
+}
+[e :U 324 ]
+[e :U 323 ]
+"158
+[; ;Menu.c: 158:             break;
+[e $U 284  ]
+"160
+[; ;Menu.c: 160:         case 20:
+[e :U 325 ]
+"161
+[; ;Menu.c: 161:             lcdAddString(&MODIFYTIME);
+[e ( _lcdAddString (1 -> &U _MODIFYTIME `*uc ]
+"162
+[; ;Menu.c: 162:             if(rowIndex == 1){
+[e $ ! == -> _rowIndex `i -> 1 `i 326  ]
+{
+"163
+[; ;Menu.c: 163:                 LcCursorOn();
+[e ( _LcCursorOn ..  ]
+"164
+[; ;Menu.c: 164:                 index = 4;
+[e = _index -> -> 4 `i `uc ]
+"165
+[; ;Menu.c: 165:                 state = 21;
+[e = _state -> -> 21 `i `uc ]
+"166
+[; ;Menu.c: 166:             }
+}
+[e :U 326 ]
+"167
+[; ;Menu.c: 167:             break;
+[e $U 284  ]
+"169
+[; ;Menu.c: 169:         case 21:
+[e :U 327 ]
+"170
+[; ;Menu.c: 170:             if (isPressed()){
+[e $ ! != -> ( _isPressed ..  `i -> 0 `i 328  ]
+{
+"171
+[; ;Menu.c: 171:                 if(KeGetGenericValue() == '*'){
+[e $ ! == -> ( _KeGetGenericValue ..  `ui -> 42 `ui 329  ]
+{
+"172
+[; ;Menu.c: 172:                     refreshDisplay();
+[e ( _refreshDisplay ..  ]
+"173
+[; ;Menu.c: 173:                 }else if(KeGetGenericValue() != '#'){
+}
+[e $U 330  ]
+[e :U 329 ]
+[e $ ! != -> ( _KeGetGenericValue ..  `ui -> 35 `ui 331  ]
+{
+"174
+[; ;Menu.c: 174:                     LcPutChar(KeGetGenericValue());
+[e ( _LcPutChar (1 ( _KeGetGenericValue ..  ]
+"175
+[; ;Menu.c: 175:                     colIndex++;
+[e ++ _colIndex -> -> 1 `i `uc ]
+"176
+[; ;Menu.c: 176:                     index--;
+[e -- _index -> -> 1 `i `uc ]
+"177
+[; ;Menu.c: 177:                     if(index == 3){
+[e $ ! == -> _index `i -> 3 `i 332  ]
+{
+"178
+[; ;Menu.c: 178:                         timeValue.minutes = (KeGetGenericValue()*10);
+[e = . _timeValue 0 -> * -> ( _KeGetGenericValue ..  `i -> 10 `i `uc ]
+"179
+[; ;Menu.c: 179:                     }else if(index == 2){
+}
+[e $U 333  ]
+[e :U 332 ]
+[e $ ! == -> _index `i -> 2 `i 334  ]
+{
+"180
+[; ;Menu.c: 180:                         timeValue.minutes += KeGetGenericValue()-16;
+[e =+ . _timeValue 0 -> - -> ( _KeGetGenericValue ..  `i -> 16 `i `uc ]
+"181
+[; ;Menu.c: 181:                     }else if(index == 1){
+}
+[e $U 335  ]
+[e :U 334 ]
+[e $ ! == -> _index `i -> 1 `i 336  ]
+{
+"182
+[; ;Menu.c: 182:                         timeValue.seconds = (KeGetGenericValue()*10);
+[e = . _timeValue 1 -> * -> ( _KeGetGenericValue ..  `i -> 10 `i `uc ]
+"183
+[; ;Menu.c: 183:                     }else{
+}
+[e $U 337  ]
+[e :U 336 ]
+{
+"184
+[; ;Menu.c: 184:                         timeValue.seconds += KeGetGenericValue()-16;
+[e =+ . _timeValue 1 -> - -> ( _KeGetGenericValue ..  `i -> 16 `i `uc ]
+"185
+[; ;Menu.c: 185:                     }
+}
+[e :U 337 ]
+[e :U 335 ]
+[e :U 333 ]
+"186
+[; ;Menu.c: 186:                     state = index==0?23:22;
+[e = _state -> ? == -> _index `i -> 0 `i : -> 23 `i -> 22 `i `uc ]
+"187
+[; ;Menu.c: 187:                 }
+}
+[e :U 331 ]
+[e :U 330 ]
+"188
+[; ;Menu.c: 188:             }
+}
+[e :U 328 ]
+"189
+[; ;Menu.c: 189:             break;
+[e $U 284  ]
+"191
+[; ;Menu.c: 191:         case 22:
+[e :U 338 ]
+"192
+[; ;Menu.c: 192:             if(!isPressed()){
+[e $ ! ! != -> ( _isPressed ..  `i -> 0 `i 339  ]
+{
+"193
+[; ;Menu.c: 193:                 if(index == 2){
+[e $ ! == -> _index `i -> 2 `i 340  ]
+{
+"194
+[; ;Menu.c: 194:                     LcPutChar(':');
+[e ( _LcPutChar (1 -> -> 58 `ui `uc ]
+"195
+[; ;Menu.c: 195:                     colIndex++;
+[e ++ _colIndex -> -> 1 `i `uc ]
+"196
+[; ;Menu.c: 196:                 }
+}
+[e :U 340 ]
+"197
+[; ;Menu.c: 197:                 state = 21;
+[e = _state -> -> 21 `i `uc ]
+"198
+[; ;Menu.c: 198:             }
+}
+[e :U 339 ]
+"199
+[; ;Menu.c: 199:             break;
+[e $U 284  ]
+"200
+[; ;Menu.c: 200:         case 23:
+[e :U 341 ]
+"201
+[; ;Menu.c: 201:             if(isPressed() && KeGetCharValue() == '#'){
+[e $ ! && != -> ( _isPressed ..  `i -> 0 `i == -> ( _KeGetCharValue ..  `ui -> 35 `ui 342  ]
+{
+"202
+[; ;Menu.c: 202:                 updateSysTimestamp(timeValue,0);
+[e ( _updateSysTimestamp (2 , _timeValue -> -> 0 `i `uc ]
+"203
+[; ;Menu.c: 203:                 refreshDisplay();
+[e ( _refreshDisplay ..  ]
+"204
+[; ;Menu.c: 204:             }else if(isPressed() && KeGetCharValue() == '*'){
+}
+[e $U 343  ]
+[e :U 342 ]
+[e $ ! && != -> ( _isPressed ..  `i -> 0 `i == -> ( _KeGetCharValue ..  `ui -> 42 `ui 344  ]
+{
+"205
+[; ;Menu.c: 205:                 refreshDisplay();
+[e ( _refreshDisplay ..  ]
+"206
+[; ;Menu.c: 206:             }
+}
+[e :U 344 ]
+[e :U 343 ]
+"207
+[; ;Menu.c: 207:             break;
+[e $U 284  ]
+"208
+[; ;Menu.c: 208:         case 30:
+[e :U 345 ]
+"209
+[; ;Menu.c: 209:             lcdAddString(&CURRENTTIME);
+[e ( _lcdAddString (1 -> &U _CURRENTTIME `*uc ]
+"210
+[; ;Menu.c: 210:             if(rowIndex == 1){
+[e $ ! == -> _rowIndex `i -> 1 `i 346  ]
+{
+"211
+[; ;Menu.c: 211:                 displayTimestamp();
+[e ( _displayTimestamp ..  ]
+"212
+[; ;Menu.c: 212:                 TI_ResetTics(timer);
+[e ( _TI_ResetTics (1 -> _timer `uc ]
+"213
+[; ;Menu.c: 213:                 state = 31;
+[e = _state -> -> 31 `i `uc ]
+"214
+[; ;Menu.c: 214:             }
+}
+[e :U 346 ]
+"215
+[; ;Menu.c: 215:             break;
+[e $U 284  ]
+"216
+[; ;Menu.c: 216:         case 31:
+[e :U 347 ]
+"217
+[; ;Menu.c: 217:             if(isPressed() && KeGetCharValue() == '#'){
+[e $ ! && != -> ( _isPressed ..  `i -> 0 `i == -> ( _KeGetCharValue ..  `ui -> 35 `ui 348  ]
+{
+"218
+[; ;Menu.c: 218:                 refreshDisplay();
+[e ( _refreshDisplay ..  ]
+"219
+[; ;Menu.c: 219:             }else if(TI_GetTics(timer) >= 2000){
+}
+[e $U 349  ]
+[e :U 348 ]
+[e $ ! >= ( _TI_GetTics (1 -> _timer `uc -> -> -> 2000 `i `l `ul 350  ]
+{
+"220
+[; ;Menu.c: 220:                 resetDisplay();
+[e ( _resetDisplay ..  ]
+"221
+[; ;Menu.c: 221:                 state = 30;
+[e = _state -> -> 30 `i `uc ]
+"222
+[; ;Menu.c: 222:             }
+}
+[e :U 350 ]
+[e :U 349 ]
+"223
+[; ;Menu.c: 223:             break;
+[e $U 284  ]
+"227
+[; ;Menu.c: 227:         case 40:
+[e :U 351 ]
+"228
+[; ;Menu.c: 228:             lcdAddString(&STARTRECORDING);
+[e ( _lcdAddString (1 -> &U _STARTRECORDING `*uc ]
+"229
+[; ;Menu.c: 229:             if(rowIndex == 1){
+[e $ ! == -> _rowIndex `i -> 1 `i 352  ]
+{
+"230
+[; ;Menu.c: 230:                 index = 0;
+[e = _index -> -> 0 `i `uc ]
+"231
+[; ;Menu.c: 231:                 state = 41;
+[e = _state -> -> 41 `i `uc ]
+"232
+[; ;Menu.c: 232:             }
+}
+[e :U 352 ]
+"233
+[; ;Menu.c: 233:             break;
+[e $U 284  ]
+"234
+[; ;Menu.c: 234:         case 41:
+[e :U 353 ]
+"235
+[; ;Menu.c: 235:             if(checkTX()){
+[e $ ! != -> ( _checkTX ..  `i -> 0 `i 354  ]
+{
+"236
+[; ;Menu.c: 236:                 setTX('D');
+[e ( _setTX (1 -> -> 68 `ui `uc ]
+"237
+[; ;Menu.c: 237:                 state = 42;
+[e = _state -> -> 42 `i `uc ]
+"238
+[; ;Menu.c: 238:             }
+}
+[e :U 354 ]
+"239
+[; ;Menu.c: 239:             break;
+[e $U 284  ]
+"240
+[; ;Menu.c: 240:         case 42:
+[e :U 355 ]
+"241
+[; ;Menu.c: 241:             sendTimestamp();
+[e ( _sendTimestamp ..  ]
+"242
+[; ;Menu.c: 242:             state = 43;
+[e = _state -> -> 43 `i `uc ]
+"243
+[; ;Menu.c: 243:             break;
+[e $U 284  ]
+"244
+[; ;Menu.c: 244:         case 43:
+[e :U 356 ]
+"245
+[; ;Menu.c: 245:             if(isIdle()){
+[e $ ! != -> ( _isIdle ..  `i -> 0 `i 357  ]
+{
+"246
+[; ;Menu.c: 246:                 saveIndex();
+[e ( _saveIndex ..  ]
+"247
+[; ;Menu.c: 247:                 state = 44;
+[e = _state -> -> 44 `i `uc ]
+"248
+[; ;Menu.c: 248:             }
+}
+[e :U 357 ]
+"249
+[; ;Menu.c: 249:             break;
+[e $U 284  ]
+"250
+[; ;Menu.c: 250:         case 44:
+[e :U 358 ]
+"251
+[; ;Menu.c: 251:             if(isIdle()){
+[e $ ! != -> ( _isIdle ..  `i -> 0 `i 359  ]
+{
+"252
+[; ;Menu.c: 252:                 state = 45;
+[e = _state -> -> 45 `i `uc ]
+"253
+[; ;Menu.c: 253:                 TI_ResetTics(timer);
+[e ( _TI_ResetTics (1 -> _timer `uc ]
+"254
+[; ;Menu.c: 254:             }
+}
+[e :U 359 ]
+"255
+[; ;Menu.c: 255:             break;
+[e $U 284  ]
+"256
+[; ;Menu.c: 256:         case 45:
+[e :U 360 ]
+"257
+[; ;Menu.c: 257:             if(TI_GetTics(timer) >= 2000){
+[e $ ! >= ( _TI_GetTics (1 -> _timer `uc -> -> -> 2000 `i `l `ul 361  ]
+{
+"258
+[; ;Menu.c: 258:                 TI_ResetTics(songTimer);
+[e ( _TI_ResetTics (1 -> _songTimer `uc ]
+"259
+[; ;Menu.c: 259:                 TI_ResetTics(timer);
+[e ( _TI_ResetTics (1 -> _timer `uc ]
+"260
+[; ;Menu.c: 260:                 state = 50;
+[e = _state -> -> 50 `i `uc ]
+"261
+[; ;Menu.c: 261:             }
+}
+[e :U 361 ]
+"266
+[; ;Menu.c: 266:             break;
+[e $U 284  ]
+"269
+[; ;Menu.c: 269:         case 50:
+[e :U 362 ]
+"270
+[; ;Menu.c: 270:             if(TI_GetTics(songTimer) >= MUSICDELAY[index] ){
+[e $ ! >= ( _TI_GetTics (1 -> _songTimer `uc -> -> *U + &U _MUSICDELAY * -> _index `ux -> -> # *U &U _MUSICDELAY `ui `ux `l `ul 363  ]
+{
+"271
+[; ;Menu.c: 271:                 index++;
+[e ++ _index -> -> 1 `i `uc ]
+"272
+[; ;Menu.c: 272:                 if(index == 8){
+[e $ ! == -> _index `i -> 8 `i 364  ]
+{
+"273
+[; ;Menu.c: 273:                     state = 51;
+[e = _state -> -> 51 `i `uc ]
+"274
+[; ;Menu.c: 274:                 }else{
+}
+[e $U 365  ]
+[e :U 364 ]
+{
+"275
+[; ;Menu.c: 275:                     playMusic(MUSICPERIODS[index]);
+[e ( _playMusic (1 *U + &U _MUSICPERIODS * -> _index `ux -> -> # *U &U _MUSICPERIODS `ui `ux ]
+"276
+[; ;Menu.c: 276:                     TI_ResetTics(songTimer);
+[e ( _TI_ResetTics (1 -> _songTimer `uc ]
+"277
+[; ;Menu.c: 277:                 }
+}
+[e :U 365 ]
+"278
+[; ;Menu.c: 278:             }
+}
+[e :U 363 ]
+"279
+[; ;Menu.c: 279:             break;
+[e $U 284  ]
+"281
+[; ;Menu.c: 281:         case 51:
+[e :U 366 ]
+"282
+[; ;Menu.c: 282:             if(TI_GetTics(timer) >= 5*2000){
+[e $ ! >= ( _TI_GetTics (1 -> _timer `uc -> -> * -> 5 `i -> 2000 `i `l `ul 367  ]
+{
+"283
+[; ;Menu.c: 283:                 stopMusic();
+[e ( _stopMusic ..  ]
+"284
+[; ;Menu.c: 284:                 tmpPortChar = 1;
+[e = _tmpPortChar -> -> 1 `i `uc ]
+"285
+[; ;Menu.c: 285:                 refreshDisplay();
+[e ( _refreshDisplay ..  ]
+"286
+[; ;Menu.c: 286:             }else{
+}
+[e $U 368  ]
+[e :U 367 ]
+{
+"287
+[; ;Menu.c: 287:                 index = 0;
+[e = _index -> -> 0 `i `uc ]
+"288
+[; ;Menu.c: 288:                 state = 50;
+[e = _state -> -> 50 `i `uc ]
+"289
+[; ;Menu.c: 289:             }
+}
+[e :U 368 ]
+"290
+[; ;Menu.c: 290:             break;
+[e $U 284  ]
+"296
+[; ;Menu.c: 296:         case 60:
+[e :U 369 ]
+"297
+[; ;Menu.c: 297:             if(getNumRecordings() == 0){
+[e $ ! == -> ( _getNumRecordings ..  `i -> 0 `i 370  ]
+{
+"298
+[; ;Menu.c: 298:                 state = 150;
+[e = _state -> -> 150 `i `uc ]
+"299
+[; ;Menu.c: 299:             }else{
+}
+[e $U 371  ]
+[e :U 370 ]
+{
+"300
+[; ;Menu.c: 300:                 displayPos = 0;
+[e = _displayPos -> -> 0 `i `uc ]
+"301
+[; ;Menu.c: 301:                 skipState = 0;
+[e = _skipState -> -> 0 `i `uc ]
+"302
+[; ;Menu.c: 302:                 state = 61;
+[e = _state -> -> 61 `i `uc ]
+"303
+[; ;Menu.c: 303:             }
+}
+[e :U 371 ]
+"304
+[; ;Menu.c: 304:             break;
+[e $U 284  ]
+"305
+[; ;Menu.c: 305:         case 61:
+[e :U 372 ]
+"306
+[; ;Menu.c: 306:             displayRecordings(displayPos);
+[e ( _displayRecordings (1 _displayPos ]
+"307
+[; ;Menu.c: 307:             state = 62;
+[e = _state -> -> 62 `i `uc ]
+"308
+[; ;Menu.c: 308:             break;
+[e $U 284  ]
+"310
+[; ;Menu.c: 310:         case 62:
+[e :U 373 ]
+"311
+[; ;Menu.c: 311:             if(isIdle()){
+[e $ ! != -> ( _isIdle ..  `i -> 0 `i 374  ]
+{
+"312
+[; ;Menu.c: 312:                 skipState = getNumRecordings();
+[e = _skipState ( _getNumRecordings ..  ]
+"313
+[; ;Menu.c: 313:                 tmpPortChar = 0;
+[e = _tmpPortChar -> -> 0 `i `uc ]
+"314
+[; ;Menu.c: 314:                 state = 90;
+[e = _state -> -> 90 `i `uc ]
+"315
+[; ;Menu.c: 315:             }
+}
+[e :U 374 ]
+"316
+[; ;Menu.c: 316:             break;
+[e $U 284  ]
+"318
+[; ;Menu.c: 318:         case 70:
+[e :U 375 ]
+"319
+[; ;Menu.c: 319:             lcdAddString(&PLAYRECORDINGS);
+[e ( _lcdAddString (1 -> &U _PLAYRECORDINGS `*uc ]
+"320
+[; ;Menu.c: 320:             if(rowIndex == 1){
+[e $ ! == -> _rowIndex `i -> 1 `i 376  ]
+{
+"321
+[; ;Menu.c: 321:                 state = 71;
+[e = _state -> -> 71 `i `uc ]
+"322
+[; ;Menu.c: 322:             }
+}
+[e :U 376 ]
+"323
+[; ;Menu.c: 323:             break;
+[e $U 284  ]
+"324
+[; ;Menu.c: 324:         case 71:
+[e :U 377 ]
+"325
+[; ;Menu.c: 325:             if(checkTX()){
+[e $ ! != -> ( _checkTX ..  `i -> 0 `i 378  ]
+{
+"326
+[; ;Menu.c: 326:                 setTX('P');
+[e ( _setTX (1 -> -> 80 `ui `uc ]
+"327
+[; ;Menu.c: 327:                 state = 72;
+[e = _state -> -> 72 `i `uc ]
+"328
+[; ;Menu.c: 328:             }
+}
+[e :U 378 ]
+"329
+[; ;Menu.c: 329:             break;
+[e $U 284  ]
+"330
+[; ;Menu.c: 330:         case 72:
+[e :U 379 ]
+"331
+[; ;Menu.c: 331:             if(checkRX() && getRX() == 'K'){
+[e $ ! && != -> ( _checkRX ..  `i -> 0 `i == -> ( _getRX ..  `ui -> 75 `ui 380  ]
+{
+"332
+[; ;Menu.c: 332:                 sendIndex(displayPos);
+[e ( _sendIndex (1 _displayPos ]
+"333
+[; ;Menu.c: 333:                 state = 73;
+[e = _state -> -> 73 `i `uc ]
+"334
+[; ;Menu.c: 334:             }
+}
+[e :U 380 ]
+"335
+[; ;Menu.c: 335:             break;
+[e $U 284  ]
+"336
+[; ;Menu.c: 336:         case 73:
+[e :U 381 ]
+"338
+[; ;Menu.c: 338:             if(isIdle()){
+[e $ ! != -> ( _isIdle ..  `i -> 0 `i 382  ]
+{
+"339
+[; ;Menu.c: 339:                 state = 84;
+[e = _state -> -> 84 `i `uc ]
+"340
+[; ;Menu.c: 340:             }
+}
+[e :U 382 ]
+"341
+[; ;Menu.c: 341:             break;
+[e $U 284  ]
+"343
+[; ;Menu.c: 343:         case 84:
+[e :U 383 ]
+"344
+[; ;Menu.c: 344:             index = 7;
+[e = _index -> -> 7 `i `uc ]
+"345
+[; ;Menu.c: 345:             TI_ResetTics(timer);
+[e ( _TI_ResetTics (1 -> _timer `uc ]
+"346
+[; ;Menu.c: 346:             playMusic(index);
+[e ( _playMusic (1 _index ]
+"347
+[; ;Menu.c: 347:             state = 85;
+[e = _state -> -> 85 `i `uc ]
+"348
+[; ;Menu.c: 348:             break;
+[e $U 284  ]
+"349
+[; ;Menu.c: 349:         case 85:
+[e :U 384 ]
+"350
+[; ;Menu.c: 350:             if(TI_GetTics(timer) >= 2000 && index != 1){
+[e $ ! && >= ( _TI_GetTics (1 -> _timer `uc -> -> -> 2000 `i `l `ul != -> _index `i -> 1 `i 385  ]
+{
+"351
+[; ;Menu.c: 351:                 playMusic(index);
+[e ( _playMusic (1 _index ]
+"352
+[; ;Menu.c: 352:                 index--;
+[e -- _index -> -> 1 `i `uc ]
+"353
+[; ;Menu.c: 353:                 TI_ResetTics(timer);
+[e ( _TI_ResetTics (1 -> _timer `uc ]
+"354
+[; ;Menu.c: 354:             }else if (index == 1){
+}
+[e $U 386  ]
+[e :U 385 ]
+[e $ ! == -> _index `i -> 1 `i 387  ]
+{
+"355
+[; ;Menu.c: 355:                 stopMusic();
+[e ( _stopMusic ..  ]
+"356
+[; ;Menu.c: 356:                 tmpPortChar = 1;
+[e = _tmpPortChar -> -> 1 `i `uc ]
+"357
+[; ;Menu.c: 357:                 displayPos = 1;
+[e = _displayPos -> -> 1 `i `uc ]
+"358
+[; ;Menu.c: 358:                 refreshDisplay();
+[e ( _refreshDisplay ..  ]
+"359
+[; ;Menu.c: 359:             }
+}
+[e :U 387 ]
+[e :U 386 ]
+"360
+[; ;Menu.c: 360:             break;
+[e $U 284  ]
+"363
+[; ;Menu.c: 363:         case 90:
+[e :U 388 ]
+"364
+[; ;Menu.c: 364:             if(!(getJoystickUp() || getJoystickDown())){
+[e $ ! ! || != -> ( _getJoystickUp ..  `i -> 0 `i != -> ( _getJoystickDown ..  `i -> 0 `i 389  ]
+{
+"365
+[; ;Menu.c: 365:                 state = 91;
+[e = _state -> -> 91 `i `uc ]
+"366
+[; ;Menu.c: 366:                 TI_ResetTics(timer);
+[e ( _TI_ResetTics (1 -> _timer `uc ]
+"367
+[; ;Menu.c: 367:             }
+}
+[e :U 389 ]
+"368
+[; ;Menu.c: 368:             break;
+[e $U 284  ]
+"370
+[; ;Menu.c: 370:         case 91:
+[e :U 390 ]
+"372
+[; ;Menu.c: 372:             if(isPressed() && KeGetGenericValue() == '#'){
+[e $ ! && != -> ( _isPressed ..  `i -> 0 `i == -> ( _KeGetGenericValue ..  `ui -> 35 `ui 391  ]
+{
+"373
+[; ;Menu.c: 373:                 resetDisplay();
+[e ( _resetDisplay ..  ]
+"374
+[; ;Menu.c: 374:                 skipState = 0;
+[e = _skipState -> -> 0 `i `uc ]
+"375
+[; ;Menu.c: 375:                 if(tmpPortChar){
+[e $ ! != -> _tmpPortChar `i -> 0 `i 392  ]
+{
+"376
+[; ;Menu.c: 376:                     state = 7;
+[e = _state -> -> 7 `i `uc ]
+"377
+[; ;Menu.c: 377:                 }else{
+}
+[e $U 393  ]
+[e :U 392 ]
+{
+"378
+[; ;Menu.c: 378:                     state = 70;
+[e = _state -> -> 70 `i `uc ]
+"379
+[; ;Menu.c: 379:                 }
+}
+[e :U 393 ]
+"380
+[; ;Menu.c: 380:             }else{
+}
+[e $U 394  ]
+[e :U 391 ]
+{
+"381
+[; ;Menu.c: 381:                 if(getJoystickDown()){
+[e $ ! != -> ( _getJoystickDown ..  `i -> 0 `i 395  ]
+{
+"382
+[; ;Menu.c: 382:                     if(displayPos < skipState){
+[e $ ! < -> _displayPos `i -> _skipState `i 396  ]
+{
+"383
+[; ;Menu.c: 383:                         displayPos++;
+[e ++ _displayPos -> -> 1 `i `uc ]
+"384
+[; ;Menu.c: 384:                         refreshDisplay();
+[e ( _refreshDisplay ..  ]
+"385
+[; ;Menu.c: 385:                     }
+}
+[e :U 396 ]
+"386
+[; ;Menu.c: 386:                 }else if(getJoystickUp()){
+}
+[e $U 397  ]
+[e :U 395 ]
+[e $ ! != -> ( _getJoystickUp ..  `i -> 0 `i 398  ]
+{
+"387
+[; ;Menu.c: 387:                     if(displayPos > 0){
+[e $ ! > -> _displayPos `i -> 0 `i 399  ]
+{
+"388
+[; ;Menu.c: 388:                         displayPos--;
+[e -- _displayPos -> -> 1 `i `uc ]
+"389
+[; ;Menu.c: 389:                         refreshDisplay();
+[e ( _refreshDisplay ..  ]
+"390
+[; ;Menu.c: 390:                     }
+}
+[e :U 399 ]
+"391
+[; ;Menu.c: 391:                 }else if(skipState == 4){
+}
+[e $U 400  ]
+[e :U 398 ]
+[e $ ! == -> _skipState `i -> 4 `i 401  ]
+{
+"392
+[; ;Menu.c: 392:                     if(TI_GetTics(timer) >= 2000){
+[e $ ! >= ( _TI_GetTics (1 -> _timer `uc -> -> -> 2000 `i `l `ul 402  ]
+{
+"393
+[; ;Menu.c: 393:                         resetDisplay();
+[e ( _resetDisplay ..  ]
+"394
+[; ;Menu.c: 394:                         scroll = (scroll + 1)%22;
+[e = _scroll % + _scroll -> 1 `i -> 22 `i ]
+"395
+[; ;Menu.c: 395:                         skipState = 0;
+[e = _skipState -> -> 0 `i `uc ]
+"396
+[; ;Menu.c: 396:                         TI_ResetTics(timer);
+[e ( _TI_ResetTics (1 -> _timer `uc ]
+"397
+[; ;Menu.c: 397:                         state = 5;
+[e = _state -> -> 5 `i `uc ]
+"398
+[; ;Menu.c: 398:                     }
+}
+[e :U 402 ]
+"399
+[; ;Menu.c: 399:                 }
+}
+[e :U 401 ]
+[e :U 400 ]
+[e :U 397 ]
+"400
+[; ;Menu.c: 400:             }
+}
+[e :U 394 ]
+"401
+[; ;Menu.c: 401:             break;
+[e $U 284  ]
+"404
+[; ;Menu.c: 404:         case 100:
+[e :U 403 ]
+"405
+[; ;Menu.c: 405:             lcdAddString(&ENDCOMMUNICATION);
+[e ( _lcdAddString (1 -> &U _ENDCOMMUNICATION `*uc ]
+"406
+[; ;Menu.c: 406:             if(rowIndex == 1){
+[e $ ! == -> _rowIndex `i -> 1 `i 404  ]
+{
+"407
+[; ;Menu.c: 407:                 index = 0;
+[e = _index -> -> 0 `i `uc ]
+"408
+[; ;Menu.c: 408:                 state = 101;
+[e = _state -> -> 101 `i `uc ]
+"409
+[; ;Menu.c: 409:             }
+}
+[e :U 404 ]
+"410
+[; ;Menu.c: 410:             break;
+[e $U 284  ]
+"411
+[; ;Menu.c: 411:         case 101:
+[e :U 405 ]
+"412
+[; ;Menu.c: 412:             LcCursorOn();
+[e ( _LcCursorOn ..  ]
+"413
+[; ;Menu.c: 413:             state = 102;
+[e = _state -> -> 102 `i `uc ]
+"414
+[; ;Menu.c: 414:             break;
+[e $U 284  ]
+"415
+[; ;Menu.c: 415:         case 102:
+[e :U 406 ]
+"416
+[; ;Menu.c: 416:             LcGotoXY(8,0);
+[e ( _LcGotoXY (2 , -> -> 8 `i `uc -> -> 0 `i `uc ]
+"417
+[; ;Menu.c: 417:             state = 103;
+[e = _state -> -> 103 `i `uc ]
+"418
+[; ;Menu.c: 418:             break;
+[e $U 284  ]
+"419
+[; ;Menu.c: 419:         case 103:
+[e :U 407 ]
+"420
+[; ;Menu.c: 420:             LcCursorOff();
+[e ( _LcCursorOff ..  ]
+"421
+[; ;Menu.c: 421:             state = 104;
+[e = _state -> -> 104 `i `uc ]
+"422
+[; ;Menu.c: 422:             break;
+[e $U 284  ]
+"424
+[; ;Menu.c: 424:         case 104:
+[e :U 408 ]
+"425
+[; ;Menu.c: 425:             LcPutChar(portName[index]);
+[e ( _LcPutChar (1 *U + &U _portName * -> _index `ux -> -> # *U &U _portName `ui `ux ]
+"426
+[; ;Menu.c: 426:             index++;
+[e ++ _index -> -> 1 `i `uc ]
+"427
+[; ;Menu.c: 427:             if(index == 3){
+[e $ ! == -> _index `i -> 3 `i 409  ]
+{
+"428
+[; ;Menu.c: 428:                 state = 105;
+[e = _state -> -> 105 `i `uc ]
+"429
+[; ;Menu.c: 429:             }
+}
+[e :U 409 ]
+"430
+[; ;Menu.c: 430:             break;
+[e $U 284  ]
+"431
+[; ;Menu.c: 431:         case 105:
+[e :U 410 ]
+"432
+[; ;Menu.c: 432:             LcPutChar('!');
+[e ( _LcPutChar (1 -> -> 33 `ui `uc ]
+"433
+[; ;Menu.c: 433:             TI_ResetTics(timer);
+[e ( _TI_ResetTics (1 -> _timer `uc ]
+"434
+[; ;Menu.c: 434:             state = 106;
+[e = _state -> -> 106 `i `uc ]
+"435
+[; ;Menu.c: 435:             break;
+[e $U 284  ]
+"436
+[; ;Menu.c: 436:         case 106:
+[e :U 411 ]
+"437
+[; ;Menu.c: 437:             if(TI_GetTics(timer) >= 2000*2){
+[e $ ! >= ( _TI_GetTics (1 -> _timer `uc -> -> * -> 2000 `i -> 2 `i `l `ul 412  ]
+{
+"438
+[; ;Menu.c: 438:                 state = 0;
+[e = _state -> -> 0 `i `uc ]
+"439
+[; ;Menu.c: 439:             }
+}
+[e :U 412 ]
+"440
+[; ;Menu.c: 440:             break;
+[e $U 284  ]
+"443
+[; ;Menu.c: 443:         case 150:
+[e :U 413 ]
+"444
+[; ;Menu.c: 444:             lcdAddString(&ERRORMESSAGES);
+[e ( _lcdAddString (1 -> &U _ERRORMESSAGES `*uc ]
+"445
+[; ;Menu.c: 445:             if(rowIndex == 1){
+[e $ ! == -> _rowIndex `i -> 1 `i 414  ]
+{
+"446
+[; ;Menu.c: 446:                 TI_ResetTics(timer);
+[e ( _TI_ResetTics (1 -> _timer `uc ]
+"447
+[; ;Menu.c: 447:                 state = 151;
+[e = _state -> -> 151 `i `uc ]
+"448
+[; ;Menu.c: 448:             }
+}
+[e :U 414 ]
+"449
+[; ;Menu.c: 449:             break;
+[e $U 284  ]
+"450
+[; ;Menu.c: 450:         case 151:
+[e :U 415 ]
+"451
+[; ;Menu.c: 451:             if(TI_GetTics(timer) >= 2000*3){
+[e $ ! >= ( _TI_GetTics (1 -> _timer `uc -> -> * -> 2000 `i -> 3 `i `l `ul 416  ]
+{
+"452
+[; ;Menu.c: 452:                 TI_ResetTics(timer);
+[e ( _TI_ResetTics (1 -> _timer `uc ]
+"453
+[; ;Menu.c: 453:                 refreshDisplay();
+[e ( _refreshDisplay ..  ]
+"454
+[; ;Menu.c: 454:             }
+}
+[e :U 416 ]
+"455
+[; ;Menu.c: 455:             break;
+[e $U 284  ]
+"456
+[; ;Menu.c: 456:     }
+}
+[e $U 284  ]
+[e :U 285 ]
+[e [\ -> _state `i , $ -> 0 `i 286
+ , $ -> 1 `i 287
+ , $ -> 2 `i 289
+ , $ -> 3 `i 299
+ , $ -> 4 `i 300
+ , $ -> 5 `i 302
+ , $ -> 7 `i 306
+ , $ -> 8 `i 316
+ , $ -> 9 `i 317
+ , $ -> 10 `i 319
+ , $ -> 11 `i 321
+ , $ -> 20 `i 325
+ , $ -> 21 `i 327
+ , $ -> 22 `i 338
+ , $ -> 23 `i 341
+ , $ -> 30 `i 345
+ , $ -> 31 `i 347
+ , $ -> 40 `i 351
+ , $ -> 41 `i 353
+ , $ -> 42 `i 355
+ , $ -> 43 `i 356
+ , $ -> 44 `i 358
+ , $ -> 45 `i 360
+ , $ -> 50 `i 362
+ , $ -> 51 `i 366
+ , $ -> 60 `i 369
+ , $ -> 61 `i 372
+ , $ -> 62 `i 373
+ , $ -> 70 `i 375
+ , $ -> 71 `i 377
+ , $ -> 72 `i 379
+ , $ -> 73 `i 381
+ , $ -> 84 `i 383
+ , $ -> 85 `i 384
+ , $ -> 90 `i 388
+ , $ -> 91 `i 390
+ , $ -> 100 `i 403
+ , $ -> 101 `i 405
+ , $ -> 102 `i 406
+ , $ -> 103 `i 407
+ , $ -> 104 `i 408
+ , $ -> 105 `i 410
+ , $ -> 106 `i 411
+ , $ -> 150 `i 413
+ , $ -> 151 `i 415
+ 284 ]
+[e :U 284 ]
+"457
+[; ;Menu.c: 457: }
+[e :UE 283 ]
+}
+"459
+[; ;Menu.c: 459: void resetDisplay(void){
+[v _resetDisplay `(v ~T0 @X0 1 ef ]
+{
+[e :U _resetDisplay ]
+[f ]
+"460
+[; ;Menu.c: 460:     LcClear();
+[e ( _LcClear ..  ]
+"461
+[; ;Menu.c: 461:     colIndex = rowIndex = 0;
+[e = _colIndex = _rowIndex -> -> 0 `i `uc ]
+"462
+[; ;Menu.c: 462:     scrollIndex = 0;
+[e = _scrollIndex -> 0 `i ]
+"463
+[; ;Menu.c: 463: }
+[e :UE 417 ]
+}
+"465
+[; ;Menu.c: 465: void lcdAddString(char* string){
+[v _lcdAddString `(v ~T0 @X0 1 ef1`*uc ]
+{
+[e :U _lcdAddString ]
+[v _string `*uc ~T0 @X0 1 r1 ]
+[f ]
+"466
+[; ;Menu.c: 466:     if(string[colIndex] != '\0'){
+[e $ ! != -> *U + _string * -> _colIndex `ux -> -> # *U _string `ui `ux `ui -> 0 `ui 419  ]
+{
+"467
+[; ;Menu.c: 467:         LcPutChar(string[colIndex]);
+[e ( _LcPutChar (1 *U + _string * -> _colIndex `ux -> -> # *U _string `ui `ux ]
+"468
+[; ;Menu.c: 468:         colIndex++;
+[e ++ _colIndex -> -> 1 `i `uc ]
+"469
+[; ;Menu.c: 469:     }else{
+}
+[e $U 420  ]
+[e :U 419 ]
+{
+"470
+[; ;Menu.c: 470:         moveOneRow();
+[e ( _moveOneRow ..  ]
+"471
+[; ;Menu.c: 471:     }
+}
+[e :U 420 ]
+"473
+[; ;Menu.c: 473: }
+[e :UE 418 ]
+}
+"475
+[; ;Menu.c: 475: void displayMenu(char* string){
+[v _displayMenu `(v ~T0 @X0 1 ef1`*uc ]
+{
+[e :U _displayMenu ]
+[v _string `*uc ~T0 @X0 1 r1 ]
+[f ]
+"476
+[; ;Menu.c: 476:     if(scrollIndex < 16){
+[e $ ! < _scrollIndex -> 16 `i 422  ]
+{
+"477
+[; ;Menu.c: 477:         if((scrollIndex + scroll) >= 22) {
+[e $ ! >= + _scrollIndex _scroll -> 22 `i 423  ]
+{
+"478
+[; ;Menu.c: 478:             LcPutChar(string[(scrollIndex + scroll) - 22]);
+[e ( _LcPutChar (1 *U + _string * -> - + _scrollIndex _scroll -> 22 `i `x -> -> # *U _string `i `x ]
+"479
+[; ;Menu.c: 479:         } else {
+}
+[e $U 424  ]
+[e :U 423 ]
+{
+"480
+[; ;Menu.c: 480:             LcPutChar(string[(scrollIndex + scroll)]);
+[e ( _LcPutChar (1 *U + _string * -> + _scrollIndex _scroll `x -> -> # *U _string `i `x ]
+"481
+[; ;Menu.c: 481:         }
+}
+[e :U 424 ]
+"482
+[; ;Menu.c: 482:         colIndex++;
+[e ++ _colIndex -> -> 1 `i `uc ]
+"483
+[; ;Menu.c: 483:         scrollIndex++;
+[e ++ _scrollIndex -> 1 `i ]
+"484
+[; ;Menu.c: 484:     }else{
+}
+[e $U 425  ]
+[e :U 422 ]
+{
+"485
+[; ;Menu.c: 485:         moveOneRow();
+[e ( _moveOneRow ..  ]
+"486
+[; ;Menu.c: 486:     }
+}
+[e :U 425 ]
+"488
+[; ;Menu.c: 488: }
+[e :UE 421 ]
+}
+"489
+[; ;Menu.c: 489: void moveOneRow(void){
+[v _moveOneRow `(v ~T0 @X0 1 ef ]
+{
+[e :U _moveOneRow ]
+[f ]
+"490
+[; ;Menu.c: 490:     rowIndex++;
+[e ++ _rowIndex -> -> 1 `i `uc ]
+"491
+[; ;Menu.c: 491:     LcGotoXY(0,1);
+[e ( _LcGotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+"492
+[; ;Menu.c: 492:     colIndex = 0;
+[e = _colIndex -> -> 0 `i `uc ]
+"493
+[; ;Menu.c: 493:     scrollIndex = 0;
+[e = _scrollIndex -> 0 `i ]
+"494
+[; ;Menu.c: 494: }
+[e :UE 426 ]
+}
+"497
+[; ;Menu.c: 497: void refreshDisplay(void){
+[v _refreshDisplay `(v ~T0 @X0 1 ef ]
+{
+[e :U _refreshDisplay ]
+[f ]
+"498
+[; ;Menu.c: 498:     if(tmpPortChar){
+[e $ ! != -> _tmpPortChar `i -> 0 `i 428  ]
+{
+"499
+[; ;Menu.c: 499:         state = 5;
+[e = _state -> -> 5 `i `uc ]
+"500
+[; ;Menu.c: 500:     }else{
+}
+[e $U 429  ]
+[e :U 428 ]
+{
+"501
+[; ;Menu.c: 501:         state = 61;
+[e = _state -> -> 61 `i `uc ]
+"502
+[; ;Menu.c: 502:     }
+}
+[e :U 429 ]
+"503
+[; ;Menu.c: 503:     scroll = 0;
+[e = _scroll -> 0 `i ]
+"504
+[; ;Menu.c: 504:     skipState = 0;
+[e = _skipState -> -> 0 `i `uc ]
+"505
+[; ;Menu.c: 505:     index = 0;
+[e = _index -> -> 0 `i `uc ]
+"506
+[; ;Menu.c: 506:     resetDisplay();
+[e ( _resetDisplay ..  ]
+"507
+[; ;Menu.c: 507: }
+[e :UE 427 ]
+}

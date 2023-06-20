@@ -1,0 +1,1183 @@
+[p GLOBOPT AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4321 ]
+[d frameptr 4065 ]
+"10 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Audio.c
+[v _initAudio initAudio `(v  1 e 1 0 ]
+"16
+[v _audioLoop audioLoop `(v  1 e 1 0 ]
+"41
+[v _stopMusic stopMusic `(v  1 e 1 0 ]
+"45
+[v _playMusic playMusic `(v  1 e 1 0 ]
+"7 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\fleq.c
+[v ___fleq __fleq `(b  1 e 0 0 ]
+"62 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\float.c
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"86 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
+"54 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
+"62 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
+"19 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\lbdiv.c
+[v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\lbmod.c
+[v ___lbmod __lbmod `(uc  1 e 1 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"11 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"15 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"91 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\Umul64.c
+[v ___omul __omul `(uo  1 e 8 0 ]
+"19 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\EEPROM.c
+[v _memoryLoop memoryLoop `(v  1 e 1 0 ]
+"206
+[v _saveData saveData `(v  1 e 1 0 ]
+"221
+[v _readData readData `(uc  1 e 1 0 ]
+"229
+[v _displayRecordings displayRecordings `(v  1 e 1 0 ]
+"235
+[v _isIdle isIdle `(uc  1 e 1 0 ]
+"239
+[v _sendTimestamp sendTimestamp `(v  1 e 1 0 ]
+"243
+[v _saveIndex saveIndex `(v  1 e 1 0 ]
+"247
+[v _sendIndex sendIndex `(v  1 e 1 0 ]
+"252
+[v _getNumRecordings getNumRecordings `(uc  1 e 1 0 ]
+"256
+[v _chargeMemory chargeMemory `(v  1 e 1 0 ]
+"10 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Joystick.c
+[v _initJoystick initJoystick `(v  1 e 1 0 ]
+"25
+[v _joystickLoop joystickLoop `(v  1 e 1 0 ]
+"71
+[v _getJoystickDown getJoystickDown `(uc  1 e 1 0 ]
+"75
+[v _getJoystickUp getJoystickUp `(uc  1 e 1 0 ]
+"79
+[v _joystickIdle joystickIdle `(v  1 e 1 0 ]
+"86
+[v _joystickAlive joystickAlive `(v  1 e 1 0 ]
+"21 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Keypad.c
+[v _initKeypad initKeypad `(v  1 e 1 0 ]
+"38
+[v _keypadLoop keypadLoop `(v  1 e 1 0 ]
+"127
+[v _smsLoop smsLoop `(v  1 e 1 0 ]
+"164
+[v _isPressed isPressed `(uc  1 e 1 0 ]
+"169
+[v _getColumn getColumn `(i  1 e 2 0 ]
+"175
+[v _getDigit getDigit `(uc  1 e 1 0 ]
+"186
+[v _getCharacter getCharacter `(uc  1 e 1 0 ]
+"206
+[v _getDigitValue getDigitValue `(uc  1 e 1 0 ]
+"211
+[v _isNextKey isNextKey `(uc  1 e 1 0 ]
+"68 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\LcTLCD.c
+[v _LcInit LcInit `(v  1 e 1 0 ]
+"113
+[v _LcClear LcClear `(v  1 e 1 0 ]
+"120
+[v _LcCursorOn LcCursorOn `(v  1 e 1 0 ]
+"127
+[v _LcCursorOff LcCursorOff `(v  1 e 1 0 ]
+"134
+[v _LcGotoXY LcGotoXY `(v  1 e 1 0 ]
+"161
+[v _LcPutChar LcPutChar `(v  1 e 1 0 ]
+"210
+[v _Espera Espera `(v  1 e 1 0 ]
+"215
+[v _CantaPartAlta CantaPartAlta `(v  1 e 1 0 ]
+"222
+[v _CantaPartBaixa CantaPartBaixa `(v  1 e 1 0 ]
+"229
+[v _CantaIR CantaIR `(v  1 e 1 0 ]
+"245
+[v _CantaData CantaData `(v  1 e 1 0 ]
+"261
+[v _WaitForBusy WaitForBusy `(v  1 e 1 0 ]
+"279
+[v _EscriuPrimeraOrdre EscriuPrimeraOrdre `(v  1 e 1 0 ]
+"290
+[v _getColumnAct getColumnAct `(uc  1 e 1 0 ]
+"23 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\MAIN.c
+[v _RSI_High RSI_High `IIH(v  1 e 1 0 ]
+"28
+[v _main main `(v  1 e 1 0 ]
+"40 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Menu.c
+[v _initMenu initMenu `(v  1 e 1 0 ]
+"45
+[v _menuLoop menuLoop `(v  1 e 1 0 ]
+"472
+[v _resetDisplay resetDisplay `(v  1 e 1 0 ]
+"479
+[v _lcdAddString lcdAddString `(v  1 e 1 0 ]
+"489
+[v _displayMenu displayMenu `(v  1 e 1 0 ]
+"503
+[v _moveOneRow moveOneRow `(v  1 e 1 0 ]
+"511
+[v _refreshDisplay refreshDisplay `(v  1 e 1 0 ]
+"522
+[v _goToWaitState goToWaitState `(v  1 e 1 0 ]
+"3 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\SIO.c
+[v _initSIO initSIO `(v  1 e 1 0 ]
+"18
+[v _setTX setTX `(v  1 e 1 0 ]
+"22
+[v _checkTX checkTX `(uc  1 e 1 0 ]
+"26
+[v _checkRX checkRX `(uc  1 e 1 0 ]
+"30
+[v _getRX getRX `(uc  1 e 1 0 ]
+"12 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\SystemTimer.c
+[v _initSysTimer initSysTimer `(v  1 e 1 0 ]
+"19
+[v _sysTimerLoop sysTimerLoop `(v  1 e 1 0 ]
+"59
+[v _updateSysTimestamp updateSysTimestamp `(v  1 e 1 0 ]
+"66
+[v _incrementSysTimestamp incrementSysTimestamp `(v  1 e 1 0 ]
+"75
+[v _displayTimestamp displayTimestamp `(v  1 e 1 0 ]
+"15 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X/SystemTimer.h
+[s S599 . 2 `uc 1 minutes 1 0 `uc 1 seconds 1 1 ]
+"80 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\SystemTimer.c
+[v _getSysTimestamp getSysTimestamp `(S599  1 e 2 0 ]
+"89
+[v _finishedDisplay finishedDisplay `(uc  1 e 1 0 ]
+"26 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Timer.c
+[v _RSI_Timer0 RSI_Timer0 `(v  1 e 1 0 ]
+"33
+[v _TI_Init TI_Init `(v  1 e 1 0 ]
+"44
+[v _TI_NewTimer TI_NewTimer `(uc  1 e 1 0 ]
+"54
+[v _TI_ResetTics TI_ResetTics `(v  1 e 1 0 ]
+"58
+[v _TI_GetTics TI_GetTics `(ul  1 e 4 0 ]
+"63
+[v _TI_CloseTimer TI_CloseTimer `(v  1 e 1 0 ]
+[s S999 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"328 C:/Program Files/Microchip/xc8/v2.41/pic/include/proc\pic18f4321.h
+[s S1040 . 1 `uc 1 INT0 1 0 :1:0 
+`uc 1 INT1 1 0 :1:1 
+`uc 1 INT2 1 0 :1:2 
+`uc 1 CCP2 1 0 :1:3 
+`uc 1 KBI0 1 0 :1:4 
+`uc 1 KBI1 1 0 :1:5 
+`uc 1 KBI2 1 0 :1:6 
+`uc 1 KBI3 1 0 :1:7 
+]
+[s S1049 . 1 `uc 1 AN12 1 0 :1:0 
+`uc 1 AN10 1 0 :1:1 
+`uc 1 AN8 1 0 :1:2 
+`uc 1 AN9 1 0 :1:3 
+`uc 1 AN11 1 0 :1:4 
+`uc 1 PGM 1 0 :1:5 
+`uc 1 PGC 1 0 :1:6 
+`uc 1 PGD 1 0 :1:7 
+]
+[s S1058 . 1 `uc 1 FLT0 1 0 :1:0 
+]
+[s S1060 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 CCP2_PA2 1 0 :1:3 
+]
+[u S1063 . 1 `S999 1 . 1 0 `S1040 1 . 1 0 `S1049 1 . 1 0 `S1058 1 . 1 0 `S1060 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES1063  1 e 1 @3969 ]
+[s S371 . 1 `uc 1 RD0 1 0 :1:0 
+`uc 1 RD1 1 0 :1:1 
+`uc 1 RD2 1 0 :1:2 
+`uc 1 RD3 1 0 :1:3 
+`uc 1 RD4 1 0 :1:4 
+`uc 1 RD5 1 0 :1:5 
+`uc 1 RD6 1 0 :1:6 
+`uc 1 RD7 1 0 :1:7 
+]
+"680
+[s S479 . 1 `uc 1 PSP0 1 0 :1:0 
+`uc 1 PSP1 1 0 :1:1 
+`uc 1 PSP2 1 0 :1:2 
+`uc 1 PSP3 1 0 :1:3 
+`uc 1 PSP4 1 0 :1:4 
+`uc 1 PSP5 1 0 :1:5 
+`uc 1 PSP6 1 0 :1:6 
+`uc 1 PSP7 1 0 :1:7 
+]
+[s S488 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 P1B 1 0 :1:5 
+`uc 1 P1C 1 0 :1:6 
+`uc 1 P1D 1 0 :1:7 
+]
+[s S493 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 SS2 1 0 :1:7 
+]
+[u S496 . 1 `S371 1 . 1 0 `S479 1 . 1 0 `S488 1 . 1 0 `S493 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES496  1 e 1 @3971 ]
+[s S1102 . 1 `uc 1 LATB0 1 0 :1:0 
+`uc 1 LATB1 1 0 :1:1 
+`uc 1 LATB2 1 0 :1:2 
+`uc 1 LATB3 1 0 :1:3 
+`uc 1 LATB4 1 0 :1:4 
+`uc 1 LATB5 1 0 :1:5 
+`uc 1 LATB6 1 0 :1:6 
+`uc 1 LATB7 1 0 :1:7 
+]
+"1127
+[s S1111 . 1 `uc 1 LB0 1 0 :1:0 
+`uc 1 LB1 1 0 :1:1 
+`uc 1 LB2 1 0 :1:2 
+`uc 1 LB3 1 0 :1:3 
+`uc 1 LB4 1 0 :1:4 
+`uc 1 LB5 1 0 :1:5 
+`uc 1 LB6 1 0 :1:6 
+`uc 1 LB7 1 0 :1:7 
+]
+[u S1120 . 1 `S1102 1 . 1 0 `S1111 1 . 1 0 ]
+[v _LATBbits LATBbits `VES1120  1 e 1 @3978 ]
+[s S856 . 1 `uc 1 LATC0 1 0 :1:0 
+`uc 1 LATC1 1 0 :1:1 
+`uc 1 LATC2 1 0 :1:2 
+`uc 1 LATC3 1 0 :1:3 
+`uc 1 LATC4 1 0 :1:4 
+`uc 1 LATC5 1 0 :1:5 
+`uc 1 LATC6 1 0 :1:6 
+`uc 1 LATC7 1 0 :1:7 
+]
+"1239
+[s S865 . 1 `uc 1 LC0 1 0 :1:0 
+`uc 1 LC1 1 0 :1:1 
+`uc 1 LC2 1 0 :1:2 
+`uc 1 LC3 1 0 :1:3 
+`uc 1 LC4 1 0 :1:4 
+`uc 1 LC5 1 0 :1:5 
+`uc 1 LC6 1 0 :1:6 
+`uc 1 LC7 1 0 :1:7 
+]
+[u S874 . 1 `S856 1 . 1 0 `S865 1 . 1 0 ]
+[v _LATCbits LATCbits `VES874  1 e 1 @3979 ]
+[s S430 . 1 `uc 1 LATD0 1 0 :1:0 
+`uc 1 LATD1 1 0 :1:1 
+`uc 1 LATD2 1 0 :1:2 
+`uc 1 LATD3 1 0 :1:3 
+`uc 1 LATD4 1 0 :1:4 
+`uc 1 LATD5 1 0 :1:5 
+`uc 1 LATD6 1 0 :1:6 
+`uc 1 LATD7 1 0 :1:7 
+]
+"1351
+[s S439 . 1 `uc 1 LD0 1 0 :1:0 
+`uc 1 LD1 1 0 :1:1 
+`uc 1 LD2 1 0 :1:2 
+`uc 1 LD3 1 0 :1:3 
+`uc 1 LD4 1 0 :1:4 
+`uc 1 LD5 1 0 :1:5 
+`uc 1 LD6 1 0 :1:6 
+`uc 1 LD7 1 0 :1:7 
+]
+[u S448 . 1 `S430 1 . 1 0 `S439 1 . 1 0 ]
+[v _LATDbits LATDbits `VES448  1 e 1 @3980 ]
+[s S28 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+`uc 1 TRISA7 1 0 :1:7 
+]
+"1520
+[s S37 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+[u S46 . 1 `S28 1 . 1 0 `S37 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES46  1 e 1 @3986 ]
+[s S990 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"1742
+[u S1008 . 1 `S990 1 . 1 0 `S999 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES1008  1 e 1 @3987 ]
+[s S815 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"1964
+[s S824 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S833 . 1 `S815 1 . 1 0 `S824 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES833  1 e 1 @3988 ]
+[s S362 . 1 `uc 1 TRISD0 1 0 :1:0 
+`uc 1 TRISD1 1 0 :1:1 
+`uc 1 TRISD2 1 0 :1:2 
+`uc 1 TRISD3 1 0 :1:3 
+`uc 1 TRISD4 1 0 :1:4 
+`uc 1 TRISD5 1 0 :1:5 
+`uc 1 TRISD6 1 0 :1:6 
+`uc 1 TRISD7 1 0 :1:7 
+]
+"2186
+[u S380 . 1 `S362 1 . 1 0 `S371 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES380  1 e 1 @3989 ]
+[s S1379 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 PSPIF 1 0 :1:7 
+]
+"2704
+[s S1388 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TX1IF 1 0 :1:4 
+`uc 1 RC1IF 1 0 :1:5 
+]
+[u S1392 . 1 `S1379 1 . 1 0 `S1388 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES1392  1 e 1 @3998 ]
+[s S1463 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 CFGS 1 0 :1:6 
+`uc 1 EEPGD 1 0 :1:7 
+]
+"3055
+[s S1472 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 EEFS 1 0 :1:6 
+]
+[u S1475 . 1 `S1463 1 . 1 0 `S1472 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES1475  1 e 1 @4006 ]
+"3100
+[v _EECON2 EECON2 `VEuc  1 e 1 @4007 ]
+"3107
+[v _EEDATA EEDATA `VEuc  1 e 1 @4008 ]
+"3114
+[v _EEADR EEADR `VEuc  1 e 1 @4009 ]
+[s S1302 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"3162
+[s S1311 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 ADEN 1 0 :1:3 
+]
+[s S1314 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 SRENA 1 0 :1:5 
+]
+[s S1317 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[s S1320 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S1323 . 1 `uc 1 RCD8 1 0 :1:0 
+]
+[u S1325 . 1 `S1302 1 . 1 0 `S1311 1 . 1 0 `S1314 1 . 1 0 `S1317 1 . 1 0 `S1320 1 . 1 0 `S1323 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES1325  1 e 1 @4011 ]
+[s S1250 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"3370
+[s S1259 . 1 `uc 1 TX9D1 1 0 :1:0 
+`uc 1 TRMT1 1 0 :1:1 
+`uc 1 BRGH1 1 0 :1:2 
+`uc 1 SENDB1 1 0 :1:3 
+`uc 1 SYNC1 1 0 :1:4 
+`uc 1 TXEN1 1 0 :1:5 
+`uc 1 TX91 1 0 :1:6 
+`uc 1 CSRC1 1 0 :1:7 
+]
+[s S1268 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[s S1271 . 1 `uc 1 TXD8 1 0 :1:0 
+]
+[u S1273 . 1 `S1250 1 . 1 0 `S1259 1 . 1 0 `S1268 1 . 1 0 `S1271 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES1273  1 e 1 @4012 ]
+"3587
+[v _TXREG TXREG `VEuc  1 e 1 @4013 ]
+"3599
+[v _RCREG RCREG `VEuc  1 e 1 @4014 ]
+"3611
+[v _SPBRG SPBRG `VEuc  1 e 1 @4015 ]
+"3623
+[v _SPBRGH SPBRGH `VEuc  1 e 1 @4016 ]
+[s S1204 . 1 `uc 1 ABDEN 1 0 :1:0 
+`uc 1 WUE 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 BRG16 1 0 :1:3 
+`uc 1 TXCKP 1 0 :1:4 
+`uc 1 RXDTP 1 0 :1:5 
+`uc 1 RCIDL 1 0 :1:6 
+`uc 1 ABDOVF 1 0 :1:7 
+]
+"4188
+[s S1213 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 SCKP 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 RCMT 1 0 :1:6 
+]
+[s S1218 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 RXCKP 1 0 :1:5 
+]
+[s S1221 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 W4E 1 0 :1:1 
+]
+[u S1224 . 1 `S1204 1 . 1 0 `S1213 1 . 1 0 `S1218 1 . 1 0 `S1221 1 . 1 0 ]
+[v _BAUDCONbits BAUDCONbits `VES1224  1 e 1 @4024 ]
+"4645
+[v _ADCON2 ADCON2 `VEuc  1 e 1 @4032 ]
+"4716
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+"4801
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @4034 ]
+[s S173 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_NOT_DONE 1 0 :1:1 
+]
+"4845
+[s S176 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+]
+[s S180 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+]
+[s S187 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 DONE 1 0 :1:1 
+]
+[s S190 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_DONE 1 0 :1:1 
+]
+[s S193 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S196 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[s S199 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GODONE 1 0 :1:1 
+]
+[u S202 . 1 `S173 1 . 1 0 `S176 1 . 1 0 `S180 1 . 1 0 `S187 1 . 1 0 `S190 1 . 1 0 `S193 1 . 1 0 `S196 1 . 1 0 `S199 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES202  1 e 1 @4034 ]
+"4934
+[v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
+"6183
+[v _T0CON T0CON `VEuc  1 e 1 @4053 ]
+"6260
+[v _TMR0 TMR0 `VEus  1 e 2 @4054 ]
+[s S955 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 NOT_RBPU 1 0 :1:7 
+]
+"6656
+[s S958 . 1 `uc 1 RBIP 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 TMR0IP 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INTEDG2 1 0 :1:4 
+`uc 1 INTEDG1 1 0 :1:5 
+`uc 1 INTEDG0 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+[s S967 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 RBPU 1 0 :1:7 
+]
+[u S970 . 1 `S955 1 . 1 0 `S958 1 . 1 0 `S967 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VES970  1 e 1 @4081 ]
+[s S278 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE_GIEL 1 0 :1:6 
+`uc 1 GIE_GIEH 1 0 :1:7 
+]
+"6733
+[s S287 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT0F 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INT0E 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S296 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[u S300 . 1 `S278 1 . 1 0 `S287 1 . 1 0 `S296 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES300  1 e 1 @4082 ]
+"8513
+[v _TMR0IF TMR0IF `VEb  1 e 0 @32658 ]
+"5 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Audio.c
+[v _pTime pTime `uc  1 s 1 pTime ]
+"6
+[v _state@Audio$F899 state `uc  1 s 1 state ]
+"7
+[v _period period `uc  1 s 1 period ]
+"8
+[v _songTime songTime `uc  1 s 1 songTime ]
+"8 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\EEPROM.c
+[v _state@EEPROM$F1543 state `uc  1 s 1 state ]
+"9
+[v _indexTemp indexTemp `uc  1 s 1 indexTemp ]
+"10
+[v _indexEEPROM indexEEPROM `uc  1 s 1 indexEEPROM ]
+"11
+[v _data data `uc  1 s 1 data ]
+[s S599 . 2 `uc 1 minutes 1 0 `uc 1 seconds 1 1 ]
+"12
+[s S1459 . 3 `uc 1 index 1 0 `S599 1 timestamp 2 1 ]
+[v _recordings recordings `[8]S1459  1 s 24 recordings ]
+"5 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Joystick.c
+[v _state state `uc  1 s 1 state ]
+"6
+[v _direction direction `uc  1 s 1 direction ]
+"7
+[v _hasMoved hasMoved `uc  1 s 1 hasMoved ]
+"8
+[v _x x `uc  1 s 1 x ]
+[v _y y `uc  1 s 1 y ]
+"7 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Keypad.c
+[v _SMSVALUES SMSVALUES `C[9][6]uc  1 s 54 SMSVALUES ]
+"8
+[v _DIGITVALUES DIGITVALUES `C[12]uc  1 s 12 DIGITVALUES ]
+"10
+[v _row row `i  1 s 2 row ]
+"11
+[v _debouncerTimer debouncerTimer `uc  1 s 1 debouncerTimer ]
+[v _SMSTimer SMSTimer `uc  1 s 1 SMSTimer ]
+"12
+[v _nextKey nextKey `uc  1 s 1 nextKey ]
+"13
+[v _state@Keypad$F1158 state `uc  1 s 1 state ]
+"14
+[v _stateSMS stateSMS `uc  1 s 1 stateSMS ]
+"16
+[v _currentKey currentKey `uc  1 s 1 currentKey ]
+"17
+[v _previousKey previousKey `uc  1 s 1 previousKey ]
+"18
+[v _keyPressed keyPressed `uc  1 s 1 keyPressed ]
+"19
+[v _numPressed numPressed `uc  1 s 1 numPressed ]
+"44 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\LcTLCD.c
+[v _Rows Rows `uc  1 s 1 Rows ]
+[v _Columns Columns `uc  1 s 1 Columns ]
+"45
+[v _RowAct RowAct `uc  1 s 1 RowAct ]
+[v _ColumnAct ColumnAct `uc  1 s 1 ColumnAct ]
+"4 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Menu.c
+[v _PORTNAMEMENU PORTNAMEMENU `[12]uc  1 s 12 PORTNAMEMENU ]
+"5
+[v _MAINMENU MAINMENU `C[6][23]uc  1 s 138 MAINMENU ]
+"11
+[v _STARTRECORDING STARTRECORDING `[14]uc  1 s 14 STARTRECORDING ]
+"12
+[v _PLAYRECORDINGS PLAYRECORDINGS `[12]uc  1 s 12 PLAYRECORDINGS ]
+"14
+[v _MODIFYTIME MODIFYTIME `[13]uc  1 s 13 MODIFYTIME ]
+"15
+[v _CURRENTTIME CURRENTTIME `[14]uc  1 s 14 CURRENTTIME ]
+"16
+[v _ENDCOMMUNICATION ENDCOMMUNICATION `[11]uc  1 s 11 ENDCOMMUNICATION ]
+"18
+[v _ERRORMESSAGES ERRORMESSAGES `[20]uc  1 s 20 ERRORMESSAGES ]
+"20
+[v _MUSICPERIODS MUSICPERIODS `[8]uc  1 s 8 MUSICPERIODS ]
+"21
+[v _MUSICDELAY MUSICDELAY `[8]i  1 s 16 MUSICDELAY ]
+"23
+[v _timer timer `uc  1 s 1 timer ]
+"24
+[v _songTimer songTimer `uc  1 s 1 songTimer ]
+"26
+[v _rowIndex rowIndex `uc  1 s 1 rowIndex ]
+"27
+[v _colIndex colIndex `uc  1 s 1 colIndex ]
+"28
+[v _displayPos displayPos `uc  1 s 1 displayPos ]
+"29
+[v _index index `uc  1 s 1 index ]
+"30
+[v _timeValue timeValue `S599  1 s 2 timeValue ]
+"31
+[v _portName portName `[4]uc  1 s 4 portName ]
+"32
+[v _skipState skipState `uc  1 s 1 skipState ]
+"33
+[v _state@Menu$F788 state `uc  1 s 1 state ]
+"34
+[v _tmpPortChar tmpPortChar `uc  1 s 1 tmpPortChar ]
+"35
+[v _scroll scroll `i  1 s 2 scroll ]
+"36
+[v _scrollIndex scrollIndex `i  1 s 2 scrollIndex ]
+"37
+[v _waitState waitState `uc  1 s 1 waitState ]
+"38
+[v _stateToGo stateToGo `uc  1 s 1 stateToGo ]
+"6 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\SystemTimer.c
+[v _sysTmr sysTmr `uc  1 s 1 sysTmr ]
+"7
+[v _state@SystemTimer$F935 state `uc  1 s 1 state ]
+"8
+[v _index@SystemTimer$F936 index `uc  1 s 1 index ]
+"9
+[v _timestamp timestamp `[9]S599  1 s 18 timestamp ]
+[s S272 Timer 5 `ul 1 InitialTics 4 0 `uc 1 Busy 1 4 ]
+"22 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Timer.c
+[v _Timers Timers `[15]S272  1 s 75 Timers ]
+"24
+[v _Tics Tics `VEul  1 s 4 Tics ]
+"28 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\MAIN.c
+[v _main main `(v  1 e 1 0 ]
+{
+"47
+} 0
+"19 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\SystemTimer.c
+[v _sysTimerLoop sysTimerLoop `(v  1 e 1 0 ]
+{
+"56
+} 0
+"66
+[v _incrementSysTimestamp incrementSysTimestamp `(v  1 e 1 0 ]
+{
+"73
+} 0
+"127 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Keypad.c
+[v _smsLoop smsLoop `(v  1 e 1 0 ]
+{
+"161
+} 0
+"45 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Menu.c
+[v _menuLoop menuLoop `(v  1 e 1 0 ]
+{
+"470
+} 0
+"239 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\EEPROM.c
+[v _sendTimestamp sendTimestamp `(v  1 e 1 0 ]
+{
+"241
+} 0
+"247
+[v _sendIndex sendIndex `(v  1 e 1 0 ]
+{
+[v sendIndex@indexPosition indexPosition `uc  1 a 1 wreg ]
+[v sendIndex@indexPosition indexPosition `uc  1 a 1 wreg ]
+[v sendIndex@indexPosition indexPosition `uc  1 a 1 0 ]
+"250
+} 0
+"243
+[v _saveIndex saveIndex `(v  1 e 1 0 ]
+{
+"245
+} 0
+"511 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Menu.c
+[v _refreshDisplay refreshDisplay `(v  1 e 1 0 ]
+{
+"520
+} 0
+"472
+[v _resetDisplay resetDisplay `(v  1 e 1 0 ]
+{
+[v resetDisplay@stg stg `uc  1 a 1 wreg ]
+[v resetDisplay@stg stg `uc  1 a 1 wreg ]
+[v resetDisplay@stg stg `uc  1 a 1 21 ]
+"477
+} 0
+"522
+[v _goToWaitState goToWaitState `(v  1 e 1 0 ]
+{
+[v goToWaitState@stg stg `uc  1 a 1 wreg ]
+[v goToWaitState@stg stg `uc  1 a 1 wreg ]
+[v goToWaitState@stg stg `uc  1 a 1 0 ]
+"526
+} 0
+"113 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\LcTLCD.c
+[v _LcClear LcClear `(v  1 e 1 0 ]
+{
+"118
+} 0
+"479 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Menu.c
+[v _lcdAddString lcdAddString `(v  1 e 1 0 ]
+{
+[v lcdAddString@string string `*.39uc  1 p 2 23 ]
+"487
+} 0
+"79 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Joystick.c
+[v _joystickIdle joystickIdle `(v  1 e 1 0 ]
+{
+"84
+} 0
+"86
+[v _joystickAlive joystickAlive `(v  1 e 1 0 ]
+{
+"91
+} 0
+"164 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Keypad.c
+[v _isPressed isPressed `(uc  1 e 1 0 ]
+{
+"167
+} 0
+"211
+[v _isNextKey isNextKey `(uc  1 e 1 0 ]
+{
+"213
+} 0
+"235 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\EEPROM.c
+[v _isIdle isIdle `(uc  1 e 1 0 ]
+{
+"237
+} 0
+"252
+[v _getNumRecordings getNumRecordings `(uc  1 e 1 0 ]
+{
+"254
+} 0
+"75 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Joystick.c
+[v _getJoystickUp getJoystickUp `(uc  1 e 1 0 ]
+{
+"77
+} 0
+"71
+[v _getJoystickDown getJoystickDown `(uc  1 e 1 0 ]
+{
+"73
+} 0
+"290 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\LcTLCD.c
+[v _getColumnAct getColumnAct `(uc  1 e 1 0 ]
+{
+"292
+} 0
+"186 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Keypad.c
+[v _getCharacter getCharacter `(uc  1 e 1 0 ]
+{
+"187
+[v getCharacter@digit digit `uc  1 a 1 5 ]
+"204
+} 0
+"206
+[v _getDigitValue getDigitValue `(uc  1 e 1 0 ]
+{
+"208
+} 0
+"169
+[v _getColumn getColumn `(i  1 e 2 0 ]
+{
+"173
+} 0
+"229 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\EEPROM.c
+[v _displayRecordings displayRecordings `(v  1 e 1 0 ]
+{
+[v displayRecordings@indexPosition indexPosition `uc  1 a 1 wreg ]
+[v displayRecordings@indexPosition indexPosition `uc  1 a 1 wreg ]
+[v displayRecordings@indexPosition indexPosition `uc  1 a 1 0 ]
+"233
+} 0
+"489 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Menu.c
+[v _displayMenu displayMenu `(v  1 e 1 0 ]
+{
+[v displayMenu@string string `*.31uc  1 p 1 23 ]
+"502
+} 0
+"503
+[v _moveOneRow moveOneRow `(v  1 e 1 0 ]
+{
+"508
+} 0
+"256 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\EEPROM.c
+[v _chargeMemory chargeMemory `(v  1 e 1 0 ]
+{
+"259
+} 0
+"7 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"10
+[v ___awmod@sign sign `uc  1 a 1 5 ]
+[v ___awmod@counter counter `uc  1 a 1 4 ]
+"7
+[v ___awmod@dividend dividend `i  1 p 2 0 ]
+[v ___awmod@divisor divisor `i  1 p 2 2 ]
+"34
+} 0
+"19 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\EEPROM.c
+[v _memoryLoop memoryLoop `(v  1 e 1 0 ]
+{
+"203
+} 0
+"59 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\SystemTimer.c
+[v _updateSysTimestamp updateSysTimestamp `(v  1 e 1 0 ]
+{
+[s S599 . 2 `uc 1 minutes 1 0 `uc 1 seconds 1 1 ]
+[v updateSysTimestamp@time time `S599  1 p 2 1 ]
+[v updateSysTimestamp@i i `uc  1 p 1 3 ]
+"64
+} 0
+"18 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\SIO.c
+[v _setTX setTX `(v  1 e 1 0 ]
+{
+[v setTX@letter letter `uc  1 a 1 wreg ]
+[v setTX@letter letter `uc  1 a 1 wreg ]
+[v setTX@letter letter `uc  1 a 1 0 ]
+"20
+} 0
+"206 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\EEPROM.c
+[v _saveData saveData `(v  1 e 1 0 ]
+{
+[v saveData@address address `uc  1 a 1 wreg ]
+[v saveData@address address `uc  1 a 1 wreg ]
+[v saveData@data data `uc  1 p 1 0 ]
+[v saveData@address address `uc  1 a 1 1 ]
+"218
+} 0
+"221
+[v _readData readData `(uc  1 e 1 0 ]
+{
+[v readData@address address `uc  1 a 1 wreg ]
+[v readData@address address `uc  1 a 1 wreg ]
+[v readData@address address `uc  1 a 1 0 ]
+"227
+} 0
+"15 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X/SystemTimer.h
+[s S599 . 2 `uc 1 minutes 1 0 `uc 1 seconds 1 1 ]
+"80 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\SystemTimer.c
+[v _getSysTimestamp getSysTimestamp `(S599  1 e 2 0 ]
+{
+"82
+} 0
+"30 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\SIO.c
+[v _getRX getRX `(uc  1 e 1 0 ]
+{
+"32
+} 0
+"89 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\SystemTimer.c
+[v _finishedDisplay finishedDisplay `(uc  1 e 1 0 ]
+{
+"91
+} 0
+"75
+[v _displayTimestamp displayTimestamp `(v  1 e 1 0 ]
+{
+[v displayTimestamp@i i `uc  1 a 1 wreg ]
+[v displayTimestamp@i i `uc  1 a 1 wreg ]
+[v displayTimestamp@i i `uc  1 a 1 0 ]
+"78
+} 0
+"22 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\SIO.c
+[v _checkTX checkTX `(uc  1 e 1 0 ]
+{
+"24
+} 0
+"26
+[v _checkRX checkRX `(uc  1 e 1 0 ]
+{
+"28
+} 0
+"4 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\lbmod.c
+[v ___lbmod __lbmod `(uc  1 e 1 0 ]
+{
+[v ___lbmod@dividend dividend `uc  1 a 1 wreg ]
+"6
+[v ___lbmod@rem rem `uc  1 a 1 3 ]
+"7
+[v ___lbmod@counter counter `uc  1 a 1 2 ]
+"4
+[v ___lbmod@dividend dividend `uc  1 a 1 wreg ]
+[v ___lbmod@divisor divisor `uc  1 p 1 0 ]
+"9
+[v ___lbmod@dividend dividend `uc  1 a 1 1 ]
+"18
+} 0
+"4 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\lbdiv.c
+[v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
+{
+[v ___lbdiv@dividend dividend `uc  1 a 1 wreg ]
+"6
+[v ___lbdiv@quotient quotient `uc  1 a 1 3 ]
+"7
+[v ___lbdiv@counter counter `uc  1 a 1 2 ]
+"4
+[v ___lbdiv@dividend dividend `uc  1 a 1 wreg ]
+[v ___lbdiv@divisor divisor `uc  1 p 1 0 ]
+"9
+[v ___lbdiv@dividend dividend `uc  1 a 1 1 ]
+"26
+} 0
+"161 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\LcTLCD.c
+[v _LcPutChar LcPutChar `(v  1 e 1 0 ]
+{
+[v LcPutChar@c c `uc  1 a 1 wreg ]
+[v LcPutChar@c c `uc  1 a 1 wreg ]
+"171
+[v LcPutChar@c c `uc  1 a 1 22 ]
+"192
+} 0
+"134
+[v _LcGotoXY LcGotoXY `(v  1 e 1 0 ]
+{
+[v LcGotoXY@Column Column `uc  1 a 1 wreg ]
+"138
+[v LcGotoXY@Fisics Fisics `i  1 a 2 19 ]
+"134
+[v LcGotoXY@Column Column `uc  1 a 1 wreg ]
+[v LcGotoXY@Row Row `uc  1 p 1 14 ]
+[v LcGotoXY@Column Column `uc  1 a 1 21 ]
+"159
+} 0
+"245
+[v _CantaData CantaData `(v  1 e 1 0 ]
+{
+[v CantaData@Data Data `uc  1 a 1 wreg ]
+[v CantaData@Data Data `uc  1 a 1 wreg ]
+[v CantaData@Data Data `uc  1 a 1 2 ]
+"259
+} 0
+"120
+[v _LcCursorOn LcCursorOn `(v  1 e 1 0 ]
+{
+"125
+} 0
+"127
+[v _LcCursorOff LcCursorOff `(v  1 e 1 0 ]
+{
+"132
+} 0
+"38 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Keypad.c
+[v _keypadLoop keypadLoop `(v  1 e 1 0 ]
+{
+"124
+} 0
+"41 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Audio.c
+[v _stopMusic stopMusic `(v  1 e 1 0 ]
+{
+"43
+} 0
+"45
+[v _playMusic playMusic `(v  1 e 1 0 ]
+{
+[v playMusic@aux aux `uc  1 a 1 wreg ]
+[v playMusic@aux aux `uc  1 a 1 wreg ]
+[v playMusic@aux aux `uc  1 a 1 1 ]
+"49
+} 0
+"175 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Keypad.c
+[v _getDigit getDigit `(uc  1 e 1 0 ]
+{
+"183
+} 0
+"25 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Joystick.c
+[v _joystickLoop joystickLoop `(v  1 e 1 0 ]
+{
+"68
+} 0
+"12 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\SystemTimer.c
+[v _initSysTimer initSysTimer `(v  1 e 1 0 ]
+{
+"17
+} 0
+"3 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\SIO.c
+[v _initSIO initSIO `(v  1 e 1 0 ]
+{
+"16
+} 0
+"40 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Menu.c
+[v _initMenu initMenu `(v  1 e 1 0 ]
+{
+"43
+} 0
+"21 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Keypad.c
+[v _initKeypad initKeypad `(v  1 e 1 0 ]
+{
+"35
+} 0
+"10 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Joystick.c
+[v _initJoystick initJoystick `(v  1 e 1 0 ]
+{
+"22
+} 0
+"10 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Audio.c
+[v _initAudio initAudio `(v  1 e 1 0 ]
+{
+"14
+} 0
+"16
+[v _audioLoop audioLoop `(v  1 e 1 0 ]
+{
+"38
+} 0
+"33 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Timer.c
+[v _TI_Init TI_Init `(v  1 e 1 0 ]
+{
+"35
+[v TI_Init@counter counter `uc  1 a 1 0 ]
+"42
+} 0
+"68 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\LcTLCD.c
+[v _LcInit LcInit `(v  1 e 1 0 ]
+{
+[v LcInit@rows rows `uc  1 a 1 wreg ]
+"74
+[v LcInit@i i `i  1 a 2 23 ]
+"68
+[v LcInit@rows rows `uc  1 a 1 wreg ]
+[v LcInit@columns columns `uc  1 p 1 21 ]
+"75
+[v LcInit@rows rows `uc  1 a 1 22 ]
+"106
+} 0
+"261
+[v _WaitForBusy WaitForBusy `(v  1 e 1 0 ]
+{
+[v WaitForBusy@Busy Busy `uc  1 a 1 13 ]
+"277
+} 0
+"44 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Timer.c
+[v _TI_NewTimer TI_NewTimer `(uc  1 e 1 0 ]
+{
+"45
+[v TI_NewTimer@Counter Counter `uc  1 a 1 3 ]
+"44
+[v TI_NewTimer@TimerHandle TimerHandle `*.39uc  1 p 2 0 ]
+"52
+} 0
+"210 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\LcTLCD.c
+[v _Espera Espera `(v  1 e 1 0 ]
+{
+[v Espera@Timer Timer `i  1 p 2 13 ]
+[v Espera@ms ms `i  1 p 2 15 ]
+"213
+} 0
+"54 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Timer.c
+[v _TI_ResetTics TI_ResetTics `(v  1 e 1 0 ]
+{
+[v TI_ResetTics@TimerHandle TimerHandle `uc  1 a 1 wreg ]
+[v TI_ResetTics@TimerHandle TimerHandle `uc  1 a 1 wreg ]
+[v TI_ResetTics@TimerHandle TimerHandle `uc  1 a 1 0 ]
+"56
+} 0
+"58
+[v _TI_GetTics TI_GetTics `(ul  1 e 4 0 ]
+{
+[v TI_GetTics@TimerHandle TimerHandle `uc  1 a 1 wreg ]
+"59
+[v TI_GetTics@CopyCurrentTics CopyCurrentTics `ul  1 a 4 8 ]
+"58
+[v TI_GetTics@TimerHandle TimerHandle `uc  1 a 1 wreg ]
+[v TI_GetTics@TimerHandle TimerHandle `uc  1 a 1 12 ]
+"61
+} 0
+"279 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\LcTLCD.c
+[v _EscriuPrimeraOrdre EscriuPrimeraOrdre `(v  1 e 1 0 ]
+{
+[v EscriuPrimeraOrdre@ordre ordre `uc  1 a 1 wreg ]
+[v EscriuPrimeraOrdre@ordre ordre `uc  1 a 1 wreg ]
+"281
+[v EscriuPrimeraOrdre@ordre ordre `uc  1 a 1 1 ]
+"288
+} 0
+"229
+[v _CantaIR CantaIR `(v  1 e 1 0 ]
+{
+[v CantaIR@IR IR `uc  1 a 1 wreg ]
+[v CantaIR@IR IR `uc  1 a 1 wreg ]
+[v CantaIR@IR IR `uc  1 a 1 2 ]
+"243
+} 0
+"222
+[v _CantaPartBaixa CantaPartBaixa `(v  1 e 1 0 ]
+{
+[v CantaPartBaixa@c c `uc  1 a 1 wreg ]
+[v CantaPartBaixa@c c `uc  1 a 1 wreg ]
+[v CantaPartBaixa@c c `uc  1 a 1 1 ]
+"227
+} 0
+"215
+[v _CantaPartAlta CantaPartAlta `(v  1 e 1 0 ]
+{
+[v CantaPartAlta@c c `uc  1 a 1 wreg ]
+[v CantaPartAlta@c c `uc  1 a 1 wreg ]
+[v CantaPartAlta@c c `uc  1 a 1 1 ]
+"220
+} 0
+"23 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\MAIN.c
+[v _RSI_High RSI_High `IIH(v  1 e 1 0 ]
+{
+"26
+} 0
+"26 C:\Users\joaqu\MPLABXProjects\PHASE_2B.X\Timer.c
+[v _RSI_Timer0 RSI_Timer0 `(v  1 e 1 0 ]
+{
+"31
+} 0
