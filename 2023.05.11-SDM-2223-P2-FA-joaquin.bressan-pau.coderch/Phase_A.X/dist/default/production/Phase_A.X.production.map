@@ -1,0 +1,163 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Thu May 11 17:58:54 2023
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_1       code   0x000000    program   0x000004
+                   .cinit    romdata   0x000004    program   0x000002
+                   .org_2       code   0x000008    program   0x000004
+                   .org_0       code   0x000010    program   0x000004
+                   .org_3       code   0x000018    program   0x000576
+.config_300001_BUILD/DEFAULT/PRODUCTION/LEDTEST    romdata   0x300001    program   0x000001
+.config_300003_BUILD/DEFAULT/PRODUCTION/LEDTEST    romdata   0x300003    program   0x000001
+.config_300005_BUILD/DEFAULT/PRODUCTION/LEDTEST    romdata   0x300005    program   0x000001
+.config_300006_BUILD/DEFAULT/PRODUCTION/LEDTEST    romdata   0x300006    program   0x000001
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000005      
+                            0x000008    0x00000b      
+                            0x000010    0x000013      
+                            0x000018    0x00058d      
+                            0x300001    0x300001      
+                            0x300003    0x300003      
+                            0x300005    0x300006      
+            1416 out of 8472 program addresses used, program memory utilization is 16%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                 ALARM_ON   0x0002f4    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+           AUTOMATIC_MODE   0x000226    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+            CHANGE_RECORD   0x0002a6    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+               CHECK_1MIN   0x0001d6    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+             CHECK_CENTER   0x00039a    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+              CHECK_DELAY   0x000254    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+               CHECK_DOWN   0x0003e6    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+               CHECK_LEFT   0x0004e2    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+            CHECK_PRESSED   0x0002d6    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+           CHECK_RECORD_H   0x000258    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+           CHECK_RECORD_L   0x000264    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+              CHECK_RIGHT   0x000458    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                 CHECK_UP   0x000420    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                  CHECK_Y   0x0003bc    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                CLEAR_ALL   0x000102    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+             CONVERTING_X   0x000160    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+             CONVERTING_Y   0x000170    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+               COUNTER_1S   0x000582    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                  COUNT_X   0x00007c    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                  COUNT_Y   0x0000a0    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+              CRUISE_MODE   0x000182    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                DEBOUNCER   0x00056c    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                  DISPDIR   0x0003dc    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+              DISPLAY_DIR   0x000332    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+            DISPLAY_SPEED   0x0002e6    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+              DISP_CENTER   0x000352    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                    DOWN1   0x000414    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                    DOWN2   0x000406    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                  END_DIR   0x00038e    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                END_SPEED   0x000320    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+              GOAUTOMATIC   0x0002bc    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                  GO_BACK   0x00037a    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                 HIGH_RSI   0x00001a    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+          INIT_INTERRUPTS   0x0000b8    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                 INIT_OSC   0x0000ae    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+               INIT_PORTS   0x0000ca    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+        INNER_BOUNCE_LOOP   0x000570    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                     LEFT   0x000518    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                    LEFT1   0x000534    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                    LEFT2   0x000550    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                LEFT_TURN   0x00036a    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                     MAIN   0x000126    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+              MANUAL_MODE   0x00013c    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+           MANUAL_PRESSED   0x0001a0    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+              MODE_RETURN   0x0002c4    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+            READ_JOYSTICK   0x00015c    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+              RECORD_MODE   0x0001b6    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+           RECORD_PRESSED   0x000284    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                    RIGHT   0x00048e    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                   RIGHT1   0x0004aa    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                   RIGHT2   0x0004c6    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+               RIGHT_TURN   0x000342    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                SAVE_DATA   0x0001ee    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                  SERVO_X   0x000066    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                  SERVO_Y   0x00008a    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                 START_1S   0x000584    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+          START_AUTOPILOT   0x000234    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+           TMR0_INTERRUPT   0x000022    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                      UP1   0x00044c    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                      UP2   0x00043e    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                 HIGH_RSI   0x00001a    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+           TMR0_INTERRUPT   0x000022    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                  SERVO_X   0x000066    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                  COUNT_X   0x00007c    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                  SERVO_Y   0x00008a    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                  COUNT_Y   0x0000a0    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                 INIT_OSC   0x0000ae    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+          INIT_INTERRUPTS   0x0000b8    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+               INIT_PORTS   0x0000ca    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                CLEAR_ALL   0x000102    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                     MAIN   0x000126    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+              MANUAL_MODE   0x00013c    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+            READ_JOYSTICK   0x00015c    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+             CONVERTING_X   0x000160    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+             CONVERTING_Y   0x000170    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+              CRUISE_MODE   0x000182    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+           MANUAL_PRESSED   0x0001a0    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+              RECORD_MODE   0x0001b6    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+               CHECK_1MIN   0x0001d6    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                SAVE_DATA   0x0001ee    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+           AUTOMATIC_MODE   0x000226    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+          START_AUTOPILOT   0x000234    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+              CHECK_DELAY   0x000254    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+           CHECK_RECORD_H   0x000258    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+           CHECK_RECORD_L   0x000264    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+           RECORD_PRESSED   0x000284    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+            CHANGE_RECORD   0x0002a6    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+              GOAUTOMATIC   0x0002bc    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+              MODE_RETURN   0x0002c4    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+            CHECK_PRESSED   0x0002d6    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+            DISPLAY_SPEED   0x0002e6    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                 ALARM_ON   0x0002f4    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                END_SPEED   0x000320    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+              DISPLAY_DIR   0x000332    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+               RIGHT_TURN   0x000342    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+              DISP_CENTER   0x000352    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                LEFT_TURN   0x00036a    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                  GO_BACK   0x00037a    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                  END_DIR   0x00038e    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+             CHECK_CENTER   0x00039a    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                  CHECK_Y   0x0003bc    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                  DISPDIR   0x0003dc    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+               CHECK_DOWN   0x0003e6    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                    DOWN2   0x000406    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                    DOWN1   0x000414    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                 CHECK_UP   0x000420    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                      UP2   0x00043e    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                      UP1   0x00044c    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+              CHECK_RIGHT   0x000458    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                    RIGHT   0x00048e    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                   RIGHT1   0x0004aa    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                   RIGHT2   0x0004c6    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+               CHECK_LEFT   0x0004e2    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                     LEFT   0x000518    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                    LEFT1   0x000534    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                    LEFT2   0x000550    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                DEBOUNCER   0x00056c    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+        INNER_BOUNCE_LOOP   0x000570    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+               COUNTER_1S   0x000582    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+                 START_1S   0x000584    program     static C:\Users\joaqu\MPLABXProjects\Phase_A.X\ledTest.asm
+
+

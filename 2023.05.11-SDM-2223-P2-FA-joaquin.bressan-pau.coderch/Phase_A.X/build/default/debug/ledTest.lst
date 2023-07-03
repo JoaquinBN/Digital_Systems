@@ -1,0 +1,1996 @@
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[205]: Found directive in column 1. (LIST)
+Warning[215]: Processor superseded by command line.  Verify processor symbol.
+                      00001 LIST P = PIC18F4321 F = INHX32
+                      00002     #include <p18f4321.inc>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ; Build date : Oct 24 2019
+                      00005 ;  MPASM PIC18F4321 processor include
+                      00006 ; 
+                      00007 ;  (c) Copyright 1999-2019 Microchip Technology, All rights reserved
+                      00008 ;==========================================================================
+                      00009 
+                      01455         LIST
+                      00003     CONFIG OSC = INTIO2
+                      00004     CONFIG PBADEN = DIG
+                      00005     CONFIG WDT = OFF
+                      00006     CONFIG DEBUG = ON
+                      00007     CONFIG LVP = OFF
+                      00008 
+                      00009     ; DEFINE VARIABLES
+                      00010 
+Warning[207]: Found label after column 1. (mode)
+  00000001            00011     mode EQU 0x01 ; 0 = Manual Mode, 1 = Record mode, 2 = Automatic mode
+Warning[207]: Found label after column 1. (debounce_counter)
+  00000002            00012     debounce_counter EQU 0x02
+Warning[207]: Found label after column 1. (read_X)
+  00000003            00013     read_X EQU 0x03
+Warning[207]: Found label after column 1. (read_Y)
+  00000004            00014     read_Y EQU 0x04
+Warning[207]: Found label after column 1. (speed)
+  00000005            00015     speed EQU 0x05 ; 0-1: 00 = LOW, 01 = MEDIUM, 10 = HIGH, 11 = 0, 2 = rear/!front
+Warning[207]: Found label after column 1. (dir)
+  00000006            00016     dir EQU 0x06; 0 = center, 1 = 0:left;1:right, 2-3-4-5 = how much turn
+Warning[207]: Found label after column 1. (delay_L)
+  00000007            00017     delay_L EQU 0x07
+Warning[207]: Found label after column 1. (delay_H)
+  00000008            00018     delay_H EQU 0x08
+Warning[207]: Found label after column 1. (record_L)
+  00000009            00019     record_L EQU 0x09
+Warning[207]: Found label after column 1. (record_H)
+  0000000A            00020     record_H EQU 0x0A
+Warning[207]: Found label after column 1. (steps)
+  0000000B            00021     steps EQU 0x0B
+Warning[207]: Found label after column 1. (pwmX_H)
+  0000000C            00022     pwmX_H EQU 0x0C
+Warning[207]: Found label after column 1. (pwmX_L)
+  0000000D            00023     pwmX_L EQU 0x0D
+Warning[207]: Found label after column 1. (aux1)
+  0000000E            00024     aux1 EQU 0x0E
+Warning[207]: Found label after column 1. (aux2)
+  0000000F            00025     aux2 EQU 0x0F
+Warning[207]: Found label after column 1. (aux3)
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+  00000021            00026     aux3 EQU 0x21
+Warning[207]: Found label after column 1. (aux4)
+  00000022            00027     aux4 EQU 0x22
+Warning[207]: Found label after column 1. (pwmY_L)
+  00000023            00028     pwmY_L EQU 0x23
+Warning[207]: Found label after column 1. (pwmY_H)
+  00000024            00029     pwmY_H EQU 0x24
+Warning[207]: Found label after column 1. (prev_X)
+  00000025            00030     prev_X EQU 0x25
+Warning[207]: Found label after column 1. (prev_Y)
+  00000026            00031     prev_Y EQU 0x26
+Warning[207]: Found label after column 1. (alarm_L)
+  00000027            00032     alarm_L EQU 0x27
+Warning[207]: Found label after column 1. (alarm_H)
+  00000028            00033     alarm_H EQU 0x28
+Warning[207]: Found label after column 1. (alarm_clk)
+  00000029            00034     alarm_clk EQU 0x29
+Warning[207]: Found label after column 1. (TABLE7s)
+  00000010            00035     TABLE7s EQU 0x10
+                      00036     ORG TABLE7s
+                      00037        ; L, M - 0x10, 0x11
+000010 750D           00038        DB b'0001101', b'1110101'
+                      00039        ; H, 0 - 0x12, 0x13
+000012 7D37           00040        DB b'0110111', b'1111101'
+                      00041     
+                      00042     ; VERIFY REDIRECTS
+                      00043     ORG 0x0000
+000000 EF?? F???      00044     GOTO MAIN
+                      00045     ORG 0x0008
+000008 EF?? F???      00046     GOTO HIGH_RSI
+                      00047     ORG 0x0018
+000018 0011           00048     RETFIE FAST
+                      00049 
+                      00050 
+00001A                00051 HIGH_RSI
+00001A B4F2           00052     BTFSC INTCON, TMR0IF,0
+00001C EF?? F???      00053     GOTO TMR0_INTERRUPT
+                      00054     
+000020 0011           00055     RETFIE FAST
+                      00056 
+000022                00057 TMR0_INTERRUPT
+000022 94F2           00058     BCF INTCON,TMR0IF,0
+000024 2A07           00059     INCF delay_L,1,0
+000026 0EFF           00060     MOVLW .255
+000028 5C07           00061     SUBWF delay_L,0,0
+00002A B4D8           00062     BTFSC STATUS,Z,0
+00002C 2A08           00063     INCF delay_H,1,0
+                      00064     
+                      00065     ;alarm timing
+00002E AA01           00066     BTFSS mode,5,0
+000030 2A27           00067     INCF alarm_L,1,0
+000032 0EFF           00068     MOVLW .255
+000034 5C27           00069     SUBWF alarm_L,0,0
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000036 B4D8           00070     BTFSC STATUS,Z,0
+000038 2A28           00071     INCF alarm_H,1,0
+                      00072     
+00003A 2A02           00073     INCF debounce_counter,1,0
+                      00074     ;reset the value of TMR0 to decimal value of 1536 in order to ensure an interrupt each 8ms
+                      00075     
+00003C 0EC0           00076     MOVLW LOW(.25536)
+00003E 6ED6           00077     MOVWF TMR0L,0
+000040 0E63           00078     MOVLW HIGH(.25536)
+000042 6ED7           00079     MOVWF TMR0H,0
+                      00080    
+000044 C00C F00E      00081     MOVFF pwmX_H, aux1
+000048 C00D F00F      00082     MOVFF pwmX_L, aux2
+00004C 808D           00083     BSF LATE,0,0
+00004E EC?? F???      00084     CALL SERVO_X
+000052 908D           00085     BCF LATE,0,0
+                      00086     
+000054 C024 F021      00087     MOVFF pwmY_H, aux3
+000058 C023 F022      00088     MOVFF pwmY_L, aux4
+00005C 828D           00089     BSF LATE,1,0
+00005E EC?? F???      00090     CALL SERVO_Y
+000062 928D           00091     BCF LATE,1,0
+                      00092     
+                      00093 ;    MOVLW .11
+                      00094 ;    SUBWF alarm_H,0,0
+                      00095 ;    BTFSS STATUS,Z,0
+                      00096 ;    GOTO ALARM_OFF
+                      00097 ;    
+                      00098 ;    MOVLW .184
+                      00099 ;    SUBWF alarm_L,0,0
+                      00100 ;    BTFSS STATUS,Z,0
+                      00101 ;    GOTO ALARM_OFF
+                      00102 ;    
+                      00103 ;    BSF mode,5,0
+                      00104 ;    INCF alarm_clk,1,0
+                      00105 ;    
+                      00106 ;    MOVLW .25
+                      00107 ;    SUBWF alarm_clk,0,0
+                      00108 ;    BTFSS STATUS,Z,0
+                      00109 ;    RETFIE FAST
+                      00110 ;    
+                      00111 ;    BTG LATA,3,0
+                      00112 ;    CLRF alarm_clk,0
+                      00113 ;    RETFIE FAST
+                      00114 ;    
+                      00115 ;    ALARM_OFF
+                      00116 ;    BCF mode,5,0
+                      00117 ;    CLRF alarm_clk,0
+                      00118 ;    BCF LATA,3,0
+000064 0011           00119     RETFIE FAST
+                      00120     
+                      00121     
+                      00122     
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000066                00123 SERVO_X
+000066 EC?? F???      00124     CALL COUNT_X
+                      00125     ;reset pwm_L after reaching 0
+00006A 0EFF           00126     MOVLW .255
+00006C 6E0F           00127     MOVWF aux2,0
+                      00128     
+                      00129     ;check if pwm_H reached
+00006E 0E00           00130     MOVLW .0
+000070 5C0E           00131     SUBWF aux1,0,0
+000072 B4D8           00132     BTFSC STATUS,Z,0
+000074 0012           00133     RETURN
+                      00134     
+                      00135     ;increment and repeat if not reached
+000076 060E           00136     DECF aux1,1,0
+000078 EF?? F???      00137     GOTO SERVO_X
+                      00138     
+00007C                00139 COUNT_X
+00007C 0E00           00140    MOVLW .0
+00007E 5C0F           00141    SUBWF aux2,0,0
+000080 B4D8           00142    BTFSC STATUS,Z,0
+000082 0012           00143    RETURN
+000084 060F           00144    DECF aux2,1,0
+000086 EF?? F???      00145    GOTO COUNT_X
+                      00146     
+00008A                00147 SERVO_Y
+00008A EC?? F???      00148     CALL COUNT_Y
+                      00149     ;reset pwm_L after reaching 0
+00008E 0EFF           00150     MOVLW .255
+000090 6E22           00151     MOVWF aux4,0
+                      00152     
+                      00153     ;check if pwm_H reached
+000092 0E00           00154     MOVLW .0
+000094 5C21           00155     SUBWF aux3,0,0
+000096 B4D8           00156     BTFSC STATUS,Z,0
+000098 0012           00157     RETURN
+                      00158     
+                      00159     ;increment and repeat if not reached
+00009A 0621           00160     DECF aux3,1,0
+00009C EF?? F???      00161     GOTO SERVO_Y
+                      00162     
+0000A0                00163 COUNT_Y
+0000A0 0E00           00164    MOVLW .0
+0000A2 5C22           00165    SUBWF aux4,0,0
+0000A4 B4D8           00166    BTFSC STATUS,Z,0
+0000A6 0012           00167    RETURN
+0000A8 0622           00168    DECF aux4,1,0
+0000AA EF?? F???      00169    GOTO COUNT_Y
+                      00170     
+0000AE                00171 INIT_OSC
+0000AE 0E72           00172     MOVLW b'01110010'   
+0000B0 6ED3           00173     MOVWF  OSCCON,0 
+0000B2 0E98           00174     MOVLW b'10011000' ; 16 bit timer - no prescaler 
+0000B4 6ED5           00175     MOVWF T0CON,0
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0000B6 0012           00176     RETURN
+                      00177 
+0000B8                00178 INIT_INTERRUPTS
+0000B8 9ED0           00179     BCF RCON,IPEN,0 ; no priorities so everything is high priority
+0000BA 9EF1           00180     BCF INTCON2, RBPU,0
+0000BC 8EF2           00181     BSF INTCON,GIE,0
+0000BE 8CF2           00182     BSF INTCON,PEIE,0
+0000C0 8CF1           00183     BSF INTCON2,INTEDG0,0
+0000C2 8AF1           00184     BSF INTCON2,INTEDG1,0
+0000C4 84F1           00185     BSF INTCON2, TMR0IP,0
+0000C6 8AF2           00186     BSF INTCON, TMR0IE,0
+                      00187     
+0000C8 0012           00188     RETURN
+                      00189 
+0000CA                00190 INIT_PORTS
+0000CA 0E03           00191     MOVLW b'00000011'
+0000CC 6EC2           00192     MOVWF ADCON0,0
+0000CE 0E0E           00193     MOVLW b'00001110'
+0000D0 6EC1           00194     MOVWF ADCON1,0
+0000D2 0E0C           00195     MOVLW b'00001100'
+0000D4 6EC0           00196     MOVWF ADCON2,0
+                      00197 
+                      00198     ;SET JOYSTICK AS INPUT
+0000D6 8092           00199     BSF TRISA,0,0
+0000D8 8292           00200     BSF TRISA,1,0
+                      00201     ;SET PCB LED OUTPUT
+0000DA 9692           00202     BCF TRISA,3,0
+0000DC 9892           00203     BCF TRISA,4,0
+                      00204     ;SET LED BAR OUTPUT
+0000DE 9094           00205     BCF TRISC,0,0
+0000E0 9294           00206     BCF TRISC,1,0
+0000E2 9494           00207     BCF TRISC,2,0
+0000E4 9694           00208     BCF TRISC,3,0
+0000E6 9E95           00209     BCF TRISD,7,0
+0000E8 9693           00210     BCF TRISB,3,0
+0000EA 9893           00211     BCF TRISB,4,0
+0000EC 9A93           00212     BCF TRISB,5,0
+0000EE 9C93           00213     BCF TRISB,6,0
+0000F0 9E93           00214     BCF TRISB,7,0
+                      00215     ;SET RGB LED OUTPUT
+0000F2 9894           00216     BCF TRISC,4,0
+0000F4 9A94           00217     BCF TRISC,5,0
+0000F6 9C94           00218     BCF TRISC,6,0
+                      00219     ;SET MANUAL AND RECORD BUTTONS
+0000F8 8493           00220     BSF TRISB,2,0
+0000FA 8293           00221     BSF TRISB,1,0
+0000FC 8093           00222     BSF TRISB,0,0
+                      00223     ;SET PWM MOTOR
+0000FE 9096           00224     BCF TRISE,0,0
+                      00225     
+000100 0012           00226     RETURN
+                      00227 
+000102                00228 CLEAR_ALL
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000102 6A94           00229     CLRF TRISC,0
+000104 6A93           00230     CLRF TRISB,0
+000106 6A92           00231     CLRF TRISA,0
+000108 6A95           00232     CLRF TRISD,0
+00010A 6A96           00233     CLRF TRISE,0
+00010C 6A01           00234     CLRF mode,0
+00010E 6A02           00235     CLRF debounce_counter,0
+000110 6A03           00236     CLRF read_X,0
+000112 6A04           00237     CLRF read_Y,0
+000114 6A05           00238     CLRF speed,0
+000116 6A06           00239     CLRF dir,0
+000118 6A07           00240     CLRF delay_L,0
+00011A 6A08           00241     CLRF delay_H,0
+00011C 6A27           00242     CLRF alarm_L,0
+00011E 6A28           00243     CLRF alarm_H,0
+000120 6A25           00244     CLRF prev_X,0
+000122 6A26           00245     CLRF prev_Y,0
+000124 0012           00246     RETURN
+                      00247 
+000126                00248 MAIN
+000126 EC?? F???      00249     CALL CLEAR_ALL
+00012A EC?? F???      00250     CALL INIT_INTERRUPTS
+00012E EC?? F???      00251     CALL INIT_PORTS
+000132 EC?? F???      00252     CALL INIT_OSC
+000136 8001           00253     BSF mode,0,0
+000138 EF?? F???      00254     GOTO MANUAL_MODE
+                      00255     
+00013C                00256 MANUAL_MODE
+00013C 988B           00257     BCF LATC,4,0
+00013E 8A8B           00258     BSF LATC,5,0
+000140 8C8B           00259     BSF LATC,6,0
+                      00260 
+000142 B601           00261     BTFSC mode,3,0
+000144 EC?? F???      00262     CALL CHECK_PRESSED
+                      00263 
+000148 A281           00264     BTFSS PORTB,1,0
+00014A EF?? F???      00265     GOTO MANUAL_PRESSED
+                      00266 
+00014E A081           00267     BTFSS PORTB,0,0
+000150 EF?? F???      00268     GOTO RECORD_PRESSED
+                      00269 
+000154 EF?? F???      00270     GOTO READ_JOYSTICK
+                      00271     
+000158 EF?? F???      00272     GOTO MANUAL_MODE
+                      00273 
+00015C                00274 READ_JOYSTICK
+00015C 94C2           00275     BCF ADCON0,2,0
+00015E 82C2           00276     BSF ADCON0,1,0
+Warning[207]: Found label after column 1. (CONVERTING_X)
+000160                00277     CONVERTING_X
+000160 B2C2           00278     BTFSC ADCON0,1,0
+000162 EF?? F???      00279     GOTO CONVERTING_X
+000166 CFC4 F003      00280     MOVFF ADRESH,read_X
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00016A 6A06           00281     CLRF dir,0
+00016C 84C2           00282     BSF ADCON0,2,0
+00016E 82C2           00283     BSF ADCON0,1,0
+Warning[207]: Found label after column 1. (CONVERTING_Y)
+000170                00284     CONVERTING_Y
+000170 B2C2           00285     BTFSC ADCON0,1,0
+000172 EF?? F???      00286     GOTO CONVERTING_Y
+000176 CFC4 F004      00287     MOVFF ADRESH,read_Y
+00017A 6A05           00288     CLRF speed,0
+00017C 9801           00289     BCF mode,4,0
+                      00290     
+00017E EF?? F???      00291     GOTO CHECK_CENTER
+                      00292 
+000182                00293 CRUISE_MODE
+000182 9889           00294     BCF LATA,4,0
+000184 888B           00295     BSF LATC,4,0
+000186 9A8B           00296     BCF LATC,5,0
+000188 8C8B           00297     BSF LATC,6,0
+                      00298 
+00018A B601           00299     BTFSC mode,3,0
+00018C EC?? F???      00300     CALL CHECK_PRESSED
+                      00301 
+000190 A281           00302     BTFSS PORTB,1,0
+000192 EF?? F???      00303     GOTO MANUAL_PRESSED
+                      00304     
+000196 8801           00305     BSF mode,4,0
+000198 EF?? F???      00306     GOTO READ_JOYSTICK
+                      00307     
+00019C EF?? F???      00308     GOTO CRUISE_MODE
+                      00309 
+                      00310 
+0001A0                00311 MANUAL_PRESSED
+0001A0 EC?? F???      00312     CALL DEBOUNCER
+                      00313 
+0001A4 B281           00314     BTFSC PORTB,1,0; If not pressed, return to previous mode
+0001A6 EF?? F???      00315     GOTO MODE_RETURN
+                      00316     
+0001AA 6A27           00317     CLRF alarm_L,0
+0001AC 6A28           00318     CLRF alarm_H,0
+                      00319 
+0001AE 8601           00320     BSF mode,3,0; set bit to keep record of pressed button
+                      00321     ; If button pressed, check if manual or cruise mode
+0001B0 7001           00322     BTG mode,0,0
+0001B2 EF?? F???      00323     GOTO MODE_RETURN
+                      00324 
+                      00325 
+0001B6                00326 RECORD_MODE
+0001B6 888B           00327     BSF LATC,4,0
+0001B8 8A8B           00328     BSF LATC,5,0
+0001BA 9C8B           00329     BCF LATC,6,0
+                      00330     
+0001BC B601           00331     BTFSC mode,3,0
+0001BE EC?? F???      00332     CALL CHECK_PRESSED
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00333 
+0001C2 A081           00334     BTFSS PORTB,0,0
+0001C4 EF?? F???      00335     GOTO RECORD_PRESSED
+                      00336 
+0001C8 A281           00337     BTFSS PORTB,1,0
+0001CA EC?? F???      00338     CALL SAVE_DATA
+                      00339     
+0001CE 84C2           00340     BSF ADCON0,2,0
+0001D0 8801           00341     BSF mode,4,0
+0001D2 EF?? F???      00342     GOTO CHECK_1MIN
+                      00343 
+                      00344 
+0001D6                00345 CHECK_1MIN
+0001D6 0E0B           00346     MOVLW .11
+0001D8 5C08           00347     SUBWF delay_H,0,0
+0001DA A4D8           00348     BTFSS STATUS,Z,0
+0001DC EF?? F???      00349     GOTO READ_JOYSTICK
+                      00350     
+0001E0 0EB8           00351     MOVLW .184
+0001E2 5C07           00352     SUBWF delay_L,0,0
+0001E4 A4D8           00353     BTFSS STATUS,Z,0
+0001E6 EF?? F???      00354     GOTO READ_JOYSTICK
+                      00355     
+0001EA EF?? F???      00356     GOTO CHANGE_RECORD
+                      00357     
+                      00358     
+0001EE                00359 SAVE_DATA
+0001EE EC?? F???      00360     CALL DEBOUNCER
+0001F2 B281           00361     BTFSC PORTB,1,0
+0001F4 0012           00362     RETURN
+                      00363     
+0001F6 8601           00364     BSF mode,3,0
+0001F8 80EA           00365     BSF FSR0H,0,0
+                      00366     
+0001FA C003 FFEE      00367     MOVFF read_X,POSTINC0
+0001FE C004 FFEE      00368     MOVFF read_Y,POSTINC0
+000202 C008 FFEE      00369     MOVFF delay_H,POSTINC0
+000206 C007 FFEE      00370     MOVFF delay_L,POSTINC0
+                      00371     
+00020A 6A08           00372     CLRF delay_H,0
+00020C 6A07           00373     CLRF delay_L,0
+00020E 6A27           00374     CLRF alarm_L,0
+000210 6A28           00375     CLRF alarm_H,0
+                      00376     
+000212 CFE9 FFE8      00377     MOVFF FSR0L,WREG
+000216 0BFC           00378     ANDLW 0xFC
+000218 6E0B           00379     MOVWF steps,0
+00021A 0E78           00380     MOVLW .120
+00021C 620B           00381     CPFSEQ steps,0
+00021E 0012           00382     RETURN
+                      00383     
+000220 9201           00384     BCF mode,1,0
+000222 EF?? F???      00385     GOTO MODE_RETURN
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00386 
+000226                00387 AUTOMATIC_MODE 
+000226 0E00           00388     MOVLW .0
+000228 620B           00389     CPFSEQ steps,0
+00022A EF?? F???      00390     GOTO START_AUTOPILOT
+00022E 9401           00391     BCF mode,2,0
+000230 EF?? F???      00392     GOTO MODE_RETURN
+                      00393     
+Warning[207]: Found label after column 1. (START_AUTOPILOT)
+000234                00394     START_AUTOPILOT
+000234 988B           00395     BCF LATC,4,0
+000236 9A8B           00396     BCF LATC,5,0
+000238 9C8B           00397     BCF LATC,6,0
+                      00398     
+00023A 9801           00399     BCF mode,4,0
+00023C CFEE F003      00400     MOVFF POSTINC0, read_X
+000240 CFEE F004      00401     MOVFF POSTINC0, read_Y
+000244 CFEE F00A      00402     MOVFF POSTINC0, record_H
+000248 CFEE F009      00403     MOVFF POSTINC0, record_L
+00024C 6A05           00404     CLRF speed,0
+00024E 6A06           00405     CLRF dir,0
+000250 EF?? F???      00406     GOTO CHECK_CENTER
+                      00407     
+                      00408     
+Warning[207]: Found label after column 1. (CHECK_DELAY)
+000254                00409     CHECK_DELAY
+000254 6A07           00410     CLRF delay_L,0
+000256 6A08           00411     CLRF delay_H,0
+                      00412     
+Warning[207]: Found label after column 1. (CHECK_RECORD_H)
+000258                00413     CHECK_RECORD_H
+000258 C008 FFE8      00414     MOVFF delay_H, WREG
+                      00415     
+00025C 5C0A           00416     SUBWF record_H,0,0
+00025E A4D8           00417     BTFSS STATUS,Z,0
+000260 EF?? F???      00418     GOTO CHECK_RECORD_H
+                      00419     
+Warning[207]: Found label after column 1. (CHECK_RECORD_L)
+000264                00420     CHECK_RECORD_L
+000264 C007 FFE8      00421     MOVFF delay_L, WREG
+000268 5C09           00422     SUBWF record_L,0,0
+00026A A4D8           00423     BTFSS STATUS,Z,0
+00026C EF?? F???      00424     GOTO CHECK_RECORD_L
+                      00425     
+000270 CFE9 FFE8      00426     MOVFF FSR0L,WREG
+000274 0BFC           00427     ANDLW 0xFC
+000276 5C0B           00428     SUBWF steps,0,0
+000278 A4D8           00429     BTFSS STATUS,Z,0
+00027A EF?? F???      00430     GOTO AUTOMATIC_MODE
+00027E 9401           00431     BCF mode,2,0
+000280 EF?? F???      00432     GOTO MODE_RETURN
+                      00433 
+000284                00434 RECORD_PRESSED
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000284 EC?? F???      00435     CALL DEBOUNCER
+                      00436 
+000288 B081           00437     BTFSC PORTB,0,0
+00028A EF?? F???      00438     GOTO MODE_RETURN; If not pressed, return to previous mode
+                      00439 
+00028E 6A27           00440     CLRF alarm_L,0
+000290 6A28           00441     CLRF alarm_H,0
+                      00442     
+000292 8601           00443     BSF mode,3,0; set bit to keep record of pressed button
+                      00444 
+                      00445     ; If button pressed, check if automatic or record mode
+000294 B201           00446     BTFSC mode,1,0; check if already in record mode
+000296 EF?? F???      00447     GOTO CHANGE_RECORD
+                      00448     
+00029A EC?? F???      00449     CALL COUNTER_1S
+00029E A081           00450     BTFSS PORTB,0,0; If still being pressed, set automatic mode
+0002A0 8401           00451     BSF mode,2,0
+                      00452     
+0002A2 EF?? F???      00453     GOTO CHANGE_RECORD
+                      00454     
+0002A6                00455 CHANGE_RECORD
+0002A6 6A07           00456     CLRF delay_L,0
+0002A8 6A08           00457     CLRF delay_H,0
+                      00458     
+0002AA B401           00459     BTFSC mode,2,0
+0002AC EF?? F???      00460     GOTO GOAUTOMATIC
+                      00461 
+0002B0 7201           00462     BTG mode,1,0
+0002B2 6AE9           00463     CLRF FSR0L,0
+0002B4 B201           00464     BTFSC mode,1,0
+0002B6 6A0B           00465     CLRF steps,0
+0002B8 EF?? F???      00466     GOTO MODE_RETURN
+                      00467     
+Warning[207]: Found label after column 1. (GOAUTOMATIC)
+0002BC                00468     GOAUTOMATIC
+0002BC 6AE9           00469     CLRF FSR0L,0
+0002BE 80EA           00470     BSF FSR0H,0,0
+0002C0 EF?? F???      00471     GOTO AUTOMATIC_MODE
+                      00472     
+0002C4                00473 MODE_RETURN ; Return to previous mode if unsuccessful debouncer
+0002C4 B201           00474     BTFSC mode,1,0
+0002C6 EF?? F???      00475     GOTO RECORD_MODE
+                      00476 
+0002CA A001           00477     BTFSS mode,0,0
+0002CC EF?? F???      00478     GOTO CRUISE_MODE
+                      00479 
+0002D0 B001           00480     BTFSC mode,0,0
+0002D2 EF?? F???      00481     GOTO MANUAL_MODE
+                      00482 
+0002D6                00483 CHECK_PRESSED
+0002D6 A081           00484     BTFSS PORTB,0,0
+0002D8 EF?? F???      00485     GOTO CHECK_PRESSED
+                      00486 
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 11
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0002DC A281           00487     BTFSS PORTB,1,0
+0002DE EF?? F???      00488     GOTO CHECK_PRESSED
+                      00489 
+0002E2 9601           00490     BCF mode,3,0
+0002E4 0012           00491     RETURN
+                      00492 
+                      00493 
+0002E6                00494 DISPLAY_SPEED
+0002E6 BA01           00495     BTFSC mode,5,0
+0002E8 EF?? F???      00496     GOTO ALARM_ON
+                      00497     
+0002EC B405           00498     BTFSC speed,2,0
+0002EE 8689           00499     BSF LATA,3,0
+0002F0 A405           00500     BTFSS speed,2,0
+0002F2 9689           00501     BCF LATA,3,0
+                      00502     
+Warning[207]: Found label after column 1. (ALARM_ON)
+0002F4                00503     ALARM_ON
+0002F4 9405           00504     BCF speed,2,0
+0002F6 C005 FFE8      00505     MOVFF speed, WREG
+0002FA 0F10           00506     ADDLW 0x10
+0002FC 6EF6           00507     MOVWF TBLPTRL,0
+0002FE 6AF7           00508     CLRF TBLPTRH,0
+000300 6AF8           00509     CLRF TBLPTRU,0
+                      00510     
+000302 0008           00511     TBLRD*
+000304 CFF5 FF8C      00512     MOVFF TABLAT,LATD
+000308 B681           00513     BTFSC PORTB,3,0
+00030A 8E8C           00514     BSF LATD,7,0 ; refresh the LED of direction that is in PORTD,7
+                      00515    
+00030C C026 FFE8      00516     MOVFF prev_Y,WREG
+000310 5C05           00517     SUBWF speed,0,0
+000312 B4D8           00518     BTFSC STATUS,Z,0
+000314 EF?? F???      00519     GOTO END_SPEED
+                      00520     
+000318 6A27           00521     CLRF alarm_L,0
+00031A 6A28           00522     CLRF alarm_H,0
+00031C C005 F026      00523     MOVFF speed,prev_Y
+                      00524     
+Warning[207]: Found label after column 1. (END_SPEED)
+000320                00525     END_SPEED
+000320 B401           00526     BTFSC mode,2,0
+000322 EF?? F???      00527     GOTO CHECK_DELAY
+000326 B201           00528     BTFSC mode,1,0
+000328 EF?? F???      00529     GOTO RECORD_MODE
+00032C B001           00530     BTFSC mode,0,0
+00032E EF?? F???      00531     GOTO MANUAL_MODE
+                      00532     
+                      00533     
+000332                00534 DISPLAY_DIR
+000332 B006           00535     BTFSC dir,0,0
+000334 EF?? F???      00536     GOTO DISP_CENTER
+                      00537     
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 12
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000338 B206           00538     BTFSC dir,1,0
+00033A EF?? F???      00539     GOTO RIGHT_TURN
+                      00540     
+00033E EF?? F???      00541     GOTO LEFT_TURN
+                      00542     
+Warning[207]: Found label after column 1. (RIGHT_TURN)
+000342                00543     RIGHT_TURN
+000342 9E8A           00544     BCF LATB,7,0
+000344 9C8A           00545     BCF LATB,6,0
+000346 9A8A           00546     BCF LATB,5,0
+000348 988A           00547     BCF LATB,4,0
+00034A 968A           00548     BCF LATB,3,0
+00034C 9E8C           00549     BCF LATD,7,0
+                      00550     
+00034E EF?? F???      00551     GOTO GO_BACK
+                      00552     
+Warning[207]: Found label after column 1. (DISP_CENTER)
+000352                00553     DISP_CENTER
+000352 9E8A           00554     BCF LATB,7,0
+000354 9C8A           00555     BCF LATB,6,0
+000356 9A8A           00556     BCF LATB,5,0
+000358 988A           00557     BCF LATB,4,0
+00035A 868A           00558     BSF LATB,3,0
+00035C 8E8C           00559     BSF LATD,7,0
+00035E 968B           00560     BCF LATC,3,0
+000360 948B           00561     BCF LATC,2,0
+000362 928B           00562     BCF LATC,1,0
+000364 908B           00563     BCF LATC,0,0
+                      00564     
+000366 EF?? F???      00565     GOTO GO_BACK
+                      00566     
+Warning[207]: Found label after column 1. (LEFT_TURN)
+00036A                00567     LEFT_TURN
+00036A 968B           00568     BCF LATC,3,0
+00036C 948B           00569     BCF LATC,2,0
+00036E 928B           00570     BCF LATC,1,0
+000370 908B           00571     BCF LATC,0,0
+000372 9E8C           00572     BCF LATD,7,0
+000374 968A           00573     BCF LATB,3,0
+                      00574     
+000376 EF?? F???      00575     GOTO GO_BACK
+                      00576     
+Warning[207]: Found label after column 1. (GO_BACK)
+00037A                00577     GO_BACK
+                      00578     
+00037A C025 FFE8      00579     MOVFF prev_X,WREG
+00037E 5C06           00580     SUBWF dir,0,0
+000380 B4D8           00581     BTFSC STATUS,Z,0
+000382 EF?? F???      00582     GOTO END_DIR
+                      00583     
+000386 6A27           00584     CLRF alarm_L,0
+000388 6A28           00585     CLRF alarm_H,0
+00038A C006 F025      00586     MOVFF dir, prev_X
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 13
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00587     
+                      00588     
+Warning[207]: Found label after column 1. (END_DIR)
+00038E                00589     END_DIR
+                      00590     
+00038E A001           00591     BTFSS mode,0,0
+000390 EF?? F???      00592     GOTO CRUISE_MODE
+                      00593     
+000394 8801           00594     BSF mode,4,0
+000396 EF?? F???      00595     GOTO CHECK_CENTER
+                      00596     
+                      00597     
+00039A                00598 CHECK_CENTER
+00039A B801           00599     BTFSC mode,4,0
+00039C EF?? F???      00600     GOTO CHECK_Y
+                      00601     
+0003A0 0E64           00602     MOVLW .100
+0003A2 6403           00603     CPFSGT read_X,0
+0003A4 EF?? F???      00604     GOTO CHECK_LEFT
+                      00605     
+0003A8 0E9B           00606     MOVLW .155
+0003AA 6003           00607     CPFSLT read_X,0
+0003AC EF?? F???      00608     GOTO CHECK_RIGHT
+                      00609     
+                      00610     
+0003B0 0E78           00611     MOVLW .120
+0003B2 6E0D           00612     MOVWF pwmX_L,0
+0003B4 0E01           00613     MOVLW .1
+0003B6 6E0C           00614     MOVWF pwmX_H,0
+0003B8 EF?? F???      00615     GOTO DISPDIR
+                      00616     
+Warning[207]: Found label after column 1. (CHECK_Y)
+0003BC                00617     CHECK_Y
+                      00618     
+0003BC 0E64           00619     MOVLW .100
+0003BE 6404           00620     CPFSGT read_Y,0
+0003C0 EF?? F???      00621     GOTO CHECK_UP
+                      00622     
+0003C4 0E9B           00623     MOVLW .155
+0003C6 6004           00624     CPFSLT read_Y,0
+0003C8 EF?? F???      00625     GOTO CHECK_DOWN
+                      00626     
+0003CC 0E00           00627     MOVLW .0
+0003CE 6E23           00628     MOVWF pwmY_L,0
+0003D0 0E00           00629     MOVLW .0
+0003D2 6E24           00630     MOVWF pwmY_H,0
+0003D4 8205           00631     BSF speed,1,0
+0003D6 8005           00632     BSF speed,0,0
+0003D8 EF?? F???      00633     GOTO DISPLAY_SPEED
+                      00634     
+                      00635     
+Warning[207]: Found label after column 1. (DISPDIR)
+0003DC                00636     DISPDIR
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 14
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0003DC 9406           00637     BCF dir,2,0
+0003DE 9606           00638     BCF dir,3,0
+0003E0 8006           00639     BSF dir,0,0
+0003E2 EF?? F???      00640     GOTO DISPLAY_DIR
+                      00641     
+                      00642     
+                      00643     
+0003E6                00644 CHECK_DOWN
+0003E6 8405           00645     BSF speed,2,0
+                      00646     
+0003E8 0EBC           00647     MOVLW .188
+0003EA 6404           00648     CPFSGT read_Y,0
+0003EC EF?? F???      00649     GOTO DOWN1
+                      00650     
+0003F0 0EDD           00651     MOVLW .221
+0003F2 6404           00652     CPFSGT read_Y,0
+0003F4 EF?? F???      00653     GOTO DOWN2
+                      00654     
+0003F8 0EAA           00655     MOVLW .170
+0003FA 6E23           00656     MOVWF pwmY_L,0
+0003FC 0E0C           00657     MOVLW .12
+0003FE 6E24           00658     MOVWF pwmY_H,0
+000400 8205           00659     BSF speed,1,0
+000402 EF?? F???      00660     GOTO DISPLAY_SPEED
+                      00661     
+Warning[207]: Found label after column 1. (DOWN2)
+000406                00662     DOWN2
+000406 0EFA           00663     MOVLW .250
+000408 6E23           00664     MOVWF pwmY_L,0
+00040A 0E08           00665     MOVLW .8
+00040C 6E24           00666     MOVWF pwmY_H,0
+00040E 8005           00667     BSF speed,0,0
+000410 EF?? F???      00668     GOTO DISPLAY_SPEED
+                      00669     
+Warning[207]: Found label after column 1. (DOWN1)
+000414                00670     DOWN1
+000414 0EFA           00671     MOVLW .250
+000416 6E23           00672     MOVWF pwmY_L,0
+000418 0E04           00673     MOVLW .4
+00041A 6E24           00674     MOVWF pwmY_H,0
+00041C EF?? F???      00675     GOTO DISPLAY_SPEED
+                      00676     
+000420                00677 CHECK_UP
+000420 0E42           00678     MOVLW .66
+000422 6004           00679     CPFSLT read_Y,0
+000424 EF?? F???      00680     GOTO UP1
+                      00681     
+000428 0E21           00682     MOVLW .33
+00042A 6004           00683     CPFSLT read_Y,0
+00042C EF?? F???      00684     GOTO UP2
+                      00685     
+                      00686     
+000430 0EAA           00687     MOVLW .170
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 15
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000432 6E23           00688     MOVWF pwmY_L,0
+000434 0E0C           00689     MOVLW .12
+000436 6E24           00690     MOVWF pwmY_H,0
+000438 8205           00691     BSF speed,1,0
+00043A EF?? F???      00692     GOTO DISPLAY_SPEED
+                      00693     
+Warning[207]: Found label after column 1. (UP2)
+00043E                00694     UP2
+                      00695     
+00043E 0EFA           00696     MOVLW .250
+000440 6E23           00697     MOVWF pwmY_L,0
+000442 0E08           00698     MOVLW .8
+000444 6E24           00699     MOVWF pwmY_H,0
+000446 8005           00700     BSF speed,0,0
+000448 EF?? F???      00701     GOTO DISPLAY_SPEED
+                      00702     
+Warning[207]: Found label after column 1. (UP1)
+00044C                00703     UP1
+00044C 0EFA           00704     MOVLW .250
+00044E 6E23           00705     MOVWF pwmY_L,0
+000450 0E04           00706     MOVLW .4
+000452 6E24           00707     MOVWF pwmY_H,0
+000454 EF?? F???      00708     GOTO DISPLAY_SPEED
+                      00709     
+                      00710 
+000458                00711 CHECK_RIGHT
+000458 8206           00712     BSF dir,1,0
+                      00713     
+00045A 0EB4           00714     MOVLW .180
+00045C 6403           00715     CPFSGT read_X,0
+00045E EF?? F???      00716     GOTO RIGHT
+                      00717     
+000462 0ECD           00718     MOVLW .205
+000464 6403           00719     CPFSGT read_X,0
+000466 EF?? F???      00720     GOTO RIGHT1
+                      00721     
+00046A 0EE6           00722     MOVLW .230
+00046C 6403           00723     CPFSGT read_X,0
+00046E EF?? F???      00724     GOTO RIGHT2
+                      00725     
+000472 9406           00726     BCF dir,2,0
+000474 9606           00727     BCF dir,3,0
+000476 9806           00728     BCF dir,4,0
+000478 8A06           00729     BSF dir,5,0
+00047A 808B           00730     BSF LATC,0,0
+00047C 928B           00731     BCF LATC,1,0
+00047E 948B           00732     BCF LATC,2,0
+000480 968B           00733     BCF LATC,3,0
+000482 0EAF           00734     MOVLW .175
+000484 6E0D           00735     MOVWF pwmX_L,0
+000486 0E02           00736     MOVLW .2
+000488 6E0C           00737     MOVWF pwmX_H,0
+00048A EF?? F???      00738     GOTO DISPLAY_DIR
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 16
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00739    
+Warning[207]: Found label after column 1. (RIGHT)
+00048E                00740     RIGHT
+00048E 8406           00741     BSF dir,2,0
+000490 9606           00742     BCF dir,3,0
+000492 9806           00743     BCF dir,4,0
+000494 9A06           00744     BCF dir,5,0
+000496 868B           00745     BSF LATC,3,0
+000498 948B           00746     BCF LATC,2,0
+00049A 928B           00747     BCF LATC,1,0
+00049C 908B           00748     BCF LATC,0,0
+00049E 0ED7           00749     MOVLW .215
+0004A0 6E0D           00750     MOVWF pwmX_L,0
+0004A2 0E01           00751     MOVLW .1
+0004A4 6E0C           00752     MOVWF pwmX_H,0
+0004A6 EF?? F???      00753     GOTO DISPLAY_DIR
+                      00754     
+Warning[207]: Found label after column 1. (RIGHT1)
+0004AA                00755     RIGHT1
+0004AA 9406           00756     BCF dir,2,0
+0004AC 8606           00757     BSF dir,3,0
+0004AE 9806           00758     BCF dir,4,0
+0004B0 9A06           00759     BCF dir,5,0
+0004B2 908B           00760     BCF LATC,0,0
+0004B4 928B           00761     BCF LATC,1,0
+0004B6 848B           00762     BSF LATC,2,0
+0004B8 968B           00763     BCF LATC,3,0
+0004BA 0E1E           00764     MOVLW .30
+0004BC 6E0D           00765     MOVWF pwmX_L,0
+0004BE 0E02           00766     MOVLW .2
+0004C0 6E0C           00767     MOVWF pwmX_H,0
+0004C2 EF?? F???      00768     GOTO DISPLAY_DIR
+                      00769     
+Warning[207]: Found label after column 1. (RIGHT2)
+0004C6                00770     RIGHT2
+0004C6 9406           00771     BCF dir,2,0
+0004C8 9606           00772     BCF dir,3,0
+0004CA 8806           00773     BSF dir,4,0
+0004CC 9A06           00774     BCF dir,5,0
+0004CE 908B           00775     BCF LATC,0,0
+0004D0 828B           00776     BSF LATC,1,0
+0004D2 948B           00777     BCF LATC,2,0
+0004D4 968B           00778     BCF LATC,3,0
+0004D6 0E64           00779     MOVLW .100
+0004D8 6E0D           00780     MOVWF pwmX_L,0
+0004DA 0E02           00781     MOVLW .2
+0004DC 6E0C           00782     MOVWF pwmX_H,0
+0004DE EF?? F???      00783     GOTO DISPLAY_DIR
+                      00784     
+                      00785     
+                      00786     
+0004E2                00787 CHECK_LEFT
+0004E2 9206           00788     BCF dir,1,0
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 17
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00789     
+0004E4 0E4B           00790     MOVLW .75
+0004E6 6003           00791     CPFSLT read_X,0
+0004E8 EF?? F???      00792     GOTO LEFT
+                      00793     
+0004EC 0E32           00794     MOVLW .50
+0004EE 6003           00795     CPFSLT read_X,0
+0004F0 EF?? F???      00796     GOTO LEFT1
+                      00797     
+0004F4 0E19           00798     MOVLW .25
+0004F6 6003           00799     CPFSLT read_X,0
+0004F8 EF?? F???      00800     GOTO LEFT2
+                      00801   
+0004FC 9406           00802     BCF dir,2,0
+0004FE 9606           00803     BCF dir,3,0
+000500 9806           00804     BCF dir,4,0
+000502 8A06           00805     BSF dir,5,0
+000504 988A           00806     BCF LATB,4,0
+000506 9A8A           00807     BCF LATB,5,0
+000508 9C8A           00808     BCF LATB,6,0
+00050A 8E8A           00809     BSF LATB,7,0
+00050C 0E6E           00810     MOVLW .110
+00050E 6E0D           00811     MOVWF pwmX_L,0
+000510 0E00           00812     MOVLW .0
+000512 6E0C           00813     MOVWF pwmX_H,0
+000514 EF?? F???      00814     GOTO DISPLAY_DIR
+                      00815     
+Warning[207]: Found label after column 1. (LEFT)
+000518                00816     LEFT 
+000518 8406           00817     BSF dir,2,0
+00051A 9606           00818     BCF dir,3,0
+00051C 9806           00819     BCF dir,4,0
+00051E 9A06           00820     BCF dir,5,0
+000520 888A           00821     BSF LATB,4,0
+000522 9A8A           00822     BCF LATB,5,0
+000524 9C8A           00823     BCF LATB,6,0
+000526 9E8A           00824     BCF LATB,7,0
+000528 0E46           00825     MOVLW .70
+00052A 6E0D           00826     MOVWF pwmX_L,0
+00052C 0E01           00827     MOVLW .1
+00052E 6E0C           00828     MOVWF pwmX_H,0
+000530 EF?? F???      00829     GOTO DISPLAY_DIR
+                      00830     
+Warning[207]: Found label after column 1. (LEFT1)
+000534                00831     LEFT1
+000534 9406           00832     BCF dir,2,0
+000536 8606           00833     BSF dir,3,0
+000538 9806           00834     BCF dir,4,0
+00053A 9A06           00835     BCF dir,5,0
+00053C 988A           00836     BCF LATB,4,0
+00053E 8A8A           00837     BSF LATB,5,0
+000540 9C8A           00838     BCF LATB,6,0
+000542 9E8A           00839     BCF LATB,7,0
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 18
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000544 0EFA           00840     MOVLW .250
+000546 6E0D           00841     MOVWF pwmX_L,0
+000548 0E00           00842     MOVLW .0
+00054A 6E0C           00843     MOVWF pwmX_H,0
+00054C EF?? F???      00844     GOTO DISPLAY_DIR
+                      00845     
+Warning[207]: Found label after column 1. (LEFT2)
+000550                00846     LEFT2
+000550 9406           00847     BCF dir,2,0
+000552 9606           00848     BCF dir,3,0
+000554 8806           00849     BSF dir,4,0
+000556 9A06           00850     BCF dir,5,0
+000558 988A           00851     BCF LATB,4,0
+00055A 9A8A           00852     BCF LATB,5,0
+00055C 8C8A           00853     BSF LATB,6,0
+00055E 9E8A           00854     BCF LATB,7,0
+000560 0EB4           00855     MOVLW .180
+000562 6E0D           00856     MOVWF pwmX_L,0
+000564 0E00           00857     MOVLW .0
+000566 6E0C           00858     MOVWF pwmX_H,0
+000568 EF?? F???      00859     GOTO DISPLAY_DIR
+                      00860     
+00056C                00861 DEBOUNCER
+00056C 6A0E           00862     CLRF aux1,0 
+00056E 6A0F           00863     CLRF aux2,0 
+Warning[207]: Found label after column 1. (INNER_BOUNCE_LOOP)
+000570                00864     INNER_BOUNCE_LOOP
+000570 2A0E           00865     INCF aux1,1,0
+000572 B2D8           00866     BTFSC STATUS,DC,0    
+000574 2A0F           00867     INCF aux2,1,0  
+000576 0EC7           00868     MOVLW .199 
+000578 5C0F           00869     SUBWF aux2,0,0
+00057A B4D8           00870     BTFSC STATUS,Z,0 
+00057C 0012           00871     RETURN
+                      00872 
+00057E EF?? F???      00873     GOTO INNER_BOUNCE_LOOP
+                      00874     
+                      00875     
+000582                00876 COUNTER_1S 
+000582 6A02           00877     CLRF debounce_counter,0
+Warning[207]: Found label after column 1. (START_1S)
+000584                00878     START_1S
+000584 0E32           00879     MOVLW .50
+000586 6202           00880     CPFSEQ debounce_counter,0
+000588 EF?? F???      00881     GOTO START_1S
+00058C 0012           00882     RETURN
+Warning[205]: Found directive in column 1. (END)
+                      00883 END
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 19
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+A                                 00000000
+ABDEN                             00000000
+ABDOVF                            00000007
+ACCESS                            00000000
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ACQT0                             00000003
+ACQT1                             00000004
+ACQT2                             00000005
+ADCON0                            00000FC2
+ADCON1                            00000FC1
+ADCON2                            00000FC0
+ADCS0                             00000000
+ADCS1                             00000001
+ADCS2                             00000002
+ADDEN                             00000003
+ADEN                              00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADIP                              00000006
+ADMSK1                            00000001
+ADMSK2                            00000002
+ADMSK3                            00000003
+ADMSK4                            00000004
+ADMSK5                            00000005
+ADON                              00000000
+ADRES                             00000FC3
+ADRESH                            00000FC4
+ADRESL                            00000FC3
+ALARM_ON                          000002F4
+AN0                               00000000
+AN1                               00000001
+AN10                              00000001
+AN11                              00000004
+AN12                              00000000
+AN2                               00000002
+AN3                               00000003
+AN4                               00000005
+AN5                               00000000
+AN6                               00000001
+AN7                               00000002
+AN8                               00000002
+AN9                               00000003
+AUTOMATIC_MODE                    00000226
+BANKED                            00000001
+BAUDCON                           00000FB8
+BAUDCTL                           00000FB8
+BCLIE                             00000003
+BCLIF                             00000003
+BCLIP                             00000003
+BF                                00000000
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 20
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BGST                              00000005
+BOR                               00000000
+BRG16                             00000003
+BRGH                              00000002
+BSR                               00000FE0
+C                                 00000000
+C1INV                             00000004
+C1N                               00000000
+C1OUT_CMCON                       00000006
+C1OUT_PORTA                       00000004
+C1P                               00000003
+C2INV                             00000005
+C2N                               00000001
+C2OUT_CMCON                       00000007
+C2OUT_PORTA                       00000005
+C2P                               00000002
+CCP1                              00000002
+CCP1CON                           00000FBD
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1IP                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCP2CON                           00000FBA
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2IP                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCP2X                             00000005
+CCP2Y                             00000004
+CCP2_PORTB                        00000003
+CCP2_PORTC                        00000001
+CCPR1                             00000FBE
+CCPR1H                            00000FBF
+CCPR1L                            00000FBE
+CCPR2                             00000FBB
+CCPR2H                            00000FBC
+CCPR2L                            00000FBB
+CFGS                              00000006
+CHANGE_RECORD                     000002A6
+CHECK_1MIN                        000001D6
+CHECK_CENTER                      0000039A
+CHECK_DELAY                       00000254
+CHECK_DOWN                        000003E6
+CHECK_LEFT                        000004E2
+CHECK_PRESSED                     000002D6
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 21
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CHECK_RECORD_H                    00000258
+CHECK_RECORD_L                    00000264
+CHECK_RIGHT                       00000458
+CHECK_UP                          00000420
+CHECK_Y                           000003BC
+CHS0                              00000002
+CHS1                              00000003
+CHS2                              00000004
+CHS3                              00000005
+CIS                               00000003
+CK                                00000006
+CKE                               00000006
+CKP                               00000004
+CLEAR_ALL                         00000102
+CLKI                              00000007
+CLKO                              00000006
+CM0                               00000000
+CM1                               00000001
+CM2                               00000002
+CMCON                             00000FB4
+CMIE                              00000006
+CMIF                              00000006
+CMIP                              00000006
+CONVERTING_X                      00000160
+CONVERTING_Y                      00000170
+COUNTER_1S                        00000582
+COUNT_X                           0000007C
+COUNT_Y                           000000A0
+CREN                              00000004
+CRUISE_MODE                       00000182
+CS                                00000002
+CSRC                              00000007
+CVR0                              00000000
+CVR1                              00000001
+CVR2                              00000002
+CVR3                              00000003
+CVRCON                            00000FB5
+CVREF                             00000002
+CVREN                             00000007
+CVROE                             00000006
+CVRR                              00000005
+CVRSS                             00000004
+D                                 00000005
+DC                                00000001
+DC1B0                             00000004
+DC1B1                             00000005
+DC2B0                             00000004
+DC2B1                             00000005
+DDRA                              TRISA
+DDRB                              TRISB
+DDRC                              TRISC
+DDRD                              TRISD
+DDRE                              TRISE
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 22
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+DEBOUNCER                         0000056C
+DISPDIR                           000003DC
+DISPLAY_DIR                       00000332
+DISPLAY_SPEED                     000002E6
+DISP_CENTER                       00000352
+DONE                              00000001
+DOWN1                             00000414
+DOWN2                             00000406
+D_A                               00000005
+D_NOT_A                           00000005
+ECCP1AS                           00000FB6
+ECCP1CON                          00000FBD
+ECCP1DEL                          00000FB7
+ECCPAS0                           00000004
+ECCPAS1                           00000005
+ECCPAS2                           00000006
+ECCPASE                           00000007
+EEADR                             00000FA9
+EECON1                            00000FA6
+EECON2                            00000FA7
+EEDATA                            00000FA8
+EEIE                              00000004
+EEIF                              00000004
+EEIP                              00000004
+EEPGD                             00000007
+END_DIR                           0000038E
+END_SPEED                         00000320
+FAST                              00000001
+FERR                              00000002
+FLT0                              00000000
+FLTS                              00000002
+FREE                              00000004
+FSR0                              00000000
+FSR0H                             00000FEA
+FSR0L                             00000FE9
+FSR1                              00000001
+FSR1H                             00000FE2
+FSR1L                             00000FE1
+FSR2                              00000002
+FSR2H                             00000FDA
+FSR2L                             00000FD9
+GCEN                              00000007
+GIE                               00000007
+GIEH                              00000007
+GIEL                              00000006
+GIE_GIEH                          00000007
+GO                                00000001
+GOAUTOMATIC                       000002BC
+GO_BACK                           0000037A
+GO_DONE                           00000001
+GO_NOT_DONE                       00000001
+HIGH_RSI                          0000001A
+HLVDCON                           00000FD2
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 23
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+HLVDEN                            00000004
+HLVDIE                            00000002
+HLVDIF                            00000002
+HLVDIN                            00000005
+HLVDIP                            00000002
+HLVDL0                            00000000
+HLVDL1                            00000001
+HLVDL2                            00000002
+HLVDL3                            00000003
+IBF                               00000007
+IBOV                              00000005
+IDLEN                             00000007
+INDF0                             00000FEF
+INDF1                             00000FE7
+INDF2                             00000FDF
+INIT_INTERRUPTS                   000000B8
+INIT_OSC                          000000AE
+INIT_PORTS                        000000CA
+INNER_BOUNCE_LOOP                 00000570
+INT0                              00000000
+INT0E                             00000004
+INT0F                             00000001
+INT0IE                            00000004
+INT0IF                            00000001
+INT1                              00000001
+INT1E                             00000003
+INT1F                             00000000
+INT1IE                            00000003
+INT1IF                            00000000
+INT1IP                            00000006
+INT1P                             00000006
+INT2                              00000002
+INT2E                             00000004
+INT2F                             00000001
+INT2IE                            00000004
+INT2IF                            00000001
+INT2IP                            00000007
+INT2P                             00000007
+INTCON                            00000FF2
+INTCON2                           00000FF1
+INTCON3                           00000FF0
+INTEDG0                           00000006
+INTEDG1                           00000005
+INTEDG2                           00000004
+INTSRC                            00000007
+IOFS                              00000002
+IPEN                              00000007
+IPR1                              00000F9F
+IPR2                              00000FA2
+IRCF0                             00000004
+IRCF1                             00000005
+IRCF2                             00000006
+IRVST                             00000005
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 24
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+KBI0                              00000004
+KBI1                              00000005
+KBI2                              00000006
+KBI3                              00000007
+LATA                              00000F89
+LATA0                             00000000
+LATA1                             00000001
+LATA2                             00000002
+LATA3                             00000003
+LATA4                             00000004
+LATA5                             00000005
+LATA6                             00000006
+LATA7                             00000007
+LATB                              00000F8A
+LATB0                             00000000
+LATB1                             00000001
+LATB2                             00000002
+LATB3                             00000003
+LATB4                             00000004
+LATB5                             00000005
+LATB6                             00000006
+LATB7                             00000007
+LATC                              00000F8B
+LATC0                             00000000
+LATC1                             00000001
+LATC2                             00000002
+LATC3                             00000003
+LATC4                             00000004
+LATC5                             00000005
+LATC6                             00000006
+LATC7                             00000007
+LATD                              00000F8C
+LATD0                             00000000
+LATD1                             00000001
+LATD2                             00000002
+LATD3                             00000003
+LATD4                             00000004
+LATD5                             00000005
+LATD6                             00000006
+LATD7                             00000007
+LATE                              00000F8D
+LATE0                             00000000
+LATE1                             00000001
+LATE2                             00000002
+LEFT                              00000518
+LEFT1                             00000534
+LEFT2                             00000550
+LEFT_TURN                         0000036A
+LVDCON                            00000FD2
+LVDEN                             00000004
+LVDIE                             00000002
+LVDIF                             00000002
+LVDIP                             00000002
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 25
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+LVDL0                             00000000
+LVDL1                             00000001
+LVDL2                             00000002
+LVDL3                             00000003
+LVV0                              00000000
+LVV1                              00000001
+LVV2                              00000002
+LVV3                              00000003
+MAIN                              00000126
+MANUAL_MODE                       0000013C
+MANUAL_PRESSED                    000001A0
+MCLR                              00000003
+MODE_RETURN                       000002C4
+N                                 00000004
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BOR                           00000000
+NOT_CS                            00000002
+NOT_DONE                          00000001
+NOT_MCLR                          00000003
+NOT_PD                            00000002
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RD                            00000000
+NOT_RI                            00000004
+NOT_SS                            00000005
+NOT_T1SYNC                        00000002
+NOT_T3SYNC                        00000002
+NOT_TO                            00000003
+NOT_W                             00000002
+NOT_WR                            00000001
+NOT_WRITE                         00000002
+OBF                               00000006
+OERR                              00000001
+OSC1                              00000007
+OSC2                              00000006
+OSCCON                            00000FD3
+OSCFIE                            00000007
+OSCFIF                            00000007
+OSCFIP                            00000007
+OSCTUNE                           00000F9B
+OSTS                              00000003
+OV                                00000003
+P                                 00000004
+P1A                               00000002
+P1B                               00000005
+P1C                               00000006
+P1D                               00000007
+P1M0                              00000006
+P1M1                              00000007
+PC                                00000FF9
+PCFG0                             00000000
+PCFG1                             00000001
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 26
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PCFG2                             00000002
+PCFG3                             00000003
+PCL                               00000FF9
+PCLATH                            00000FFA
+PCLATU                            00000FFB
+PD                                00000002
+PDC0                              00000000
+PDC1                              00000001
+PDC2                              00000002
+PDC3                              00000003
+PDC4                              00000004
+PDC5                              00000005
+PDC6                              00000006
+PEIE                              00000006
+PEIE_GIEL                         00000006
+PEN                               00000002
+PGC                               00000006
+PGD                               00000007
+PGM                               00000005
+PIE1                              00000F9D
+PIE2                              00000FA0
+PIR1                              00000F9E
+PIR2                              00000FA1
+PLLEN                             00000006
+PLUSW0                            00000FEB
+PLUSW1                            00000FE3
+PLUSW2                            00000FDB
+POR                               00000001
+PORTA                             00000F80
+PORTB                             00000F81
+PORTC                             00000F82
+PORTD                             00000F83
+PORTE                             00000F84
+POSTDEC0                          00000FED
+POSTDEC1                          00000FE5
+POSTDEC2                          00000FDD
+POSTINC0                          00000FEE
+POSTINC1                          00000FE6
+POSTINC2                          00000FDE
+PR2                               00000FCB
+PREINC0                           00000FEC
+PREINC1                           00000FE4
+PREINC2                           00000FDC
+PROD                              00000FF3
+PRODH                             00000FF4
+PRODL                             00000FF3
+PRSEN                             00000007
+PSA                               00000003
+PSP0                              00000000
+PSP1                              00000001
+PSP2                              00000002
+PSP3                              00000003
+PSP4                              00000004
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 27
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PSP5                              00000005
+PSP6                              00000006
+PSP7                              00000007
+PSPIE                             00000007
+PSPIF                             00000007
+PSPIP                             00000007
+PSPMODE                           00000004
+PSSAC0                            00000002
+PSSAC1                            00000003
+PSSBD0                            00000000
+PSSBD1                            00000001
+PWM1CON                           00000FB7
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RA6                               00000006
+RA7                               00000007
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RBIP                              00000000
+RBPU                              00000007
+RC0                               00000000
+RC1                               00000001
+RC2                               00000002
+RC3                               00000003
+RC4                               00000004
+RC5                               00000005
+RC6                               00000006
+RC7                               00000007
+RCEN                              00000003
+RCIDL                             00000006
+RCIE                              00000005
+RCIF                              00000005
+RCIP                              00000005
+RCMT                              00000006
+RCON                              00000FD0
+RCREG                             00000FAE
+RCSTA                             00000FAB
+RD                                00000000
+RD0                               00000000
+RD1                               00000001
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 28
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RD16                              00000007
+RD2                               00000002
+RD3                               00000003
+RD4                               00000004
+RD5                               00000005
+RD6                               00000006
+RD7                               00000007
+RE0                               00000000
+RE1                               00000001
+RE2                               00000002
+RE3                               00000003
+READ_JOYSTICK                     0000015C
+RECORD_MODE                       000001B6
+RECORD_PRESSED                    00000284
+RI                                00000004
+RIGHT                             0000048E
+RIGHT1                            000004AA
+RIGHT2                            000004C6
+RIGHT_TURN                        00000342
+RSEN                              00000001
+RX                                00000007
+RX9                               00000006
+RX9D                              00000000
+RXDTP                             00000005
+R_NOT_W                           00000002
+R_W                               00000002
+S                                 00000003
+SAVE_DATA                         000001EE
+SBOREN                            00000006
+SCK                               00000003
+SCKP                              00000004
+SCL                               00000003
+SCS0                              00000000
+SCS1                              00000001
+SDA                               00000004
+SDI                               00000004
+SDO                               00000005
+SEN                               00000000
+SENDB                             00000003
+SERVO_X                           00000066
+SERVO_Y                           0000008A
+SMP                               00000007
+SP0                               00000000
+SP1                               00000001
+SP2                               00000002
+SP3                               00000003
+SP4                               00000004
+SPBRG                             00000FAF
+SPBRGH                            00000FB0
+SPEN                              00000007
+SREN                              00000005
+SSPADD                            00000FC8
+SSPBUF                            00000FC9
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 29
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SSPCON1                           00000FC6
+SSPCON2                           00000FC5
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPIP                             00000003
+SSPM0                             00000000
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+SSPOV                             00000006
+SSPSTAT                           00000FC7
+START_1S                          00000584
+START_AUTOPILOT                   00000234
+STATUS                            00000FD8
+STKFUL                            00000007
+STKOVF                            00000007
+STKPTR                            00000FFC
+STKUNF                            00000006
+SWDTE                             00000000
+SWDTEN                            00000000
+SYNC                              00000004
+T016BIT                           00000006
+T08BIT                            00000006
+T0CKI                             00000004
+T0CON                             00000FD5
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0PS0                             00000000
+T0PS1                             00000001
+T0PS2                             00000002
+T0SE                              00000004
+T13CKI                            00000000
+T1CKI                             00000000
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000FCD
+T1OSCEN                           00000003
+T1OSI                             00000001
+T1OSO                             00000000
+T1RUN                             00000006
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000FCA
+T2OUTPS0                          00000003
+T2OUTPS1                          00000004
+T2OUTPS2                          00000005
+T2OUTPS3                          00000006
+T3CCP1                            00000003
+T3CCP2                            00000006
+T3CKPS0                           00000004
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 30
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+T3CKPS1                           00000005
+T3CON                             00000FB1
+T3SYNC                            00000002
+TABLAT                            00000FF5
+TABLE7s                           00000010
+TBLPTR                            00000FF6
+TBLPTRH                           00000FF7
+TBLPTRL                           00000FF6
+TBLPTRU                           00000FF8
+TMR0                              00000FD6
+TMR0H                             00000FD7
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR0IP                            00000002
+TMR0L                             00000FD6
+TMR0ON                            00000007
+TMR0_INTERRUPT                    00000022
+TMR1                              00000FCE
+TMR1CS                            00000001
+TMR1H                             00000FCF
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1IP                            00000000
+TMR1L                             00000FCE
+TMR1ON                            00000000
+TMR2                              00000FCC
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2IP                            00000001
+TMR2ON                            00000002
+TMR3                              00000FB2
+TMR3CS                            00000001
+TMR3H                             00000FB3
+TMR3IE                            00000001
+TMR3IF                            00000001
+TMR3IP                            00000001
+TMR3L                             00000FB2
+TMR3ON                            00000000
+TO                                00000003
+TOS                               00000FFD
+TOSH                              00000FFE
+TOSL                              00000FFD
+TOSU                              00000FFF
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000F92
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 31
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TRISA5                            00000005
+TRISA6                            00000006
+TRISA7                            00000007
+TRISB                             00000F93
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRISC                             00000F94
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC3                            00000003
+TRISC4                            00000004
+TRISC5                            00000005
+TRISC6                            00000006
+TRISC7                            00000007
+TRISD                             00000F95
+TRISD0                            00000000
+TRISD1                            00000001
+TRISD2                            00000002
+TRISD3                            00000003
+TRISD4                            00000004
+TRISD5                            00000005
+TRISD6                            00000006
+TRISD7                            00000007
+TRISE                             00000F96
+TRISE0                            00000000
+TRISE1                            00000001
+TRISE2                            00000002
+TRMT                              00000001
+TUN0                              00000000
+TUN1                              00000001
+TUN2                              00000002
+TUN3                              00000003
+TUN4                              00000004
+TX                                00000006
+TX9                               00000006
+TX9D                              00000000
+TXCKP                             00000004
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXIP                              00000004
+TXREG                             00000FAD
+TXSTA                             00000FAC
+UA                                00000001
+UP1                               0000044C
+UP2                               0000043E
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 32
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+VCFG0                             00000004
+VCFG1                             00000005
+VDIRMAG                           00000007
+VPP                               00000003
+VREFM                             00000002
+VREFP                             00000003
+W                                 00000000
+WCOL                              00000007
+WDTCON                            00000FD1
+WR                                00000001
+WREG                              00000FE8
+WREN                              00000002
+WRERR                             00000003
+WUE                               00000001
+Z                                 00000002
+_BBSIZ_BB1K_4L                    000000FF
+_BBSIZ_BB256_4L                   000000CF
+_BBSIZ_BB512_4L                   000000DF
+_BORV_0_2L                        000000E7
+_BORV_1_2L                        000000EF
+_BORV_2_2L                        000000F7
+_BORV_3_2L                        000000FF
+_BOR_NOSLP_2L                     000000FD
+_BOR_OFF_2L                       000000F9
+_BOR_ON_2L                        000000FF
+_BOR_SOFT_2L                      000000FB
+_CCP2MX_RB3_3H                    000000FE
+_CCP2MX_RC1_3H                    000000FF
+_CONFIG1H                         00300001
+_CONFIG2H                         00300003
+_CONFIG2L                         00300002
+_CONFIG3H                         00300005
+_CONFIG4L                         00300006
+_CONFIG5H                         00300009
+_CONFIG5L                         00300008
+_CONFIG6H                         0030000B
+_CONFIG6L                         0030000A
+_CONFIG7H                         0030000D
+_CONFIG7L                         0030000C
+_CP0_OFF_5L                       000000FF
+_CP0_ON_5L                        000000FE
+_CP1_OFF_5L                       000000FF
+_CP1_ON_5L                        000000FD
+_CPB_OFF_5H                       000000FF
+_CPB_ON_5H                        000000BF
+_CPD_OFF_5H                       000000FF
+_CPD_ON_5H                        0000007F
+_DEBUG_OFF_4L                     000000FF
+_DEBUG_ON_4L                      0000007F
+_DEVID1                           003FFFFE
+_DEVID2                           003FFFFF
+_EBTR0_OFF_7L                     000000FF
+_EBTR0_ON_7L                      000000FE
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 33
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_EBTR1_OFF_7L                     000000FF
+_EBTR1_ON_7L                      000000FD
+_EBTRB_OFF_7H                     000000FF
+_EBTRB_ON_7H                      000000BF
+_FCMEN_OFF_1H                     000000BF
+_FCMEN_ON_1H                      000000FF
+_IDLOC0                           00200000
+_IDLOC1                           00200001
+_IDLOC2                           00200002
+_IDLOC3                           00200003
+_IDLOC4                           00200004
+_IDLOC5                           00200005
+_IDLOC6                           00200006
+_IDLOC7                           00200007
+_IESO_OFF_1H                      0000007F
+_IESO_ON_1H                       000000FF
+_LPT1OSC_OFF_3H                   000000FB
+_LPT1OSC_ON_3H                    000000FF
+_LVP_OFF_4L                       000000FB
+_LVP_ON_4L                        000000FF
+_MCLRE_OFF_3H                     0000007F
+_MCLRE_ON_3H                      000000FF
+_OSC_ECIO_1H                      000000F5
+_OSC_EC_1H                        000000F4
+_OSC_HSPLL_1H                     000000F6
+_OSC_HS_1H                        000000F2
+_OSC_INTIO1_1H                    000000F9
+_OSC_INTIO2_1H                    000000F8
+_OSC_LP_1H                        000000F0
+_OSC_RCIO_1H                      000000F7
+_OSC_RC_1H                        000000F3
+_OSC_XT_1H                        000000F1
+_PBADEN_ANA_3H                    000000FF
+_PBADEN_DIG_3H                    000000FD
+_PWRT_OFF_2L                      000000FF
+_PWRT_ON_2L                       000000FE
+_STVREN_OFF_4L                    000000FE
+_STVREN_ON_4L                     000000FF
+_WDTPS_1024_2H                    000000F5
+_WDTPS_128_2H                     000000EF
+_WDTPS_16384_2H                   000000FD
+_WDTPS_16_2H                      000000E9
+_WDTPS_1_2H                       000000E1
+_WDTPS_2048_2H                    000000F7
+_WDTPS_256_2H                     000000F1
+_WDTPS_2_2H                       000000E3
+_WDTPS_32768_2H                   000000FF
+_WDTPS_32_2H                      000000EB
+_WDTPS_4096_2H                    000000F9
+_WDTPS_4_2H                       000000E5
+_WDTPS_512_2H                     000000F3
+_WDTPS_64_2H                      000000ED
+_WDTPS_8192_2H                    000000FB
+MPASM 5.86                       LEDTEST.ASM   5-11-2023  17:46:33         PAGE 34
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_WDTPS_8_2H                       000000E7
+_WDT_OFF_2H                       000000FE
+_WDT_ON_2H                        000000FF
+_WRT0_OFF_6L                      000000FF
+_WRT0_ON_6L                       000000FE
+_WRT1_OFF_6L                      000000FF
+_WRT1_ON_6L                       000000FD
+_WRTB_OFF_6H                      000000FF
+_WRTB_ON_6H                       000000BF
+_WRTC_OFF_6H                      000000FF
+_WRTC_ON_6H                       000000DF
+_WRTD_OFF_6H                      000000FF
+_WRTD_ON_6H                       0000007F
+_XINST_OFF_4L                     000000BF
+_XINST_ON_4L                      000000FF
+__18F4321                         00000001
+__DEBUG                           
+__MPLAB_DEBUGGER_PK3              1
+alarm_H                           00000028
+alarm_L                           00000027
+alarm_clk                         00000029
+aux1                              0000000E
+aux2                              0000000F
+aux3                              00000021
+aux4                              00000022
+debounce_counter                  00000002
+delay_H                           00000008
+delay_L                           00000007
+dir                               00000006
+mode                              00000001
+prev_X                            00000025
+prev_Y                            00000026
+pwmX_H                            0000000C
+pwmX_L                            0000000D
+pwmY_H                            00000024
+pwmY_L                            00000023
+read_X                            00000003
+read_Y                            00000004
+record_H                          0000000A
+record_L                          00000009
+speed                             00000005
+steps                             0000000B
+
+Errors   :     0
+Warnings :    56 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+
